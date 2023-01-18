@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
@@ -20,7 +19,16 @@ const SignupPage = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log(formData)
+    e.preventDefault();
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then(console.log(formData));
   }
 
   const style = {
@@ -39,7 +47,7 @@ const SignupPage = () => {
     <Box sx={style} component="form" onSubmit={handleSubmit}>
       <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
         <Grid item>
-          <Typography>Create an account</Typography>
+          <Typography>Sign up</Typography>
         </Grid>
         <Grid item>
           <TextField required={ true } id="username" name="username" variant="standard" placeholder="username" value={formData.username} onChange={handleChange}/>
@@ -48,7 +56,7 @@ const SignupPage = () => {
           <TextField required={ true } id="password" name="password" variant="standard" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
         </Grid>
         <Grid item>
-            <TextField required={ true } id="password_confirmation" name="password_confirmation" variant="standard" placeholder="password confirmation" type="password" value={formData.password_confirmation} onChange={handleChange}/>
+            <TextField required={ true } id="password_confirmation" name="password_confirmation" variant="standard" placeholder="re-enter password" type="password" value={formData.password_confirmation} onChange={handleChange}/>
         </Grid>
         <Grid item>
             <Button variant="contained" color="primary" type="submit" >Create account</Button>

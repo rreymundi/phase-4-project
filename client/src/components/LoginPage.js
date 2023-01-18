@@ -19,7 +19,16 @@ const LoginPage = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log(formData)
+    e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then(console.log(formData));
   }
 
   const style = {
@@ -38,7 +47,7 @@ const LoginPage = () => {
     <Box sx={style} component="form" onSubmit={handleSubmit}>
       <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
         <Grid item>
-          <Typography>Login</Typography>
+          <Typography>Log in</Typography>
         </Grid>
         <Grid item>
           <TextField required={ true } id="username" name="username" variant="standard" placeholder="username" value={formData.username} onChange={handleChange}/>
@@ -47,11 +56,11 @@ const LoginPage = () => {
           <TextField required={ true } id="password" name="password" variant="standard" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
         </Grid>
         <Grid item>
-            <Button variant="contained" color="primary" type="submit" >Login</Button>
+            <Button variant="contained" color="primary" type="submit" >Log in</Button>
         </Grid>
         <Grid item>
         <Typography>Don't have an account?&nbsp;
-          <Link to="/signup">Sign up here!</Link>
+          <Link to="/signup" underline="none" >Sign up!</Link>
         </Typography>
       </Grid>
 
