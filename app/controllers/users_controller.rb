@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
+  def destroy
+    User.destroy_all
+  end
+
   def create
     user = User.create(user_params)
     if user.valid?
