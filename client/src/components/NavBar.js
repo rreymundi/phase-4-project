@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function NavBar({ user }) {
+export default function NavBar({ user, onLogout }) {
   let navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,6 +18,7 @@ export default function NavBar({ user }) {
       method: 'DELETE'
     })
     console.log("Logged out!")
+    onLogout();
   };
 
   return (

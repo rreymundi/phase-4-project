@@ -17,10 +17,14 @@ export default function App() {
   }, []);
   
   console.log(user)
+
+  const handleLogout = () => {
+    setCurrentUser(null)
+  }
   
   return (
     <Router>
-      <NavBar user={user} />
+      <NavBar user={user} onLogout={handleLogout} />
       <Content onLogin={setCurrentUser} />
     </Router>
   );
