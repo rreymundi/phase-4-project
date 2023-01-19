@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -27,8 +27,8 @@ const LoginPage = () => {
       },
       body: JSON.stringify(formData),
     })
-      .then((r) => r.json())
-      .then(console.log(formData));
+    .then(res => res.json())
+    .then((user) => onLogin(user))
   }
 
   const style = {

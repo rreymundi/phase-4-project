@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,7 +9,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function ButtonAppBar() {
+export default function NavBar({ user }) {
+  let navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+    fetch("/logout", {
+      method: 'DELETE'
+    })
+    console.log("Logged out!")
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -25,7 +36,11 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PHASE 4 PROJECT
           </Typography>
-          <Button color="inherit" component={ Link } to="/login">Login</Button>
+          {user ?
+            <Button color="inherit" onClick={handleLogout}>Log out</Button>
+            :
+            <Button color="inherit" component={ Link } to="/login">Log in</Button>
+          }
         </Toolbar>
       </AppBar>
     </Box>
