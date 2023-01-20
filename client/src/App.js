@@ -10,11 +10,12 @@ export default function App() {
     fetch('/auth')
     .then(r => {
       if (r.ok) {
-        r.json()
-        .then((r) => setCurrentUser(r))
+        r.json().then((user) => setCurrentUser(user))
       }
     })
   }, []);
+
+  if(!user) console.log("You need to log in!")
   
   console.log(user)
 
