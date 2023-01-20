@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
@@ -11,6 +12,8 @@ const SignupPage = ({ onLogin }) => {
     password_confirmation: "",
   });
 
+  let navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,8 +21,9 @@ const SignupPage = ({ onLogin }) => {
     })
   };
 
-  const handleSubmit = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
+    navigate("/");
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -45,7 +49,7 @@ const SignupPage = ({ onLogin }) => {
   };
 
   return (
-    <Box sx={style} component="form" onSubmit={handleSubmit}>
+    <Box sx={style} component="form" onSubmit={handleSignup}>
       <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
         <Grid item>
           <Typography>Sign up</Typography>

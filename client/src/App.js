@@ -15,10 +15,6 @@ export default function App() {
     })
   }, []);
 
-  if(!user) console.log("You need to log in!")
-  
-  console.log(user)
-
   const handleLogout = () => {
     setCurrentUser(null)
   }

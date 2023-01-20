@@ -24,29 +24,37 @@ export default function NavBar({ user, onLogout }) {
     onLogout();
   };
 
+  const handleUserMenu = () => {
+    if (user) {
+      return (
+        <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{ mr: 2 }}
+        onClick={() => setDrawerOpen(true)} 
+        >
+        <MenuIcon />
+        </IconButton>
+      )
+    }
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={() => setDrawerOpen(true)} 
-          >
-            <MenuIcon />
+          {handleUserMenu()}
           <TemporaryDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-          </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PHASE 4 PROJECT
           </Typography>
-          {user ?
-            <Button color="inherit" onClick={handleLogout}>Log out</Button>
-            :
-            <Button color="inherit" component={ Link } to="/login">Log in</Button>
-          }
+            {user ?
+              <Button color="inherit" onClick={handleLogout}>Log out</Button>
+              :
+              <Button color="inherit" component={ Link } to="/login">Log in</Button>
+            }
         </Toolbar>
       </AppBar>
     </Box>

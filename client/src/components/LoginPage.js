@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
@@ -11,6 +12,8 @@ const LoginPage = ({ onLogin }) => {
     password: "",
   });
 
+  let navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,8 +21,9 @@ const LoginPage = ({ onLogin }) => {
     })
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
+    navigate("/");
     fetch("/login", {
       method: "POST",
       headers: {
@@ -29,6 +33,7 @@ const LoginPage = ({ onLogin }) => {
     })
     .then(res => res.json())
     .then((user) => onLogin(user))
+    console.log("Logged in!")
   }
 
   const style = {
@@ -44,7 +49,7 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <Box sx={style} component="form" onSubmit={handleSubmit}>
+    <Box sx={style} component="form" onSubmit={handleLogin}>
       <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
         <Grid item>
           <Typography>Log in</Typography>
