@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,19 +9,30 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import TemporaryDrawer from './TemporaryDrawer';
+import UserMenu from './UserMenu';
 
 export default function NavBar({ user, onLogout }) {
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
-  const handleLogout = () => {
-    navigate("/");
-    fetch("/logout", {
-      method: 'DELETE'
-    })
-    console.log("Logged out!")
-    onLogout();
+  // const handleLogout = () => {
+  //   navigate("/");
+  //   fetch("/logout", {
+  //     method: 'DELETE'
+  //   })
+  //   console.log("Logged out!")
+  //   onLogout();
+  // };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const handleUserMenu = () => {
@@ -51,7 +62,8 @@ export default function NavBar({ user, onLogout }) {
             PHASE 4 PROJECT
           </Typography>
             {user ?
-              <Button color="inherit" onClick={handleLogout}>Log out</Button>
+              <UserMenu onLogout={onLogout} anchorElUser={anchorElUser} handleCloseUserMenu={handleCloseUserMenu} handleOpenUserMenu={handleOpenUserMenu} />
+              // <Button color="inherit" onClick={handleLogout}>Log out</Button>
               :
               <Button color="inherit" component={ Link } to="/login">Log in</Button>
             }
