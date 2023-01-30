@@ -8,4 +8,10 @@ Rails.application.routes.draw do
 
     get '/users', to: "users#index"
 
+    get '/projects', to: "projects#index"
+    post '/users/:id/projects', to: "projects#create"
+
+    get '/tasks', to: "tasks#index"
+    post '/users/:id/tasks', to: "tasks#create"
+
 end

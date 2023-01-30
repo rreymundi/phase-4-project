@@ -9,12 +9,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
 import ListIcon from '@mui/icons-material/List';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
-const TemporaryDrawer = ({ drawerOpen, setDrawerOpen }) => {
+const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
 
   return (
     <Drawer anchor='left' open={drawerOpen} onClose={() => setDrawerOpen(false)}>

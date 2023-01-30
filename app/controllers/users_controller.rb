@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: users, include: [:tasks, :projects]
+    render json: users, include: ['tasks', 'tasks.project']
   end
 
   private

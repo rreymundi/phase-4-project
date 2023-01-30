@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 
 
-const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserMenu }) => {
+const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserMenu, user }) => {
     const handleLogout = () => {
         navigate("/");
         fetch("/logout", {
@@ -23,7 +23,7 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
     return (
         <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.username} src="/static/images/avatar/2.jpg" />
             </IconButton>
             <Menu
               sx={{ mt: '45px' }}
