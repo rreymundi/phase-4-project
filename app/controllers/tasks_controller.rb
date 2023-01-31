@@ -1,9 +1,14 @@
 class TasksController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    skip_before_action :authorized
 
     def index
         tasks = Task.all
+        render json: tasks
+    end
+
+    # showing all of that user's tasks
+    def show
+        tasks = Task.where("user_id= ?", session[:user_id])
         render json: tasks
     end
 

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index]
+  # skip_before_action :authorized, only: [:create]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
+  # signing up
   def create
     user = User.create!(user_params)
     if user.valid?
@@ -11,14 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
+  # remaining logged in
   def show
     current_user = User.find(session[:user_id])
     render json: current_user, status: :ok
-  end
-
-  def index
-    users = User.all
-    render json: users, include: ['tasks', 'tasks.project']
   end
 
   private

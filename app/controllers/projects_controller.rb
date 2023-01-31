@@ -1,15 +1,10 @@
 class ProjectsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    skip_before_action :authorized
+    # skip_before_action :authorized
 
     def index
         projects = Project.all
         render json: projects
-    end
-
-    def show
-        project = Project.find(params[:id])
-        render json: project, status: :ok
     end
 
     def create
