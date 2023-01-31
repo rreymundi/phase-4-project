@@ -22,7 +22,7 @@ export default function App() {
   return (
     <Router>
       <NavBar user={user} onLogout={handleLogout} />
-      <Content onLogin={setCurrentUser} />
+      <Content user={user} onLogin={setCurrentUser} />
     </Router>
   );
 
