@@ -7,6 +7,11 @@ class ProjectsController < ApplicationController
         render json: projects
     end
 
+    def show
+        project = Project.find(params[:id])
+        render json: project, status: :ok
+    end
+
     def create
         project = Project.create(project_params)
         project.valid?
