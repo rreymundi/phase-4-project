@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Container } from '@mui/system';
 
 const Home = ({ user }) => {
   return (
-    <div>
+    <Container>
       <h1>Welcome{user ? `, ${user.username}!` : `!`}</h1>
-    </div>
+      {console.log(user)}
+    </Container>
   )
 }
 

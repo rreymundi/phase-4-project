@@ -16,17 +16,6 @@ export default function NavBar({ user, onLogout }) {
   // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  // let navigate = useNavigate();
-
-  // const handleLogout = () => {
-  //   navigate("/");
-  //   fetch("/logout", {
-  //     method: 'DELETE'
-  //   })
-  //   console.log("Logged out!")
-  //   onLogout();
-  // };
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -63,7 +52,6 @@ export default function NavBar({ user, onLogout }) {
           </Typography>
             {user ?
               <UserMenu onLogout={onLogout} anchorElUser={anchorElUser} handleCloseUserMenu={handleCloseUserMenu} handleOpenUserMenu={handleOpenUserMenu} user={user} />
-              // <Button color="inherit" onClick={handleLogout}>Log out</Button>
               :
               <Button color="inherit" component={ Link } to="/login">Log in</Button>
             }

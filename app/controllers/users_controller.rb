@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     render json: current_user, status: :ok
   end
 
+  # test all users
+  def index
+    users = User.all
+    render json: users, include: ['tasks', 'tasks.project']
+  end
+
   private
 
   def user_params

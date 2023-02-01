@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import NestedGrid from './NestedGrid';
+import { Container } from '@mui/system';
 
-const MyTasksPage = () => {
+const MyTasksPage = ({ tasks }) => {
+
   return (
-    <h1>My Tasks</h1>
+    <Container>
+      <h1>My Tasks</h1>
+      <NestedGrid tasks={tasks} />
+    </Container>
   )
 }
 

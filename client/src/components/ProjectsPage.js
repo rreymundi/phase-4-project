@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import ProjectsTable from './ProjectsTable';
+import { Container } from '@mui/system';
 
-const ProjectsPage = () => {
+const ProjectsPage = ({ projects }) => {
+
   return (
-    <div>
+    <Container>
         <h1>Projects page</h1>
-    </div>
+        <ProjectsTable projects={projects} />
+    </Container>
   )
 }
 

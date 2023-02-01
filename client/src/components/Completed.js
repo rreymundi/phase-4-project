@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import CompletedTaskGrid from './CompletedTaskGrid';
+import { Container } from '@mui/system';
 
 const Completed = () => {
   return (
-    <h1>Completed</h1>
+    <Container>
+      <h1>Completed</h1>
+      <CompletedTaskGrid />
+    </Container>
   )
 }
 
