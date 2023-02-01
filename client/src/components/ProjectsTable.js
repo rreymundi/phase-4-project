@@ -1,4 +1,5 @@
 import React from 'react'
+import { Routes, Route, Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,6 +12,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import ProjectRoadmap from './ProjectRoadmap';
 
 const ProjectsTable = ({ projects }) => {
 
@@ -25,7 +27,7 @@ const ProjectsTable = ({ projects }) => {
         </Button>
       </TableCell>
       <TableCell component="th" scope="row">
-        <Button>
+        <Button component={ Link } to={`/projects/${project.id}`}>
           <Typography>{project.name}</Typography>
         </Button>
       </TableCell>
@@ -38,7 +40,7 @@ const ProjectsTable = ({ projects }) => {
         </Button>
       </TableCell>
     </TableRow>
-  ))
+  ));
 
   return (
     <TableContainer component={Paper}>

@@ -31,8 +31,11 @@ const LoginPage = ({ onLogin }) => {
       },
       body: JSON.stringify(formData),
     })
-    .then(res => res.json())
-    .then((user) => onLogin(user))
+    .then(r => {
+      if (r.ok) {
+        r.json().then((user) => onLogin(user))
+      }
+    })
     console.log("Logged in!")
   }
 
