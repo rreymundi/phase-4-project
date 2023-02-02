@@ -9,4 +9,4 @@ const ProjectRoadmap = ({ project }) => {
         )
 }
 
-export default ProjectRoadmap
+export default ProjectRoadmap;

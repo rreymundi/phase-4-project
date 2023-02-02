@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from './Home';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
@@ -8,8 +8,17 @@ import MyTasksPage from './MyTasksPage';
 import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
+import ProjectRoadmap from './ProjectRoadmap';
 
 const Content = ({ user, onLogin }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  let navigate = useNavigate();
+  const handleClose = () => {
+    navigate("/projects")
+    setOpen(false)
+  };
+  
   return (
     <Box 
       component='main'
@@ -26,10 +35,11 @@ const Content = ({ user, onLogin }) => {
           <Route path='/' element={<Home user={user} />} />
           <Route path='/login' element={<LoginPage onLogin={onLogin} />} />
           <Route path='/signup' element={<SignupPage onLogin={onLogin} />} />
-          <Route path='/projects/*' element={<ProjectsPage projects={user.projects} />} />
-          <Route path='/tasks' element={<MyTasksPage user={user} tasks={user.tasks} />} />
-          <Route path='/completed' element={<Completed user={user} />} />
-      </Routes>
+          <Route path='/projects/*' element={<ProjectsPage projects={user.projects} open={open} handleOpen={handleOpen} handleClose={handleClose} />} />
+          <Route path='/tasks/*' element={<MyTasksPage user={user} tasks={user.tasks} />} />
+          <Route path='/completed' element={<Completed user={user} />} />      
+          <Route exact path='/projects/:project_id/roadmap' element={<ProjectRoadmap />} />
+        </Routes>
       </Container>
     </Box>
   )

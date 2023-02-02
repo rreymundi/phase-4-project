@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-// import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -50,18 +49,6 @@ const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
             </ListItemButton>
           </ListItem>
         </List>
-        {/* <List>
-          <ListItem disablePadding>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton sx={{ bottom: 0 }} onClick={handleOpen}>
-              <ListItemIcon>
-                <LoginIcon />
-              </ListItemIcon>
-              <ListItemText>Log in</ListItemText>
-            </ListItemButton>
-          </ListItem>
-        </List> */}
       </Box>
   </Drawer>
   );

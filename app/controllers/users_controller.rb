@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   # test all users
   def index
     users = User.all
-    render json: users, include: ['tasks', 'tasks.project']
+    render json: users, include: ['projects', 'projects.tasks']
   end
 
   private
