@@ -38,7 +38,7 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
           name: formData.name,
           description: formData.description
           };
-        fetch("http://localhost:4000/projects", {
+        fetch("/projects", {
           method: "POST",
           headers: {
             "Content-type": "application/json"

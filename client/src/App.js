@@ -21,7 +21,7 @@ export default function App() {
     fetch('/projects')
     .then((r) => r.json())
     .then((r) => setProjects(r))
-  })
+  }, []);
 
   const handleLogout = () => {
     setCurrentUser(null)
@@ -30,11 +30,16 @@ export default function App() {
   const handleAddProject = (newProject) => {
     setProjects([...projects, newProject])
   }
+
+  const handleDeleteProject = (deletedProject) => {
+    const updatedProjects = projects.filter((project) => project.id !== deletedProject.id)
+    setProjects(updatedProjects)
+  }
   
   return (
     <Router>
       <NavBar user={user} onLogout={handleLogout} />
-      <Content user={user} onLogin={setCurrentUser} onAddProject={handleAddProject} projects={projects} />
+      <Content user={user} projects={projects} onLogin={setCurrentUser} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} />
     </Router>
   );
 

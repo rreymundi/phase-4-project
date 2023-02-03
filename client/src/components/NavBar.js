@@ -13,7 +13,6 @@ import UserMenu from './UserMenu';
 
 export default function NavBar({ user, onLogout }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -6,8 +6,20 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import ProjectMenu from './ProjectMenu';
 
-const ProjectRow = ({ project }) => {
+const ProjectRow = ({ project, onDeleteProject }) => {
+  const [anchorProjectMenu, setAnchorProjectMenu] = React.useState(null);
+
+  const handleOpenProjectMenu = (event) => {
+    setAnchorProjectMenu(event.currentTarget);
+  };
+
+  const handleCloseProjectMenu = () => {
+    setAnchorProjectMenu(null);
+  };
+
+
   return (
     <TableRow
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -27,8 +39,9 @@ const ProjectRow = ({ project }) => {
       </TableCell>
       <TableCell align="right">
         <Button>
-          <MoreHorizIcon />
+          <MoreHorizIcon onClick={handleOpenProjectMenu} />
         </Button>
+        <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} />
       </TableCell>
     </TableRow>
   );
