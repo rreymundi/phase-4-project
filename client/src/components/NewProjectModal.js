@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const NewProjectModal = ({ open, handleClose }) => {
+const NewProjectModal = ({ open, handleClose, onAddProject }) => {
 
     const style = {
         position: 'absolute',
@@ -38,7 +38,7 @@ const NewProjectModal = ({ open, handleClose }) => {
           name: formData.name,
           description: formData.description
           };
-        fetch("http://localhost:9292/projects", {
+        fetch("http://localhost:4000/projects", {
           method: "POST",
           headers: {
             "Content-type": "application/json"
@@ -46,10 +46,11 @@ const NewProjectModal = ({ open, handleClose }) => {
           body: JSON.stringify(newProject)
         })
         .then((r) => r.json())
-        // .then((newList) => onAddList(newList))
-        // .then(setFormData({
-        //   name: "",
-        // }))
+        .then((newProject) => onAddProject(newProject))
+        .then(setFormData({
+          name: "",
+          description: ""
+        }))
       };
 
     return (

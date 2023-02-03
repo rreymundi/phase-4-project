@@ -5,7 +5,9 @@ import Content from "./components/Content";
 
 export default function App() {
   const [user, setCurrentUser] = useState('');
+  const [projects, setProjects] = useState([])
 
+  
   useEffect(() => {
     fetch('/auth')
     .then(r => {
@@ -15,14 +17,24 @@ export default function App() {
     })
   }, []);
 
+  useEffect(() => {
+    fetch('/projects')
+    .then((r) => r.json())
+    .then((r) => setProjects(r))
+  })
+
   const handleLogout = () => {
     setCurrentUser(null)
+  }
+
+  const handleAddProject = (newProject) => {
+    setProjects([...projects, newProject])
   }
   
   return (
     <Router>
       <NavBar user={user} onLogout={handleLogout} />
-      <Content user={user} onLogin={setCurrentUser} />
+      <Content user={user} onLogin={setCurrentUser} onAddProject={handleAddProject} projects={projects} />
     </Router>
   );
 

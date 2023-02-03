@@ -5,7 +5,7 @@ import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 import NewProjectModal from './NewProjectModal';
 
-const ProjectsPage = ({ projects, open, handleOpen, handleClose }) => {
+const ProjectsPage = ({ projects, open, handleOpen, handleClose, onAddProject }) => {
 
   return (
     <Container>
@@ -13,7 +13,7 @@ const ProjectsPage = ({ projects, open, handleOpen, handleClose }) => {
         <Button component={Link} to="new" onClick={handleOpen}>Create Project</Button>
         <ProjectsTable projects={projects} />
         <Routes>
-          <Route exact path='new' element={<NewProjectModal open={open} handleClose={handleClose} />} />
+          <Route exact path='new' element={<NewProjectModal open={open} handleClose={handleClose} onAddProject={onAddProject} />} />
         </Routes>
     </Container>
   )

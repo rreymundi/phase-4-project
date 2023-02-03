@@ -10,10 +10,13 @@ import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 import ProjectRoadmap from './ProjectRoadmap';
 
-const Content = ({ user, onLogin }) => {
+const Content = ({ user, onLogin, onAddProject, projects }) => {
   const [open, setOpen] = useState(false);
+  
   const handleOpen = () => setOpen(true);
+  
   let navigate = useNavigate();
+
   const handleClose = () => {
     navigate("/projects")
     setOpen(false)
@@ -35,7 +38,7 @@ const Content = ({ user, onLogin }) => {
           <Route path='/' element={<Home user={user} />} />
           <Route path='/login' element={<LoginPage onLogin={onLogin} />} />
           <Route path='/signup' element={<SignupPage onLogin={onLogin} />} />
-          <Route path='/projects/*' element={<ProjectsPage projects={user.projects} open={open} handleOpen={handleOpen} handleClose={handleClose} />} />
+          <Route path='/projects/*' element={<ProjectsPage projects={projects} open={open} handleOpen={handleOpen} handleClose={handleClose} onAddProject={onAddProject} />} />
           <Route path='/tasks/*' element={<MyTasksPage user={user} tasks={user.tasks} />} />
           <Route path='/completed' element={<Completed user={user} />} />      
           <Route exact path='/projects/:project_id/roadmap' element={<ProjectRoadmap />} />
