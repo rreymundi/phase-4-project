@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -7,9 +7,20 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import ProjectMenu from './ProjectMenu';
+import EditProjectModal from './EditProjectModal';
 
-const ProjectRow = ({ project, onDeleteProject }) => {
+const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
   const [anchorProjectMenu, setAnchorProjectMenu] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  
+  const handleOpenEditProjectModal = () => setOpen(true);
+
+  let navigate = useNavigate();
+
+  const handleCloseEditProjectModal = () => {
+    navigate("/projects")
+    setOpen(false)
+  };
 
   const handleOpenProjectMenu = (event) => {
     setAnchorProjectMenu(event.currentTarget);
@@ -41,8 +52,9 @@ const ProjectRow = ({ project, onDeleteProject }) => {
         <Button>
           <MoreHorizIcon onClick={handleOpenProjectMenu} />
         </Button>
-        <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} />
+        <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} handleOpenEditProjectModal={handleOpenEditProjectModal} />
       </TableCell>
+        <EditProjectModal open={open} handleCloseEditProjectModal={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
     </TableRow>
   );
 }

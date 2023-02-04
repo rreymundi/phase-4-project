@@ -9,9 +9,9 @@ import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import ProjectRow from './ProjectRow';
 
-const ProjectsTable = ({ projects, onDeleteProject }) => {
+const ProjectsTable = ({ projects, onDeleteProject, onUpdateProject }) => {
 
-  const projectRows = projects?.map((project) => <ProjectRow key={project.name} project={project} onDeleteProject={onDeleteProject} />);
+  const projectRows = projects?.map((project) => <ProjectRow key={project.name} project={project} onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />);
 
   return (
     <TableContainer component={Paper}>

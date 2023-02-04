@@ -4,10 +4,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Avatar from '@mui/material/Avatar';
 
-const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, handleOpenProjectMenu, onDeleteProject }) => {
+const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDeleteProject, handleOpenEditProjectModal }) => {
     
     const handleDeleteProject = () => {
         navigate("/projects");
@@ -38,8 +36,11 @@ const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, handl
               onClose={handleCloseProjectMenu}
             >
               <MenuItem onClick={handleCloseProjectMenu}>
-                  <Typography textAlign="center" onClick={handleDeleteProject} >Delete</Typography>
-                </MenuItem>
+                <Typography textAlign="center" onClick={handleDeleteProject} >Delete</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseProjectMenu}>
+                <Typography textAlign="center" onClick={handleOpenEditProjectModal} >Edit</Typography>
+              </MenuItem>
             </Menu>
           </Box>
     )

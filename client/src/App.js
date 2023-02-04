@@ -25,21 +25,28 @@ export default function App() {
 
   const handleLogout = () => {
     setCurrentUser(null)
-  }
+  };
 
   const handleAddProject = (newProject) => {
     setProjects([...projects, newProject])
-  }
+  };
 
   const handleDeleteProject = (deletedProject) => {
     const updatedProjects = projects.filter((project) => project.id !== deletedProject.id)
     setProjects(updatedProjects)
-  }
+  };
+
+  const handleUpdateProject = (updatedProject) => {
+    const updatedProjects = projects.map((project) => 
+    project.id === updatedProject.id ? updatedProject : project
+    )
+    setProjects(updatedProjects)
+  };
   
   return (
     <Router>
       <NavBar user={user} onLogout={handleLogout} />
-      <Content user={user} projects={projects} onLogin={setCurrentUser} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} />
+      <Content user={user} projects={projects} onLogin={setCurrentUser} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} onUpdateProject={handleUpdateProject} />
     </Router>
   );
 
