@@ -49,12 +49,12 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         <Typography>{project.description}</Typography>
       </TableCell>
       <TableCell align="right">
-        <Button>
-          <MoreHorizIcon onClick={handleOpenProjectMenu} />
+        <Button component={ Link } to={`/projects/${project.id}`} onClick={handleOpenProjectMenu} >
+          <MoreHorizIcon />
         </Button>
-        <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} handleOpenEditProjectModal={handleOpenEditProjectModal} />
+          <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} handleOpenEditProjectModal={handleOpenEditProjectModal} />
       </TableCell>
-        <EditProjectModal open={open} handleCloseEditProjectModal={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
+      <EditProjectModal open={open} handleCloseEditProjectModal={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
     </TableRow>
   );
 }
