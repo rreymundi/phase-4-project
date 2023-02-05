@@ -5,9 +5,8 @@ import Content from "./components/Content";
 
 export default function App() {
   const [user, setCurrentUser] = useState('');
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState([]);
 
-  
   useEffect(() => {
     fetch('/auth')
     .then(r => {
@@ -42,11 +41,26 @@ export default function App() {
     )
     setProjects(updatedProjects)
   };
+
+  const handleAddTask = (newTask) => {
+
+  };
   
   return (
     <Router>
-      <NavBar user={user} onLogout={handleLogout} />
-      <Content user={user} projects={projects} onLogin={setCurrentUser} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} onUpdateProject={handleUpdateProject} />
+      <NavBar 
+        user={user} 
+        onLogout={handleLogout} 
+      />
+      <Content 
+        user={user}
+        projects={projects} 
+        onLogin={setCurrentUser} 
+        onAddProject={handleAddProject} 
+        onDeleteProject={handleDeleteProject} 
+        onUpdateProject={handleUpdateProject} 
+        onAddTask={handleAddTask} 
+      />
     </Router>
   );
 

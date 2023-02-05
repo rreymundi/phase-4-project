@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const NestedGrid = ({ tasks }) => {
 
   const renderedTask = tasks?.map((task) => 
-    <Grid item xs={4} key={task} >
+    <Grid item xs={4} key={task.id} >
       <TaskCard task={task} />
     </Grid>
   )

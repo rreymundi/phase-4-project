@@ -18,10 +18,16 @@ class TasksController < ApplicationController
         render json: task, status: :created
     end
 
+    def destroy
+        task = Task.find(params[:id])
+        task.destroy
+        head :no_content
+    end
+
     private
 
     def task_params 
-        params.permit(:name, :description)
+        params.permit(:name, :description, :priority, :project_id, :user_id, :status)
     end
 
     def render_unprocessable_entity

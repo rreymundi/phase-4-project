@@ -8,26 +8,31 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import ProjectMenu from './ProjectMenu';
 import EditProjectModal from './EditProjectModal';
+import ProjectRoadmap from './ProjectRoadmap';
 
 const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
   const [anchorProjectMenu, setAnchorProjectMenu] = React.useState(null);
-  const [open, setOpen] = useState(false);
+  const [open, setEditProjectOpen] = useState(false);
+  const [roadmapOpen, setRoadmapOpen] = useState(false)
   
-  const handleOpenEditProjectModal = () => setOpen(true);
-
   let navigate = useNavigate();
-
+  const handleOpenEditProjectModal = () => setEditProjectOpen(true);
   const handleCloseEditProjectModal = () => {
     navigate("/projects")
-    setOpen(false)
+    setEditProjectOpen(false)
   };
 
   const handleOpenProjectMenu = (event) => {
     setAnchorProjectMenu(event.currentTarget);
   };
-
   const handleCloseProjectMenu = () => {
     setAnchorProjectMenu(null);
+  };
+
+  const handleOpenRoadmap = () => setRoadmapOpen(true);
+  const handleCloseRoadmap = () => {
+    navigate("/projects")
+    setRoadmapOpen(false)
   };
 
 
@@ -41,7 +46,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         </Button>
       </TableCell>
       <TableCell component="th" scope="row">
-        <Button component={ Link } to={`/projects/${project.id}/roadmap`} >
+        <Button component={ Link } to={`/projects/${project.id}/roadmap`} onClick={handleOpenRoadmap} >
           <Typography>{project.name}</Typography>
         </Button>
       </TableCell>
@@ -54,7 +59,8 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         </Button>
           <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} handleOpenEditProjectModal={handleOpenEditProjectModal} />
       </TableCell>
-      <EditProjectModal open={open} handleCloseEditProjectModal={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
+      <EditProjectModal open={open} handleClose={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
+      <ProjectRoadmap open={roadmapOpen} project={project} handleClose={handleCloseRoadmap} />
     </TableRow>
   );
 }

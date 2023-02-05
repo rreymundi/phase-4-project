@@ -1,11 +1,21 @@
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import ProjectsTable from './ProjectsTable';
 import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 import NewProjectModal from './NewProjectModal';
 
-const ProjectsPage = ({ projects, open, handleOpen, handleClose, onAddProject, onDeleteProject, onUpdateProject }) => {
+const ProjectsPage = ({ projects, onAddProject, onDeleteProject, onUpdateProject }) => {
+  const [open, createProjectOpen] = useState(false);
+  
+  const handleOpen = () => createProjectOpen(true);
+  
+  let navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/projects")
+    createProjectOpen(false)
+  };
 
   return (
     <Container>

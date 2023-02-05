@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const EditProjectModal = ({ open, handleCloseEditProjectModal, project, onUpdateProject }) => {
+const EditProjectModal = ({ open, handleClose, project, onUpdateProject }) => {
 
     const style = {
         position: 'absolute',
@@ -33,7 +33,7 @@ const EditProjectModal = ({ open, handleCloseEditProjectModal, project, onUpdate
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleCloseEditProjectModal();
+        handleClose();
         const newProjectData = {
           name: formData.name,
           description: formData.description
@@ -52,7 +52,7 @@ const EditProjectModal = ({ open, handleCloseEditProjectModal, project, onUpdate
     return (
         <Modal
             open={open}
-            onClose={handleCloseEditProjectModal}
+            onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             >

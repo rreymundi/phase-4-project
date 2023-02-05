@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from './Home';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import ProjectsPage from './ProjectsPage';
-import MyTasksPage from './MyTasksPage';
+import TasksPage from './TasksPage';
 import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
-import ProjectRoadmap from './ProjectRoadmap';
 
-const Content = ({ user, onLogin, onAddProject, projects, onDeleteProject, onUpdateProject }) => {
-  const [open, setOpen] = useState(false);
-  
-  const handleOpen = () => setOpen(true);
-  
-  let navigate = useNavigate();
-
-  const handleClose = () => {
-    navigate("/projects")
-    setOpen(false)
-  };
+const Content = ({ user, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject, onAddTask }) => {
   
   return (
     <Box 
@@ -38,10 +27,9 @@ const Content = ({ user, onLogin, onAddProject, projects, onDeleteProject, onUpd
           <Route path='/' element={<Home user={user} />} />
           <Route path='/login' element={<LoginPage onLogin={onLogin} />} />
           <Route path='/signup' element={<SignupPage onLogin={onLogin} />} />
-          <Route path='/projects/*' element={<ProjectsPage projects={projects} open={open} handleOpen={handleOpen} handleClose={handleClose} onAddProject={onAddProject} onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />} />
-          <Route path='/tasks/*' element={<MyTasksPage user={user} tasks={user.tasks} />} />
+          <Route path='/projects/*' element={<ProjectsPage projects={projects} onAddProject={onAddProject} onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />} />
+          <Route path='/tasks/*' element={<TasksPage user={user} projects={projects} tasks={user.tasks} onAddTask={onAddTask} />} />
           <Route path='/completed' element={<Completed user={user} />} />      
-          <Route exact path='/projects/:project_id/roadmap' element={<ProjectRoadmap />} />
         </Routes>
       </Container>
     </Box>

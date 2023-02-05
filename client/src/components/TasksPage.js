@@ -6,7 +6,7 @@ import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 import NewTaskModal from './NewTaskModal';
 
-const MyTasksPage = ({ tasks }) => {
+const TasksPage = ({ user, tasks, projects, onAddTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   let navigate = useNavigate();
@@ -21,10 +21,10 @@ const MyTasksPage = ({ tasks }) => {
       <Button component={Link} to="new" onClick={handleOpen}>Create Task</Button>
       <NestedGrid tasks={tasks} />
       <Routes>
-        <Route exact path='new' element={<NewTaskModal open={open} handleClose={handleClose} />} />
+        <Route exact path='new' element={<NewTaskModal user={user} open={open} projects={projects} handleClose={handleClose} onAddTask={onAddTask} />} />
     </Routes>
     </Container>
   )
 }
 
-export default MyTasksPage;
+export default TasksPage;

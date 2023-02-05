@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 const TaskCard = ({ task }) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275 }} >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {task.project.name}

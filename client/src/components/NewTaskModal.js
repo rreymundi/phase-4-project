@@ -4,8 +4,12 @@ import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
-const NewTaskModal = ({ open, handleClose }) => {
+const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
 
     const style = {
         position: 'absolute',
@@ -23,6 +27,7 @@ const NewTaskModal = ({ open, handleClose }) => {
         name: "",
         description: "",
         priority: "",
+        project: ""
       });
 
       const handleChange = (e) => {
@@ -38,9 +43,12 @@ const NewTaskModal = ({ open, handleClose }) => {
         const newTask = {
           name: formData.name,
           description: formData.description,
-          priority: formData.priority
+          priority: formData.priority,
+          project_id: formData.project,
+          user_id: user.id,
+          status: "new",
           };
-        fetch("http://localhost:9292/tasks", {
+        fetch("/tasks", {
           method: "POST",
           headers: {
             "Content-type": "application/json"
@@ -48,10 +56,7 @@ const NewTaskModal = ({ open, handleClose }) => {
           body: JSON.stringify(newTask)
         })
         .then((r) => r.json())
-        // .then((newList) => onAddList(newList))
-        // .then(setFormData({
-        //   name: "",
-        // }))
+        .then((newTask) => onAddTask(newTask))
       };
 
     return (
@@ -71,6 +76,40 @@ const NewTaskModal = ({ open, handleClose }) => {
               </Grid>
               <Grid item>
                 <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+              </Grid>
+              <Grid item>
+                <FormControl required variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                  <InputLabel id="priority">Priority</InputLabel>
+                  <Select
+                    labelId="priority"
+                    id="priority"
+                    name="priority"
+                    value={formData.priority}
+                    onChange={handleChange}
+                    label="Priority"
+                    >
+                    <MenuItem value={"low"}>Low</MenuItem>
+                    <MenuItem value={"normal"}>Normal</MenuItem>
+                    <MenuItem value={"high"}>High</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item>
+                <FormControl required variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                  <InputLabel id="project">Project</InputLabel>
+                  <Select
+                    labelId="project"
+                    id="project"
+                    name="project"
+                    value={formData.project}
+                    onChange={handleChange}
+                    label="Project"
+                    >
+                    {projects.map((project) => 
+                      <MenuItem key={project.id} value={project.id}>{project.name}</MenuItem>
+                      )}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" type="submit" >Create</Button>
