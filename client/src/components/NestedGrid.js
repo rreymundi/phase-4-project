@@ -15,17 +15,17 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const NestedGrid = ({ tasks }) => {
 
-  const renderedTask = tasks?.map((task) => 
+  const renderedTasks = tasks?.map((task) => 
     <Grid item xs={4} key={task.id} >
       <TaskCard task={task} />
     </Grid>
-  )
+  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid container item spacing={3}>
-          {renderedTask}
+          {renderedTasks}
         </Grid>
       </Grid>
     </Box>

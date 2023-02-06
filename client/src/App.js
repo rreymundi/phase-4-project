@@ -41,10 +41,6 @@ export default function App() {
     )
     setProjects(updatedProjects)
   };
-
-  const handleAddTask = (newTask) => {
-
-  };
   
   return (
     <Router>
@@ -54,12 +50,12 @@ export default function App() {
       />
       <Content 
         user={user}
+        tasks={user.tasks}
         projects={projects} 
         onLogin={setCurrentUser} 
         onAddProject={handleAddProject} 
         onDeleteProject={handleDeleteProject} 
         onUpdateProject={handleUpdateProject} 
-        onAddTask={handleAddTask} 
       />
     </Router>
   );

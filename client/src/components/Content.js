@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from './Home';
 import LoginPage from './LoginPage';
@@ -9,7 +9,12 @@ import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
-const Content = ({ user, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject, onAddTask }) => {
+const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject }) => {
+  const [myTasks, setTasks] = useState(tasks);
+
+  const handleAddTask = (newTask) => {
+    setTasks([...myTasks, newTask])
+  };
   
   return (
     <Box 
@@ -27,8 +32,22 @@ const Content = ({ user, onLogin, projects, onAddProject, onDeleteProject, onUpd
           <Route path='/' element={<Home user={user} />} />
           <Route path='/login' element={<LoginPage onLogin={onLogin} />} />
           <Route path='/signup' element={<SignupPage onLogin={onLogin} />} />
-          <Route path='/projects/*' element={<ProjectsPage projects={projects} onAddProject={onAddProject} onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />} />
-          <Route path='/tasks/*' element={<TasksPage user={user} projects={projects} tasks={user.tasks} onAddTask={onAddTask} />} />
+          <Route path='/projects/*' element={
+            <ProjectsPage 
+              projects={projects} 
+              onAddProject={onAddProject} 
+              onDeleteProject={onDeleteProject} 
+              onUpdateProject={onUpdateProject} 
+            />} 
+          />
+          <Route path='/tasks/*' element={
+            <TasksPage 
+              user={user} 
+              projects={projects} 
+              tasks={myTasks} 
+              onAddTask={handleAddTask} 
+            />} 
+          />
           <Route path='/completed' element={<Completed user={user} />} />      
         </Routes>
       </Container>
