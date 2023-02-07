@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TaskCard from './TaskCard';
 
-const NestedGrid = ({ user, tasks, projects, onDeleteTask }) => {
+const NestedGrid = ({ user, tasks, projects, onDeleteTask, onUpdateTask }) => {
 
   const renderedTasks = tasks?.map((task) => 
     <Grid item xs={4} key={task.id} >
-      <TaskCard user={user} task={task} onDeleteTask={onDeleteTask} projects={projects} />
+      <TaskCard user={user} task={task} onDeleteTask={onDeleteTask} projects={projects} onUpdateTask={onUpdateTask} />
     </Grid>
   );
 

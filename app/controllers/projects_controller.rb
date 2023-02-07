@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
     def index
         projects = Project.all
-        render json: projects
+        render json: projects, status: :ok
     end
 
     def create
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     def update 
         project = Project.find(params[:id])
         project.update(project_params)
-        render json: project
+        render json: project, status: :ok
     end
 
     def destroy

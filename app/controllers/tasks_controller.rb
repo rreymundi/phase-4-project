@@ -3,13 +3,18 @@ class TasksController < ApplicationController
 
     def index
         tasks = Task.all
-        render json: tasks
+        render json: tasks, status: :ok
     end
 
-    # showing all of that user's tasks
     def show
         tasks = Task.where("user_id= ?", session[:user_id])
         render json: tasks
+    end
+
+    def update
+        task = Task.find(params[:id])
+        task.update(task_params)
+        render json: task, status: :ok
     end
 
     def create

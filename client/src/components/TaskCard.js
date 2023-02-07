@@ -9,7 +9,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import TaskMenu from './TaskMenu';
 import EditTaskModal from './EditTaskModal'
 
-const TaskCard = ({ user, task, projects, onDeleteTask }) => {
+const TaskCard = ({ user, task, projects, onDeleteTask, onUpdateTask }) => {
   const [anchorTaskMenu, setAnchorTaskMenu] = useState(null);
   const [editTaskOpen, setEditTaskOpen] = useState(false);
 
@@ -50,7 +50,7 @@ const TaskCard = ({ user, task, projects, onDeleteTask }) => {
         </Button>
         <TaskMenu anchorTaskMenu={anchorTaskMenu} handleCloseTaskMenu={handleCloseTaskMenu} task={task} onDeleteTask={onDeleteTask} handleOpenEditTaskModal={handleOpenEditTaskModal} />
       </CardActions>
-      <EditTaskModal user={user} open={editTaskOpen} handleClose={handleCloseEditTaskModal} task={task} projects={projects} />
+      <EditTaskModal user={user} open={editTaskOpen} handleClose={handleCloseEditTaskModal} task={task} projects={projects} onUpdateTask={onUpdateTask} />
     </Card>
   );
 }

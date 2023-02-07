@@ -9,7 +9,7 @@ import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
-const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject, onAddTask, onDeleteTask }) => {
+const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject, onAddTask, onDeleteTask, onUpdateTask }) => {
   
   return (
     <Box 
@@ -42,6 +42,7 @@ const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject
               tasks={tasks} 
               onAddTask={onAddTask}
               onDeleteTask={onDeleteTask} 
+              onUpdateTask={onUpdateTask} 
             />} 
           />
           <Route path='/completed' element={<Completed user={user} />} />      

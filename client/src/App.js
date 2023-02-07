@@ -56,6 +56,12 @@ export default function App() {
     const updatedTasks = tasks.filter((task) => task.id !== deletedTask.id)
     setTasks(updatedTasks)
   };
+
+  const handleUpdateTask = (updatedTask) => {
+    const updatedTasks = tasks.map((task) => 
+    task.id === updatedTask.id ? updatedTask : task)
+    setTasks(updatedTasks)
+  }
   
   return (
     <Router>
@@ -73,6 +79,7 @@ export default function App() {
         onUpdateProject={handleUpdateProject} 
         onAddTask={handleAddTask}
         onDeleteTask={handleDeleteTask}
+        onUpdateTask={handleUpdateTask} 
       />
     </Router>
   );

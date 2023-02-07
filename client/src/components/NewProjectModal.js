@@ -66,10 +66,10 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
                 <Typography>Create a project</Typography>
               </Grid>
               <Grid item>
-                <TextField required={ true } id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange}/>
+                <TextField required={ true } sx={{ maxWidth: 166 }} id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange}/>
               </Grid>
               <Grid item>
-                <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+                <TextField required={ true } sx={{ maxWidth: 166 }} id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" type="submit" >Create</Button>
