@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
+const EditTaskModal = ({ user, open, handleClose, task, projects }) => {
 
     const style = {
         position: 'absolute',
@@ -24,10 +24,11 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
       };
 
       const [formData, setFormData] = useState({
-        name: "",
-        description: "",
-        priority: "",
-        project: ""
+        name: task.name,
+        description: task.description,
+        priority: task.priority,
+        project: task.project_id,
+        status: task.status
       });
 
       const handleChange = (e) => {
@@ -40,24 +41,28 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
       const handleSubmit = (e) => {
         e.preventDefault();
         handleClose();
-        const newTask = {
+        const newTaskData = {
           name: formData.name,
           description: formData.description,
           priority: formData.priority,
           project_id: formData.project,
           user_id: user.id,
-          status: "new",
+          status: formData.status
           };
-        fetch("/tasks", {
-          method: "POST",
+        fetch(`/task/${task.id}`, {
+          method: "PATCH",
           headers: {
             "Content-type": "application/json"
           },
-          body: JSON.stringify(newTask)
+          body: JSON.stringify(newTaskData)
         })
         .then((r) => r.json())
-        .then((newTask) => onAddTask(newTask))
+        // .then((updatedProject) => onUpdateProject(updatedProject))
       };
+
+      const renderedProjects = projects?.map((project) => 
+        <MenuItem key={project.id} value={project.id}>{project.name}</MenuItem>
+        );
 
     return (
         <Modal
@@ -66,16 +71,16 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             >
-          <Box sx={style} component="form" onSubmit={handleSubmit}>
-            <Grid container sx={{ minWidth: 166 }} spacing={2} alignItems="center" justify="center" direction="column" >
+          <Box sx={style} component="form" onSubmit={handleSubmit} >
+            <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
               <Grid item>
-                <Typography>Create a task</Typography>
+                <Typography>Edit task</Typography>
               </Grid>
               <Grid item>
-                <TextField required={ true } id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange} sx={{ maxWidth: 166 }} />
+                <TextField required={ true } id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange}/>
               </Grid>
               <Grid item>
-                <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} sx={{ maxWidth: 166 }} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+                <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
               </Grid>
               <Grid item>
                 <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
@@ -105,14 +110,32 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
                     onChange={handleChange}
                     label="Project"
                     >
-                    {projects.map((project) => 
-                      <MenuItem key={project.id} value={project.id}>{project.name}</MenuItem>
-                      )}
+                    {renderedProjects}
                   </Select>
                 </FormControl>
               </Grid>
               <Grid item>
-                <Button variant="contained" color="primary" type="submit" >Create</Button>
+              <Grid item>
+                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                  <InputLabel id="status">Status</InputLabel>
+                  <Select
+                    labelId="status"
+                    id="status"
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    label="Status"
+                    >
+                    <MenuItem value={"new"}>New</MenuItem>
+                    <MenuItem value={"investigating"}>Investigating</MenuItem>
+                    <MenuItem value={"blocked"}>Blocked</MenuItem>
+                    <MenuItem value={"in-progress"}>In-Progress</MenuItem>
+                    <MenuItem value={"closed"}>Closed</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item></Grid>
+                <Button variant="contained" color="primary" type="submit" >Update</Button>
               </Grid>
             </Grid>
           </Box>
@@ -120,4 +143,4 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
       )
 }
 
-export default NewTaskModal;
+export default EditTaskModal;

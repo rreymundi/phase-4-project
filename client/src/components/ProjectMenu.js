@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 
 const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDeleteProject, handleOpenEditProjectModal }) => {
     
+    let navigate = useNavigate();
+    
     const handleDeleteProject = () => {
         navigate("/projects");
         fetch(`/projects/${project.id}`, {
@@ -15,7 +17,6 @@ const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDel
         .then(onDeleteProject(project))
       };
 
-    let navigate = useNavigate();
 
     return (
         <Box sx={{ flexGrow: 0 }}>
@@ -34,12 +35,12 @@ const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDel
               }}
               open={Boolean(anchorProjectMenu)}
               onClose={handleCloseProjectMenu}
-            >
-              <MenuItem onClick={handleCloseProjectMenu}>
-                <Typography textAlign="center" onClick={handleDeleteProject} >Delete</Typography>
-              </MenuItem>
+              >
               <MenuItem onClick={handleCloseProjectMenu}>
                 <Typography textAlign="center" onClick={handleOpenEditProjectModal} >Edit</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseProjectMenu}>
+                <Typography textAlign="center" onClick={handleDeleteProject} >Delete</Typography>
               </MenuItem>
             </Menu>
           </Box>

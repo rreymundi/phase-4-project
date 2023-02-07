@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from './Home';
 import LoginPage from './LoginPage';
@@ -9,12 +9,7 @@ import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
-const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject }) => {
-  const [myTasks, setTasks] = useState(tasks);
-
-  const handleAddTask = (newTask) => {
-    setTasks([...myTasks, newTask])
-  };
+const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject, onUpdateProject, onAddTask, onDeleteTask }) => {
   
   return (
     <Box 
@@ -44,8 +39,9 @@ const Content = ({ user, tasks, onLogin, projects, onAddProject, onDeleteProject
             <TasksPage 
               user={user} 
               projects={projects} 
-              tasks={myTasks} 
-              onAddTask={handleAddTask} 
+              tasks={tasks} 
+              onAddTask={onAddTask}
+              onDeleteTask={onDeleteTask} 
             />} 
           />
           <Route path='/completed' element={<Completed user={user} />} />      
