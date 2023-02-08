@@ -5,7 +5,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-const TaskMenu = ({ task, anchorTaskMenu, handleCloseTaskMenu, onDeleteTask, handleOpenEditTaskModal }) => {
+const TaskMenu = ({ 
+    task, 
+    anchorTaskMenu, 
+    handleCloseTaskMenu, 
+    onDeleteTask, 
+    handleOpenEditTaskModal 
+  }) => {
     
     let navigate = useNavigate();
     
@@ -37,10 +43,20 @@ const TaskMenu = ({ task, anchorTaskMenu, handleCloseTaskMenu, onDeleteTask, han
               onClose={handleCloseTaskMenu}
                 >
                 <MenuItem onClick={handleCloseTaskMenu}>
-                    <Typography textAlign="center" onClick={handleOpenEditTaskModal} >Edit</Typography>
+                    <Typography 
+                      textAlign="center" 
+                      onClick={handleOpenEditTaskModal} 
+                      >
+                      Edit
+                    </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseTaskMenu}>
-                    <Typography textAlign="center" onClick={handleDeleteTask} >Delete</Typography>
+                    <Typography 
+                      textAlign="center" 
+                      onClick={handleDeleteTask} 
+                      >
+                      Delete
+                    </Typography>
                 </MenuItem>
             </Menu>
           </Box>

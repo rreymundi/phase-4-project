@@ -9,7 +9,13 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import TaskMenu from './TaskMenu';
 import EditTaskModal from './EditTaskModal'
 
-const TaskCard = ({ user, task, projects, onDeleteTask, onUpdateTask }) => {
+const TaskCard = ({ 
+    user, 
+    task, 
+    projects, 
+    onDeleteTask, 
+    onUpdateTask 
+  }) => {
   const [anchorTaskMenu, setAnchorTaskMenu] = useState(null);
   const [editTaskOpen, setEditTaskOpen] = useState(false);
 
@@ -29,7 +35,13 @@ const TaskCard = ({ user, task, projects, onDeleteTask, onUpdateTask }) => {
   };
 
   return (
-    <Card sx={{ minWidth: 275, height: "100%", display: "block", position: "relative" }} >
+    <Card 
+      sx={{ 
+        minWidth: 275, 
+        height: "100%", 
+        display: "block", 
+        position: "relative" 
+      }} >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {task.project.name}
@@ -45,12 +57,29 @@ const TaskCard = ({ user, task, projects, onDeleteTask, onUpdateTask }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button sx={{ position: "absolute", bottom: 10, right: 16 }} size="small" component={ Link } to={`/tasks/${task.id}`} onClick={handleOpenTaskMenu}>
+        <Button 
+          sx={{ position: "absolute", bottom: 10, right: 16 }} 
+          size="small" 
+          component={ Link } to={`/tasks/${task.id}`} 
+          onClick={handleOpenTaskMenu}>
           <MoreHorizIcon />
         </Button>
-        <TaskMenu anchorTaskMenu={anchorTaskMenu} handleCloseTaskMenu={handleCloseTaskMenu} task={task} onDeleteTask={onDeleteTask} handleOpenEditTaskModal={handleOpenEditTaskModal} />
+        <TaskMenu 
+          anchorTaskMenu={anchorTaskMenu} 
+          handleCloseTaskMenu={handleCloseTaskMenu} 
+          task={task} 
+          onDeleteTask={onDeleteTask} 
+          handleOpenEditTaskModal={handleOpenEditTaskModal} 
+        />
       </CardActions>
-      <EditTaskModal user={user} open={editTaskOpen} handleClose={handleCloseEditTaskModal} task={task} projects={projects} onUpdateTask={onUpdateTask} />
+      <EditTaskModal 
+        user={user} 
+        open={editTaskOpen} 
+        handleClose={handleCloseEditTaskModal} 
+        task={task} 
+        projects={projects} 
+        onUpdateTask={onUpdateTask} 
+      />
     </Card>
   );
 }

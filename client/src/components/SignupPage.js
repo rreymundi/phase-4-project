@@ -50,25 +50,59 @@ const SignupPage = ({ onLogin }) => {
 
   return (
     <Box sx={style} component="form" onSubmit={handleSignup}>
-      <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
+      <Grid 
+        container 
+        spacing={2} 
+        alignItems="center" 
+        justify="center" 
+        direction="column" >
         <Grid item>
           <Typography>Sign up</Typography>
         </Grid>
         <Grid item>
-          <TextField required={ true } id="username" name="username" variant="standard" placeholder="username" value={formData.username} onChange={handleChange}/>
+          <TextField 
+            required={ true } 
+            id="username" 
+            name="username" 
+            variant="standard" 
+            placeholder="username" 
+            value={formData.username} 
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item>
-          <TextField required={ true } id="password" name="password" variant="standard" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
+          <TextField 
+            required={ true } 
+            id="password" 
+            name="password" 
+            variant="standard" 
+            placeholder="password" 
+            type="password" 
+            value={formData.password} 
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item>
-            <TextField required={ true } id="password_confirmation" name="password_confirmation" variant="standard" placeholder="re-enter password" type="password" value={formData.password_confirmation} onChange={handleChange}/>
+            <TextField 
+              required={ true } 
+              id="password_confirmation" 
+              name="password_confirmation" 
+              variant="standard" 
+              placeholder="re-enter password" 
+              type="password" 
+              value={formData.password_confirmation} 
+              onChange={handleChange}
+            />
         </Grid>
         <Grid item>
-            <Button variant="contained" color="primary" type="submit" >Create account</Button>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              type="submit" 
+            >
+            Create account
+            </Button>
         </Grid>
-        <Grid item>
-      </Grid>
-
       </Grid>
     </Box>
   )

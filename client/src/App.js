@@ -62,7 +62,7 @@ export default function App() {
     );
     setCurrentUser({ ...user, tasks: updatedTasks })
   };
-  
+
   return (
     <Router>
       <NavBar 

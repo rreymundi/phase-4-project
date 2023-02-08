@@ -38,7 +38,13 @@ const ProjectsPage = ({
         />
         <Routes>
           <Route 
-            exact path='new' element={<NewProjectModal open={open} handleClose={handleClose} onAddProject={onAddProject} />} />
+            exact path='new' element={
+              <NewProjectModal 
+                open={open} 
+                handleClose={handleClose} 
+                onAddProject={onAddProject} 
+              />} 
+          />
         </Routes>
     </Container>
   )

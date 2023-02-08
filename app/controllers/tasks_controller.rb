@@ -6,10 +6,10 @@ class TasksController < ApplicationController
         render json: tasks, status: :ok
     end
 
-    def show
-        tasks = Task.where("user_id= ?", session[:user_id])
-        render json: tasks
-    end
+    # def show
+    #     tasks = Task.where("user_id= ?", session[:user_id])
+    #     render json: tasks
+    # end
 
     def update
         task = Task.find(params[:id])

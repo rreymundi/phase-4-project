@@ -15,7 +15,10 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
 
   return (
-    <Drawer anchor='left' open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+    <Drawer 
+      anchor='left' 
+      open={drawerOpen} 
+      onClose={() => setDrawerOpen(false)}>
       <Box
         sx={{ width: 250 }}
         role="presentation"
