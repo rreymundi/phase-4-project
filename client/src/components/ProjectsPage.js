@@ -5,7 +5,12 @@ import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 import NewProjectModal from './NewProjectModal';
 
-const ProjectsPage = ({ projects, onAddProject, onDeleteProject, onUpdateProject }) => {
+const ProjectsPage = ({ 
+    projects, 
+    onAddProject, 
+    onDeleteProject, 
+    onUpdateProject 
+  }) => {
   const [open, createProjectOpen] = useState(false);
   
   const handleOpen = () => createProjectOpen(true);
@@ -20,10 +25,20 @@ const ProjectsPage = ({ projects, onAddProject, onDeleteProject, onUpdateProject
   return (
     <Container>
         <h1>Projects page</h1>
-        <Button component={Link} to="new" onClick={handleOpen}>Create Project</Button>
-        <ProjectsTable projects={projects} onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />
+        <Button 
+          component={Link} 
+          to="new" 
+          onClick={handleOpen}>
+          Create Project
+        </Button>
+        <ProjectsTable 
+          projects={projects} 
+          onDeleteProject={onDeleteProject} 
+          onUpdateProject={onUpdateProject} 
+        />
         <Routes>
-          <Route exact path='new' element={<NewProjectModal open={open} handleClose={handleClose} onAddProject={onAddProject} />} />
+          <Route 
+            exact path='new' element={<NewProjectModal open={open} handleClose={handleClose} onAddProject={onAddProject} />} />
         </Routes>
     </Container>
   )

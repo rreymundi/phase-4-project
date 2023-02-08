@@ -5,7 +5,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDeleteProject, handleOpenEditProjectModal }) => {
+const ProjectMenu = ({ 
+    project, 
+    anchorProjectMenu,
+    handleCloseProjectMenu, 
+    onDeleteProject, 
+    handleOpenEditProjectModal 
+  }) => {
     
     let navigate = useNavigate();
     
@@ -37,10 +43,18 @@ const ProjectMenu = ({ project, anchorProjectMenu, handleCloseProjectMenu, onDel
               onClose={handleCloseProjectMenu}
               >
               <MenuItem onClick={handleCloseProjectMenu}>
-                <Typography textAlign="center" onClick={handleOpenEditProjectModal} >Edit</Typography>
+                <Typography 
+                  textAlign="center" 
+                  onClick={handleOpenEditProjectModal} >
+                  Edit
+                </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseProjectMenu}>
-                <Typography textAlign="center" onClick={handleDeleteProject} >Delete</Typography>
+                <Typography 
+                  textAlign="center" 
+                  onClick={handleDeleteProject} >
+                  Delete
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>

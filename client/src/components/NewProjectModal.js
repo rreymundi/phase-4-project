@@ -61,18 +61,48 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
             aria-describedby="modal-modal-description"
             >
           <Box sx={style} component="form" onSubmit={handleSubmit}>
-            <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
+            <Grid 
+              container 
+              spacing={2} 
+              alignItems="center" 
+              justify="center" 
+              direction="column" >
               <Grid item>
                 <Typography>Create a project</Typography>
               </Grid>
               <Grid item>
-                <TextField required={ true } sx={{ maxWidth: 166 }} id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange}/>
+                <TextField 
+                  required={ true } 
+                  sx={{ maxWidth: 166 }} 
+                  id="name" 
+                  name="name" 
+                  variant="standard" 
+                  placeholder="Name" 
+                  value={formData.name} 
+                  onChange={handleChange}
+                />
               </Grid>
               <Grid item>
-                <TextField required={ true } sx={{ maxWidth: 166 }} id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+                <TextField 
+                  required={ true } 
+                  sx={{ maxWidth: 166 }} 
+                  id="description" 
+                  name="description"
+                  variant="standard" 
+                  placeholder="Description" 
+                  multiline maxRows={3} 
+                  inputProps={{ maxLength: 50 }} 
+                  value={formData.description} 
+                  onChange={handleChange}
+                />
               </Grid>
               <Grid item>
-                <Button variant="contained" color="primary" type="submit" >Create</Button>
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  type="submit" >
+                  Create
+                </Button>
               </Grid>
             </Grid>
           </Box>

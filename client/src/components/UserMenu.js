@@ -14,7 +14,6 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
         fetch("/logout", {
           method: 'DELETE'
         })
-        console.log("Logged out!")
         onLogout();
       };
 

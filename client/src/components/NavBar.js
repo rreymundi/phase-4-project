@@ -45,14 +45,28 @@ export default function NavBar({ user, onLogout }) {
       <AppBar position="static">
         <Toolbar>
           {handleUserMenu()}
-          <TemporaryDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} user={user} />
+          <TemporaryDrawer 
+            drawerOpen={drawerOpen} 
+            setDrawerOpen={setDrawerOpen} 
+            user={user} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PHASE 4 PROJECT
           </Typography>
             {user ?
-              <UserMenu onLogout={onLogout} anchorElUser={anchorElUser} handleCloseUserMenu={handleCloseUserMenu} handleOpenUserMenu={handleOpenUserMenu} user={user} />
+              <UserMenu 
+                onLogout={onLogout} 
+                anchorElUser={anchorElUser} 
+                handleCloseUserMenu={handleCloseUserMenu} 
+                handleOpenUserMenu={handleOpenUserMenu} 
+                user={user} 
+              />
               :
-              <Button color="inherit" component={ Link } to="/login">Log in</Button>
+              <Button 
+                color="inherit" 
+                component={ Link } 
+                to="/login">
+                Log in
+              </Button>
             }
         </Toolbar>
       </AppBar>

@@ -6,7 +6,6 @@ import Content from "./components/Content";
 export default function App() {
   const [user, setCurrentUser] = useState('');
   const [projects, setProjects] = useState([]);
-  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     fetch('/auth')
@@ -15,8 +14,6 @@ export default function App() {
         r.json()
         .then((user) => {
           setCurrentUser(user)
-          // setProjects(user.projects)
-          setTasks(user.tasks)
         });
       }
     })
@@ -49,19 +46,22 @@ export default function App() {
   };
 
   const handleAddTask = (newTask) => {
-    setTasks([...tasks, newTask])
+    setCurrentUser({ ...user, tasks: [ ...user.tasks, newTask] })
   };
 
   const handleDeleteTask = (deletedTask) => {
-    const updatedTasks = tasks.filter((task) => task.id !== deletedTask.id)
-    setTasks(updatedTasks)
+    const updatedTasks = user.tasks.filter((task) => 
+      task.id !== deletedTask.id
+      );
+    setCurrentUser({ ...user, tasks: updatedTasks })
   };
 
   const handleUpdateTask = (updatedTask) => {
-    const updatedTasks = tasks.map((task) => 
-    task.id === updatedTask.id ? updatedTask : task)
-    setTasks(updatedTasks)
-  }
+    const updatedTasks = user.tasks.map((task) => 
+      task.id === updatedTask.id ? updatedTask : task
+    );
+    setCurrentUser({ ...user, tasks: updatedTasks })
+  };
   
   return (
     <Router>
@@ -71,7 +71,7 @@ export default function App() {
       />
       <Content 
         user={user}
-        tasks={tasks}
+        tasks={user.tasks}
         projects={projects} 
         onLogin={setCurrentUser} 
         onAddProject={handleAddProject} 

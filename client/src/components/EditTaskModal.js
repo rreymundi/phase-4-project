@@ -77,10 +77,29 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
                 <Typography>Edit task</Typography>
               </Grid>
               <Grid item>
-                <TextField required={ true } sx={{ maxWidth: 166 }} id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange}/>
+                <TextField 
+                  required={ true } 
+                  sx={{ maxWidth: 166 }} 
+                  id="name" 
+                  name="name" 
+                  variant="standard" 
+                  placeholder="Name" 
+                  value={formData.name} 
+                  onChange={handleChange}/>
               </Grid>
               <Grid item>
-                <TextField required={ true } sx={{ maxWidth: 166 }} id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+                <TextField 
+                  required={ true } 
+                  sx={{ maxWidth: 166 }} 
+                  id="description" 
+                  name="description" 
+                  variant="standard" 
+                  placeholder="Description" 
+                  multiline 
+                  maxRows={3} 
+                  inputProps={{ maxLength: 50 }} 
+                  value={formData.description} 
+                  onChange={handleChange}/>
               </Grid>
               <Grid item>
                 <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>

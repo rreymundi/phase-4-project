@@ -36,8 +36,7 @@ const LoginPage = ({ onLogin }) => {
         r.json().then((user) => onLogin(user))
       }
     })
-    console.log("Logged in!")
-  }
+  };
 
   const style = {
     position: 'absolute',
@@ -53,18 +52,43 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <Box sx={style} component="form" onSubmit={handleLogin}>
-      <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
+      <Grid 
+        container 
+        spacing={2} 
+        alignItems="center" 
+        justify="center" 
+        direction="column" >
         <Grid item>
           <Typography>Log in</Typography>
         </Grid>
         <Grid item>
-          <TextField required={ true } id="username" name="username" variant="standard" placeholder="username" value={formData.username} onChange={handleChange}/>
+          <TextField 
+            required={ true } 
+            id="username" 
+            name="username" 
+            variant="standard" 
+            placeholder="username" 
+            value={formData.username} 
+            onChange={handleChange}/>
         </Grid>
         <Grid item>
-          <TextField required={ true } id="password" name="password" variant="standard" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
+          <TextField 
+            required={ true } 
+            id="password" 
+            name="password" 
+            variant="standard" 
+            placeholder="password" 
+            type="password" 
+            value={formData.password} 
+            onChange={handleChange}/>
         </Grid>
         <Grid item>
-            <Button variant="contained" color="primary" type="submit" >Log in</Button>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              type="submit" >
+              Log in
+            </Button>
         </Grid>
         <Grid item>
         <Typography>Don't have an account?&nbsp;

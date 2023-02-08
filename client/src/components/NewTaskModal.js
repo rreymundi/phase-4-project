@@ -9,7 +9,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
+const NewTaskModal = ({ 
+    user, 
+    open, 
+    projects, 
+    handleClose, 
+    onAddTask 
+  }) => {
 
     const style = {
         position: 'absolute',
@@ -67,15 +73,41 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
             aria-describedby="modal-modal-description"
             >
           <Box sx={style} component="form" onSubmit={handleSubmit}>
-            <Grid container sx={{ minWidth: 166 }} spacing={2} alignItems="center" justify="center" direction="column" >
+            <Grid 
+              container 
+              sx={{ minWidth: 166 }} 
+              spacing={2} 
+              alignItems="center" 
+              justify="center" 
+              direction="column" >
               <Grid item>
                 <Typography>Create a task</Typography>
               </Grid>
               <Grid item>
-                <TextField required={ true } id="name" name="name" variant="standard" placeholder="Name" value={formData.name} onChange={handleChange} sx={{ maxWidth: 166 }} />
+                <TextField 
+                  required={ true } 
+                  id="name" 
+                  name="name" 
+                  variant="standard" 
+                  placeholder="Name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                  sx={{ maxWidth: 166 }} 
+                />
               </Grid>
               <Grid item>
-                <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" multiline maxRows={3} sx={{ maxWidth: 166 }} inputProps={{ maxLength: 50 }} value={formData.description} onChange={handleChange}/>
+                <TextField 
+                  required={ true } 
+                  id="description" 
+                  name="description" 
+                  variant="standard" 
+                  placeholder="Description" 
+                  multiline maxRows={3} 
+                  sx={{ maxWidth: 166 }} 
+                  inputProps={{ maxLength: 50 }} 
+                  value={formData.description} 
+                  onChange={handleChange}
+                />
               </Grid>
               <Grid item>
                 <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
@@ -112,7 +144,12 @@ const NewTaskModal = ({ user, open, projects, handleClose, onAddTask }) => {
                 </FormControl>
               </Grid>
               <Grid item>
-                <Button variant="contained" color="primary" type="submit" >Create</Button>
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  type="submit" >
+                  Create
+                </Button>
               </Grid>
             </Grid>
           </Box>

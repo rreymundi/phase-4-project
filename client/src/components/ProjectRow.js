@@ -46,7 +46,10 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         </Button>
       </TableCell>
       <TableCell component="th" scope="row">
-        <Button component={ Link } to={`/projects/${project.id}/roadmap`} onClick={handleOpenRoadmap} >
+        <Button 
+          component={ Link } 
+          to={`/projects/${project.id}/roadmap`} 
+          onClick={handleOpenRoadmap} >
           <Typography>{project.name}</Typography>
         </Button>
       </TableCell>
@@ -54,13 +57,32 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         <Typography>{project.description}</Typography>
       </TableCell>
       <TableCell align="right">
-        <Button component={ Link } to={`/projects/${project.id}`} onClick={handleOpenProjectMenu} >
+        <Button 
+          component={ Link } 
+          to={`/projects/${project.id}`} 
+          onClick={handleOpenProjectMenu} >
           <MoreHorizIcon />
         </Button>
-          <ProjectMenu anchorProjectMenu={anchorProjectMenu} handleCloseProjectMenu={handleCloseProjectMenu} handleOpenProjectMenu={handleOpenProjectMenu} project={project} onDeleteProject={onDeleteProject} handleOpenEditProjectModal={handleOpenEditProjectModal} />
+          <ProjectMenu 
+            anchorProjectMenu={anchorProjectMenu} 
+            handleCloseProjectMenu={handleCloseProjectMenu} 
+            handleOpenProjectMenu={handleOpenProjectMenu} 
+            project={project} 
+            onDeleteProject={onDeleteProject} 
+            handleOpenEditProjectModal={handleOpenEditProjectModal} 
+          />
       </TableCell>
-      <EditProjectModal open={open} handleClose={handleCloseEditProjectModal} project={project} onUpdateProject={onUpdateProject} />
-      <ProjectRoadmap open={roadmapOpen} project={project} handleClose={handleCloseRoadmap} />
+      <EditProjectModal 
+        open={open} 
+        handleClose={handleCloseEditProjectModal} 
+        project={project} 
+        onUpdateProject={onUpdateProject} 
+      />
+      <ProjectRoadmap 
+        open={roadmapOpen} 
+        project={project} 
+        handleClose={handleCloseRoadmap} 
+      />
     </TableRow>
   );
 }
