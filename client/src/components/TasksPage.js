@@ -27,30 +27,34 @@ const TasksPage = ({
 
   return (
     <Container>
-      <h1>My Tasks</h1>
-      <Button 
-        component={Link} to="new" 
-        onClick={handleOpen} 
-        >
-        Create Task
-      </Button>
-      <NestedGrid 
-        user={user} 
-        tasks={tasks} 
-        onDeleteTask={onDeleteTask} 
-        projects={projects} 
-        onUpdateTask={onUpdateTask} 
-      />
-      <Routes>
-        <Route exact path='new' element={
-          <NewTaskModal 
-            user={user} 
-            open={open} 
-            projects={projects} 
-            handleClose={handleClose} 
-            onAddTask={onAddTask} />} 
+      <h1>My tasks</h1>
+      <Container sx={{ mb: 2 }}>
+        <Button 
+          component={Link} to="new" 
+          onClick={handleOpen} 
+          >
+          Create Task
+        </Button>
+      </Container>
+      <Container>
+        <NestedGrid 
+          user={user} 
+          tasks={tasks} 
+          onDeleteTask={onDeleteTask} 
+          projects={projects} 
+          onUpdateTask={onUpdateTask} 
         />
-      </Routes>
+        <Routes>
+          <Route exact path='new' element={
+            <NewTaskModal 
+              user={user} 
+              open={open} 
+              projects={projects} 
+              handleClose={handleClose} 
+              onAddTask={onAddTask} />} 
+          />
+        </Routes>
+      </Container>
     </Container>
   )
 }

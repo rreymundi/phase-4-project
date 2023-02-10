@@ -42,15 +42,6 @@ const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
               <ListItemText>My tasks</ListItemText>
             </ListItemButton>
           </ListItem>
-        <Divider />
-          <ListItem disablePadding>
-            <ListItemButton component={ Link } to='/completed'>
-              <ListItemIcon>
-                <CheckCircleOutlineIcon />
-              </ListItemIcon>
-              <ListItemText>Completed</ListItemText>
-            </ListItemButton>
-          </ListItem>
         </List>
       </Box>
   </Drawer>

@@ -5,20 +5,35 @@ import { Container } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import { Card } from '@mui/material';
+import TaskList from './TaskList';
 
-const ProjectRoadmap = ({ project, open, handleClose }) => {
+const ProjectRoadmap = ({ project, tasks, open, handleClose }) => {
+
+    const cardStatus = [
+        "New", 
+        "Investigating", 
+        "Blocked", 
+        "In-Progress", 
+        "Closed",
+    ];
 
     const style = {
+        display: 'flex',
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        maxwidth: '100%',
+        width: '80%',
+        height: '80%',
         bgcolor: 'background.paper',
         boxShadow: 24,
         p: 4,
-        display: 'flex'
       };
+
+    const renderedLists = cardStatus.map((status) => <TaskList key={status} status={status} tasks={tasks} />)
 
     return (
         <Modal
@@ -27,9 +42,12 @@ const ProjectRoadmap = ({ project, open, handleClose }) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             >
-            <Container>
-                <Box sx={style} component="form" >
-                    <h1>"{project.name} roadmap"</h1>
+            <Container sx={{ overflowX: 'auto'}} >
+                <Box sx={style}>
+                <Container sx={{ width: 'auto'}} >
+                    <Typography>{project.name}</Typography>
+                </Container>
+                    {renderedLists}
                 </Box>
             </Container>
         </Modal>

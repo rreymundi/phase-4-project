@@ -48,7 +48,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
       <TableCell component="th" scope="row">
         <Button 
           component={ Link } 
-          to={`/projects/${project.id}/roadmap`} 
+          to={`/projects/${project.id}`} 
           onClick={handleOpenRoadmap} >
           <Typography>{project.name}</Typography>
         </Button>
@@ -59,7 +59,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
       <TableCell align="right">
         <Button 
           component={ Link } 
-          to={`/projects/${project.id}`} 
+          to={`/projects/${project.id}/edit`} 
           onClick={handleOpenProjectMenu} >
           <MoreHorizIcon />
         </Button>
@@ -81,6 +81,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
       <ProjectRoadmap 
         open={roadmapOpen} 
         project={project} 
+        tasks={project.tasks}
         handleClose={handleCloseRoadmap} 
       />
     </TableRow>

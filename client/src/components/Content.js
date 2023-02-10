@@ -5,7 +5,6 @@ import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import ProjectsPage from './ProjectsPage';
 import TasksPage from './TasksPage';
-import Completed from './Completed';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
@@ -56,7 +55,6 @@ const Content = ({
               onUpdateTask={onUpdateTask} 
             />} 
           />
-          <Route path='/completed' element={<Completed user={user} />} />      
         </Routes>
       </Container>
     </Box>

@@ -31,10 +31,10 @@ const ProjectsTable = ({
           <TableRow>
             <TableCell></TableCell>
             <TableCell>
-              <Typography>Name</Typography>
+              <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>
             </TableCell>
             <TableCell align="right">
-              <Typography>Description</Typography>
+              <Typography sx={{ fontWeight: 'bold' }}>Description</Typography>
             </TableCell>
             <TableCell></TableCell>
           </TableRow>
