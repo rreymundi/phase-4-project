@@ -42,6 +42,21 @@ const TaskCard = ({
         display: "block", 
         position: "relative" 
       }} >
+      <CardActions sx={{ float: 'right'}} >
+        <Button 
+          size="small" 
+          component={ Link } to={`/tasks/${task.id}`} 
+          onClick={handleOpenTaskMenu}>
+          <MoreHorizIcon />
+        </Button>
+        <TaskMenu 
+          anchorTaskMenu={anchorTaskMenu} 
+          handleCloseTaskMenu={handleCloseTaskMenu} 
+          task={task} 
+          onDeleteTask={onDeleteTask} 
+          handleOpenEditTaskModal={handleOpenEditTaskModal} 
+        />
+      </CardActions>
       <CardContent>
         <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom>
           {task.project.name}
@@ -56,22 +71,6 @@ const TaskCard = ({
           {task.description}
         </Typography>
       </CardContent>
-      <CardActions sx={{ float: 'right'}} >
-        <Button 
-          sx={{ position: "absolute", bottom: 10, right: 16 }} 
-          size="small" 
-          component={ Link } to={`/tasks/${task.id}`} 
-          onClick={handleOpenTaskMenu}>
-          <MoreHorizIcon />
-        </Button>
-        <TaskMenu 
-          anchorTaskMenu={anchorTaskMenu} 
-          handleCloseTaskMenu={handleCloseTaskMenu} 
-          task={task} 
-          onDeleteTask={onDeleteTask} 
-          handleOpenEditTaskModal={handleOpenEditTaskModal} 
-        />
-      </CardActions>
       <EditTaskModal 
         user={user} 
         open={editTaskOpen} 
