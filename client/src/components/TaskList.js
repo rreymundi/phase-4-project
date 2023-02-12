@@ -15,7 +15,7 @@ const TaskList = ({ status, tasks }) => {
     );
 
     return (
-        <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px', backgroundColor: '#daeafb', overflowY: 'auto' }} >
+        <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px', backgroundColor: '#f3f8fe', overflowY: 'auto' }} >
             <Container sx={{ display: 'flex', margin: 1, justifyItems: 'center' }} >
               <Typography>
                   {status}

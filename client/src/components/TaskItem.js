@@ -7,7 +7,7 @@ const TaskItem = ({ task }) => {
   return (
     <Card key={task.id} sx={{ mb: .5 }} >
         <CardContent>
-        <Avatar alt={task.user.username} sx={{ float: 'right', mb: .5, height: '18px', width: '18px'}} />
+        <Avatar sx={{ float: 'right', mb: .5, height: '18px', width: '18px'}} alt={task.user.username} src="/broken-image.jpg" />
         <Typography sx={{ mb: .5, fontSize: 11 }} color="text.secondary" >
         {task.priority} priority
         </Typography>

@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const SignupPage = ({ onLogin }) => {
+const SignupPage = ({ onLogin, errors, setErrors }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,7 +23,6 @@ const SignupPage = ({ onLogin }) => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    navigate("/");
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -31,11 +30,15 @@ const SignupPage = ({ onLogin }) => {
       },
       body: JSON.stringify(formData),
     })
-    .then(res => res.json()
-    .then((user) => onLogin(user))
-    )
-  }
-
+    .then(r => {
+      if (r.ok) {
+        r.json().then((user) => onLogin(user))
+        navigate("/")
+      } else {
+        r.json().then((errorData) => setErrors(errorData.error))      }
+    })
+  };
+  console.log(errors)
   const style = {
     position: 'absolute',
     top: '50%',

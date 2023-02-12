@@ -6,6 +6,8 @@ import Content from "./components/Content";
 export default function App() {
   const [user, setCurrentUser] = useState('');
   const [projects, setProjects] = useState([]);
+  const [errors, setErrors] = useState([]);
+
 
   useEffect(() => {
     fetch('/auth')
@@ -80,6 +82,8 @@ export default function App() {
         onAddTask={handleAddTask}
         onDeleteTask={handleDeleteTask}
         onUpdateTask={handleUpdateTask} 
+        errors={errors}
+        setErrors={setErrors}
       />
     </Router>
   );

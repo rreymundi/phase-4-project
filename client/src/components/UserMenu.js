@@ -21,7 +21,7 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
     return (
         <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user.username} />
+                <Avatar alt={user.username} src="/broken-image.jpg"/>
             </IconButton>
             <Menu
               sx={{ mt: '45px' }}

@@ -18,7 +18,9 @@ const Content = ({
     onUpdateProject, 
     onAddTask, 
     onDeleteTask, 
-    onUpdateTask 
+    onUpdateTask, 
+    errors,
+    setErrors
   }) => {
   
   return (
@@ -35,8 +37,20 @@ const Content = ({
       <Container>
         <Routes>
           <Route path='/' element={<Home user={user} />} />
-          <Route path='/login' element={<LoginPage onLogin={onLogin} />} />
-          <Route path='/signup' element={<SignupPage onLogin={onLogin} />} />
+          <Route path='/login' element={
+            <LoginPage 
+              onLogin={onLogin}
+              errors={errors}
+              setErrors={setErrors} 
+            />} 
+          />
+          <Route path='/signup' element={
+            <SignupPage 
+              onLogin={onLogin} 
+              errors={errors}
+              setErrors={setErrors} 
+            />} 
+          />
           <Route path='/projects/*' element={
             <ProjectsPage 
               projects={projects} 

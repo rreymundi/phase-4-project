@@ -6,12 +6,11 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = ({ onLogin, errors, setErrors }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,7 +22,6 @@ const LoginPage = ({ onLogin }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/");
     fetch("/login", {
       method: "POST",
       headers: {
@@ -34,9 +32,12 @@ const LoginPage = ({ onLogin }) => {
     .then(r => {
       if (r.ok) {
         r.json().then((user) => onLogin(user))
-      }
-    })
-  };
+        navigate("/");
+      } else {
+          r.json().then((errorData) => setErrors(errorData.error))
+        }
+      })
+    };
 
   const style = {
     position: 'absolute',
@@ -91,11 +92,10 @@ const LoginPage = ({ onLogin }) => {
             </Button>
         </Grid>
         <Grid item>
-        <Typography>Don't have an account?&nbsp;
-          <Link to="/signup" underline="none" >Sign up!</Link>
-        </Typography>
-      </Grid>
-
+          <Typography>Don't have an account?&nbsp;
+            <Link to="/signup" underline="none" >Sign up!</Link>
+          </Typography>
+        </Grid>
       </Grid>
     </Box>
   )
