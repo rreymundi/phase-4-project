@@ -56,7 +56,7 @@ const TaskCard = ({
           {task.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ float: 'right'}} >
         <Button 
           sx={{ position: "absolute", bottom: 10, right: 16 }} 
           size="small" 
