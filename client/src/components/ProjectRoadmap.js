@@ -2,12 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Container } from '@mui/material';
-import Grid from '@mui/material/Grid';
-import { TextField, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import { Card } from '@mui/material';
+import { Typography } from '@mui/material';
 import TaskList from './TaskList';
 
 const ProjectRoadmap = ({ project, tasks, open, handleClose }) => {
@@ -45,7 +40,7 @@ const ProjectRoadmap = ({ project, tasks, open, handleClose }) => {
             <Container sx={{ overflowX: 'auto'}} >
                 <Box sx={style}>
                 <Container sx={{ width: 'auto'}} >
-                    <Typography>{project.name}</Typography>
+                    <Typography variant='h5' >{project.name}</Typography>
                 </Container>
                     {renderedLists}
                 </Box>

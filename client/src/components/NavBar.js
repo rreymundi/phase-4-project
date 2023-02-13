@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +14,8 @@ import UserMenu from './UserMenu';
 export default function NavBar({ user, onLogout }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  let navigate = useNavigate()
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -40,6 +42,10 @@ export default function NavBar({ user, onLogout }) {
     }
   }
 
+  const handleHomepageClick = () => {
+    navigate('/')
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -48,8 +54,9 @@ export default function NavBar({ user, onLogout }) {
           <TemporaryDrawer 
             drawerOpen={drawerOpen} 
             setDrawerOpen={setDrawerOpen} 
-            user={user} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            user={user} 
+          />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={handleHomepageClick}>
             PHASE 4 PROJECT
           </Typography>
             {user ?

@@ -8,7 +8,6 @@ export default function App() {
   const [projects, setProjects] = useState([]);
   const [errors, setErrors] = useState([]);
 
-
   useEffect(() => {
     fetch('/auth')
     .then(r => {
@@ -64,6 +63,20 @@ export default function App() {
     );
     setCurrentUser({ ...user, tasks: updatedTasks })
   };
+
+  if (!user) return (
+      <Router>
+        <NavBar 
+          user={user} 
+          onLogout={handleLogout} 
+        />
+        <Content 
+          onLogin={setCurrentUser} 
+          errors={errors}
+          setErrors={setErrors}
+        />
+      </Router>
+    );
 
   return (
     <Router>

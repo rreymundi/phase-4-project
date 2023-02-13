@@ -27,11 +27,14 @@ const TasksPage = ({
 
   return (
     <Container>
-      <h1>My tasks</h1>
-      <Container sx={{ mb: 2 }}>
+      <Container sx={{ marginTop: '48px'}} >
+        <h1>My tasks</h1>
+      </Container>
+      <Container sx={{ mb: 2, textAlign: 'right' }}>
         <Button 
           component={Link} to="new" 
           onClick={handleOpen} 
+          variant="contained"
           >
           Create Task
         </Button>

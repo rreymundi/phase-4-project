@@ -46,7 +46,8 @@ const TaskCard = ({
         <Button 
           size="small" 
           component={ Link } to={`/tasks/${task.id}`} 
-          onClick={handleOpenTaskMenu}>
+          onClick={handleOpenTaskMenu}
+          >
           <MoreHorizIcon />
         </Button>
         <TaskMenu 

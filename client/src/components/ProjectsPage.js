@@ -24,14 +24,18 @@ const ProjectsPage = ({
 
   return (
     <Container>
-        <h1>Projects page</h1>
-        <Container sx={{ mb: 2 }}>
+        <Container sx={{ marginTop: '48px'}} >
+          <h1>Projects page</h1>
+        </Container>
+        <Container sx={{ mb: 2, textAlign: 'right' }}>
           <Button 
             component={Link} 
             to="new" 
-            onClick={handleOpen}>
+            onClick={handleOpen}
+            variant="contained"
+            >
             Create Project
-        </Button>
+          </Button>
         </Container>
         <Container>
           <ProjectsTable 
@@ -40,13 +44,13 @@ const ProjectsPage = ({
             onUpdateProject={onUpdateProject} 
           />
           <Routes>
-            <Route 
-              exact path='new' element={
+            <Route exact path='new' element={
                 <NewProjectModal 
                   open={open} 
                   handleClose={handleClose} 
                   onAddProject={onAddProject} 
-                />} 
+                />
+              } 
             />
           </Routes>
         </Container>
