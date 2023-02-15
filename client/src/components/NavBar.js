@@ -57,7 +57,7 @@ export default function NavBar({ user, onLogout }) {
             user={user} 
           />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={handleHomepageClick}>
-            PHASE 4 PROJECT
+            COLLABO
           </Typography>
             {user ?
               <UserMenu 
