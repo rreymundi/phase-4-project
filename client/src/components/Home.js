@@ -8,10 +8,10 @@ const Home = ({ user }) => {
   return (
       <Container sx={{ position: 'relative', color: 'white', marginTop: '48px', justifySelf: 'center' }}>
         <Container sx={{ opacity: 1, overflow: 'hidden', width: '1000px', height: '600px' }}>
-          <img sx={{ objectFit: 'cover' }} src={hero} alt="collabo home" />
+          <img sx={{ objectFit: 'cover' }} src={hero} alt="collab home" />
         </Container>
         <Container sx={{ position: 'absolute', top: '20%', left: '40%', transform: 'translate(-50%, -50%)', textAlign: 'right' }} >
-          <Typography variant='h1' sx={{ width: '100%', height: '100%' }}>COLLABO</Typography>
+          <Typography variant='h1' sx={{ width: '100%', height: '100%' }}>CO.LAB</Typography>
           {user
             ?
               <Typography variant='h4' sx={{ width: '100%' }} >Welcome{user ? `, ${user.username}!` : `!`}</Typography>

@@ -40,7 +40,12 @@ const TaskCard = ({
         minWidth: 275, 
         height: "100%", 
         display: "block", 
-        position: "relative" 
+        position: "relative",
+        '&:hover': {
+          transform: 'translateX(-4px) translateY(-4px)'
+          },
+        transition: 'all 350ms cubic-bezier(0.175, 0.885, 0.335, 1)',
+        transitionDelay: '0s',
       }} >
       <CardActions sx={{ float: 'right'}} >
         <Button 

@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import TemporaryDrawer from './TemporaryDrawer';
 import UserMenu from './UserMenu';
+import { Container } from '@mui/system';
 
 export default function NavBar({ user, onLogout }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -42,10 +43,6 @@ export default function NavBar({ user, onLogout }) {
     }
   }
 
-  const handleHomepageClick = () => {
-    navigate('/')
-  };
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -56,9 +53,13 @@ export default function NavBar({ user, onLogout }) {
             setDrawerOpen={setDrawerOpen} 
             user={user} 
           />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={handleHomepageClick}>
-            COLLABO
-          </Typography>
+          <Container component="div" sx={{ flexGrow: 1, textAlign: 'center'}} >
+          <Button color='inherit' component={ Link } to='/'>
+              <Typography variant="h5">
+                CO.LAB
+              </Typography>
+              </Button>
+          </Container>
             {user ?
               <UserMenu 
                 onLogout={onLogout} 
