@@ -40,7 +40,7 @@ const ProjectRoadmap = ({ project, tasks, open, handleClose }) => {
             <Container sx={{ overflowX: 'auto'}} >
                 <Box sx={style}>
                 <Container sx={{ width: 'auto'}} >
-                    <Typography variant='h5' >{project.name}</Typography>
+                    <Typography variant='h5' sx={{ color: '#1976d2' }}>{project.name}</Typography>
                 </Container>
                     {renderedLists}
                 </Box>

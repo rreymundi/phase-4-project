@@ -16,6 +16,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
   const [roadmapOpen, setRoadmapOpen] = useState(false)
   
   let navigate = useNavigate();
+  
   const handleOpenEditProjectModal = () => setEditProjectOpen(true);
   const handleCloseEditProjectModal = () => {
     navigate("/projects")

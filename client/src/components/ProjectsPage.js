@@ -24,7 +24,7 @@ const ProjectsPage = ({
 
   return (
     <Container>
-        <Container sx={{ marginTop: '48px'}} >
+        <Container sx={{ marginTop: '48px', color: '#1976d2' }} >
           <h1>Projects page</h1>
         </Container>
         <Container sx={{ mb: 2, textAlign: 'right' }}>

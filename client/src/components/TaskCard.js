@@ -42,7 +42,8 @@ const TaskCard = ({
         display: "block", 
         position: "relative",
         '&:hover': {
-          transform: 'translateX(-4px) translateY(-4px)'
+          transform: 'translateX(-2px) translateY(-2px)',
+          // backgroundColor: 'lightblue'
           },
         transition: 'all 350ms cubic-bezier(0.175, 0.885, 0.335, 1)',
         transitionDelay: '0s',
