@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    skip_before_action :authorized, only: [:index]
+
 
     def index
         projects = Project.all
@@ -7,7 +9,7 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        project = Project.create(project_params)
+        project = Project.create!(project_params)
         project.valid?
         render json: project, status: :created
     end

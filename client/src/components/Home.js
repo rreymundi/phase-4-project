@@ -33,7 +33,7 @@ const Home = ({ user }) => {
           <Typography variant='h1' sx={{ 
             width: '100%', 
             height: '100%',
-            textShadow: '2px 4px 4px rgba(46,91,173,0.6)' 
+            textShadow: '2px 2px 6px lightgrey' 
             }}
             >
             CO.LAB
@@ -42,7 +42,7 @@ const Home = ({ user }) => {
             ?
             <Typography variant='h4' sx={{ 
               width: '100%', 
-              textShadow: '2px 4px 4px rgba(46,91,173,0.6)' 
+              textShadow: '2px 2px 6px lightgrey' 
               }} 
               >
               Welcome{user ? `, ${user.username}!` : `!`}
@@ -50,7 +50,7 @@ const Home = ({ user }) => {
             :
             <Typography variant='h4' sx={{ 
               width: '100%', 
-              textShadow: '2px 4px 4px rgba(46,91,173,0.6)' 
+              textShadow: '2px 2px 6px lightgrey' 
               }} 
               >
               team up // stay organized

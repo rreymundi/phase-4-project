@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 
 const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserMenu, user }) => {
+    
     const handleLogout = () => {
         navigate("/");
         fetch("/logout", {

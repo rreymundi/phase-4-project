@@ -13,21 +13,17 @@ export default function App() {
     .then(r => {
       if (r.ok) {
         r.json()
-        .then((user) => {
-          setCurrentUser(user)
-        });
+        .then((user) => setCurrentUser(user))
       }
-    })
+      fetch('/projects')
+      .then((r) => r.json())
+      .then((r) => setProjects(r))
+    });
   }, []);
 
-  useEffect(() => {
-    fetch('/projects')
-    .then((r) => r.json())
-    .then((r) => setProjects(r))
-  }, [user]);
-
   const handleLogout = () => {
-    setCurrentUser(null)
+    setCurrentUser('')
+    setProjects([])
   };
 
   const handleAddProject = (newProject) => {
@@ -64,20 +60,20 @@ export default function App() {
     setCurrentUser({ ...user, tasks: updatedTasks })
   };
 
-  if (!user) 
-  return (
-      <Router>
-        <NavBar 
-          user={user} 
-          onLogout={handleLogout} 
-        />
-        <Content 
-          onLogin={setCurrentUser} 
-          errors={errors}
-          setErrors={setErrors}
-        />
-      </Router>
-    );
+  // if (!user) 
+  // return (
+  //     <Router>
+  //       <NavBar 
+  //         user={user} 
+  //         onLogout={handleLogout} 
+  //       />
+  //       <Content 
+  //         onLogin={setCurrentUser} 
+  //         errors={errors}
+  //         setErrors={setErrors}
+  //       />
+  //     </Router>
+  //   );
 
   return (
     <Router>
