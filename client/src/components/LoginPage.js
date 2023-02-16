@@ -96,7 +96,7 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
           {errors 
             ? 
             <Typography sx={{ color: 'red' }} >
-              {errors}
+              {errors}.
             </Typography> 
             : 
             null

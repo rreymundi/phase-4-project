@@ -34,10 +34,12 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
       if (r.ok) {
         r.json().then((user) => onLogin(user))
         navigate("/")
+        setErrors([])
       } else {
         r.json().then((errorData) => setErrors(errorData.error))      }
     })
   };
+  console.log(errors)
 
   const style = {
     position: 'absolute',
@@ -64,7 +66,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            required={ true } 
+            // required={ true } 
             id="username" 
             name="username" 
             variant="standard" 
@@ -75,7 +77,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            required={ true } 
+            // required={ true } 
             id="password" 
             name="password" 
             variant="standard" 
@@ -87,7 +89,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
             <TextField 
-              required={ true } 
+              // required={ true } 
               id="password_confirmation" 
               name="password_confirmation" 
               variant="standard" 
@@ -105,6 +107,21 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
             >
             Create account
             </Button>
+        </Grid>
+        <Grid item>
+            {errors 
+              ? 
+              errors.map((error,index) => 
+                <Typography 
+                  key={index} 
+                  sx={{ color: 'red' }}
+                >
+                {error}.
+                </Typography>
+              )
+              : 
+              null
+            }
         </Grid>
       </Grid>
     </Box>

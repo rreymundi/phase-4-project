@@ -5,11 +5,8 @@ class UsersController < ApplicationController
   # signing up
   def create
     user = User.create!(user_params)
-    if user.valid?
-      render json: user, status: :created
-    else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-    end
+    user.valid?
+    render json: user, status: :created
   end
 
   # remaining logged in
@@ -30,8 +27,8 @@ class UsersController < ApplicationController
     params.permit(:username, :password, :password_confirmation)
   end
 
-  def render_unprocessable_entity
-    render json: { error: invalid.record.errors }, status: :unprocessable_entity
+  def render_unprocessable_entity(invalid)
+    render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end

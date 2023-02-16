@@ -25,7 +25,7 @@ class TasksController < ApplicationController
         params.permit(:name, :description, :priority, :project_id, :user_id, :status)
     end
 
-    def render_unprocessable_entity
+    def render_unprocessable_entity(invalid)
         render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
