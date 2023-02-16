@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
 
 const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserMenu, user }) => {
     const handleLogout = () => {
@@ -39,12 +40,24 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              <MenuItem sx={{ 
+                  cursor: 'default',
+                  '&:hover': {
+                    background: 'none',
+                  }, 
+                }}
+                >
+                <Typography>{user.username}</Typography>
+              </MenuItem>
+              <Divider />
               <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" onClick={handleLogout} >Log out</Typography>
-                </MenuItem>
+                  <Typography textAlign="center" onClick={handleLogout} >
+                    Log out
+                  </Typography>
+              </MenuItem>
             </Menu>
           </Box>
     )
 }
 
-export default UserMenu
+export default UserMenu;

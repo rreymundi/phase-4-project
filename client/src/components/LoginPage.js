@@ -32,7 +32,8 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
     .then(r => {
       if (r.ok) {
         r.json().then((user) => onLogin(user))
-        navigate("/");
+        navigate("/")
+        setErrors([])
       } else {
           r.json().then((errorData) => setErrors(errorData.error))
         }
@@ -92,6 +93,16 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
             </Button>
         </Grid>
         <Grid item>
+          {errors 
+            ? 
+            <Typography sx={{ color: 'red' }} >
+              {errors}
+            </Typography> 
+            : 
+            null
+          }
+        </Grid>
+        <Grid item>
           <Typography>Don't have an account?&nbsp;
             <Link to="/signup" underline="none" >Sign up!</Link>
           </Typography>
@@ -101,4 +112,4 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
   )
 }
 
-export default LoginPage
+export default LoginPage;

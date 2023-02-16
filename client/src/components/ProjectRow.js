@@ -86,7 +86,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         handleClose={handleCloseRoadmap} 
       />
     </TableRow>
-  );
+  )
 }
 
-export default ProjectRow
+export default ProjectRow;

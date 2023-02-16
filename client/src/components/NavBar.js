@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +11,9 @@ import TemporaryDrawer from './TemporaryDrawer';
 import UserMenu from './UserMenu';
 import { Container } from '@mui/system';
 
-export default function NavBar({ user, onLogout }) {
+const NavBar = ({ user, onLogout }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  let navigate = useNavigate()
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -26,28 +23,25 @@ export default function NavBar({ user, onLogout }) {
     setAnchorElUser(null);
   };
 
-  const handleUserMenu = () => {
-    if (user) {
-      return (
-        <IconButton
-        size="large"
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        sx={{ mr: 2 }}
-        onClick={() => setDrawerOpen(true)} 
-        >
-        <MenuIcon />
-        </IconButton>
-      )
-    }
-  }
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {handleUserMenu()}
+          {user 
+            ? 
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={() => setDrawerOpen(true)} 
+              >
+                <MenuIcon />
+            </IconButton>
+            :
+            null
+          }
           <TemporaryDrawer 
             drawerOpen={drawerOpen} 
             setDrawerOpen={setDrawerOpen} 
@@ -60,7 +54,8 @@ export default function NavBar({ user, onLogout }) {
               </Typography>
               </Button>
           </Container>
-            {user ?
+            {user 
+              ?
               <UserMenu 
                 onLogout={onLogout} 
                 anchorElUser={anchorElUser} 
@@ -79,5 +74,7 @@ export default function NavBar({ user, onLogout }) {
         </Toolbar>
       </AppBar>
     </Box>
-  );
+  )
 }
+
+export default NavBar;

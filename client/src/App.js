@@ -64,7 +64,8 @@ export default function App() {
     setCurrentUser({ ...user, tasks: updatedTasks })
   };
 
-  if (!user) return (
+  if (!user) 
+  return (
       <Router>
         <NavBar 
           user={user} 

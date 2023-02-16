@@ -27,7 +27,7 @@ const TasksPage = ({
 
   return (
     <Container>
-      <Container sx={{ marginTop: '48px', color: '#1976d2' }} >
+      <Container sx={{ marginTop: '48px' }} >
         <h1>My tasks</h1>
       </Container>
       <Container sx={{ mb: 2, textAlign: 'right' }}>

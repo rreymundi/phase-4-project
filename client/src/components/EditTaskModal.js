@@ -72,7 +72,13 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
             aria-describedby="modal-modal-description"
             >
           <Box sx={style} component="form" onSubmit={handleSubmit} >
-            <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
+            <Grid 
+              container 
+              spacing={2} 
+              alignItems="center" 
+              justify="center" 
+              direction="column" 
+              >
               <Grid item>
                 <Typography>Edit task</Typography>
               </Grid>

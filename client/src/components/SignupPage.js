@@ -38,7 +38,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         r.json().then((errorData) => setErrors(errorData.error))      }
     })
   };
-  console.log(errors)
+
   const style = {
     position: 'absolute',
     top: '50%',

@@ -58,7 +58,7 @@ const ProjectMenu = ({
               </MenuItem>
             </Menu>
           </Box>
-    )
+      )   
 }
 
 export default ProjectMenu;

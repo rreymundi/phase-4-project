@@ -31,7 +31,7 @@ const NestedGrid = ({
         </Grid>
       </Grid>
     </Box>
-  );
+  )
 }
 
 export default NestedGrid;
