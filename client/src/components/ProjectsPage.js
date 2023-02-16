@@ -9,7 +9,9 @@ const ProjectsPage = ({
     projects, 
     onAddProject, 
     onDeleteProject, 
-    onUpdateProject 
+    onUpdateProject,
+    errors,
+    setErrors,
   }) => {
   const [open, createProjectOpen] = useState(false);
   
@@ -20,6 +22,7 @@ const ProjectsPage = ({
   const handleClose = () => {
     navigate("/projects")
     createProjectOpen(false)
+    setErrors([])
   };
 
   return (
@@ -48,7 +51,9 @@ const ProjectsPage = ({
                 <NewProjectModal 
                   open={open} 
                   handleClose={handleClose} 
-                  onAddProject={onAddProject} 
+                  onAddProject={onAddProject}
+                  errors={errors}
+                  setErrors={setErrors} 
                 />
               } 
             />

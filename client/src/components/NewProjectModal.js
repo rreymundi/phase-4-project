@@ -5,7 +5,13 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const NewProjectModal = ({ open, handleClose, onAddProject }) => {
+const NewProjectModal = ({ 
+    open, 
+    handleClose, 
+    onAddProject,
+    errors,
+    setErrors
+  }) => {
 
     const style = {
         position: 'absolute',
@@ -33,7 +39,6 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleClose();
         const newProject = {
           name: formData.name,
           description: formData.description
@@ -45,12 +50,19 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
           },
           body: JSON.stringify(newProject)
         })
-        .then((r) => r.json())
-        .then((newProject) => onAddProject(newProject))
-        .then(setFormData({
-          name: "",
-          description: ""
-        }))
+        .then((r) => {
+          if (r.ok) {
+            handleClose();
+            r.json()
+            .then((newProject) => onAddProject(newProject))
+            .then(setFormData({
+              name: "",
+              description: ""
+            }))
+          } else {
+            r.json().then((e) => setErrors((e.error)))
+          }
+        })
       };
 
     return (
@@ -72,7 +84,7 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
+                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
@@ -84,7 +96,7 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
+                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="description" 
                   name="description"
@@ -103,6 +115,21 @@ const NewProjectModal = ({ open, handleClose, onAddProject }) => {
                   type="submit" >
                   Create
                 </Button>
+              </Grid>
+              <Grid item>
+                  {errors 
+                    ? 
+                    errors.map((error,index) => 
+                      <Typography 
+                        key={index} 
+                        sx={{ color: 'red' }}
+                      >
+                      {error}.
+                      </Typography>
+                    )
+                    : 
+                    null
+                  }
               </Grid>
             </Grid>
           </Box>

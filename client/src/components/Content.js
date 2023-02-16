@@ -56,7 +56,9 @@ const Content = ({
               projects={projects} 
               onAddProject={onAddProject} 
               onDeleteProject={onDeleteProject} 
-              onUpdateProject={onUpdateProject} 
+              onUpdateProject={onUpdateProject}
+              errors={errors}
+              setErrors={setErrors}  
             />} 
           />
           <Route path='/tasks/*' element={
