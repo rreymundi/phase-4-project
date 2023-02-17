@@ -20,9 +20,9 @@ const ProjectsPage = ({
   let navigate = useNavigate();
 
   const handleClose = () => {
+    setErrors([])
     navigate("/projects")
     createProjectOpen(false)
-    setErrors([])
   };
 
   return (
@@ -45,6 +45,8 @@ const ProjectsPage = ({
             projects={projects} 
             onDeleteProject={onDeleteProject} 
             onUpdateProject={onUpdateProject} 
+            errors={errors}
+            setErrors={setErrors}
           />
           <Routes>
             <Route exact path='new' element={

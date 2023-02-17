@@ -9,7 +9,9 @@ const EditProjectModal = ({
     open, 
     handleClose, 
     project, 
-    onUpdateProject 
+    onUpdateProject,
+    errors,
+    setErrors 
     }) => {
 
     const style = {
@@ -38,7 +40,6 @@ const EditProjectModal = ({
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleClose();
         const newProjectData = {
           name: formData.name,
           description: formData.description
@@ -50,8 +51,15 @@ const EditProjectModal = ({
           },
           body: JSON.stringify(newProjectData)
         })
-        .then((r) => r.json())
-        .then((updatedProject) => onUpdateProject(updatedProject))
+        .then((r) => {
+          if (r.ok) {
+            r.json()
+            .then((updatedProject) => onUpdateProject(updatedProject))
+            handleClose();
+          } else {
+            r.json().then((errorData) => setErrors(errorData.error))
+          }
+        })
       };
 
     return (
@@ -73,7 +81,7 @@ const EditProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
+                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
@@ -84,7 +92,7 @@ const EditProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
+                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="description" 
                   name="description" 
@@ -103,6 +111,21 @@ const EditProjectModal = ({
                   type="submit" >
                   Update
                 </Button>
+              </Grid>
+              <Grid item>
+                  {errors 
+                    ? 
+                    errors.map((error,index) => 
+                      <Typography 
+                        key={index} 
+                        sx={{ color: 'red' }}
+                      >
+                      {error}.
+                      </Typography>
+                    )
+                    : 
+                    null
+                  }
               </Grid>
             </Grid>
           </Box>

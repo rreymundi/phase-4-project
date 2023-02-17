@@ -16,7 +16,8 @@ class ProjectsController < ApplicationController
 
     def update 
         project = Project.find(params[:id])
-        project.update(project_params)
+        project.update!(project_params)
+        project.valid?
         render json: project, status: :ok
     end
 

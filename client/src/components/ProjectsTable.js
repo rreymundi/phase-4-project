@@ -12,7 +12,9 @@ import ProjectRow from './ProjectRow';
 const ProjectsTable = ({ 
     projects, 
     onDeleteProject, 
-    onUpdateProject 
+    onUpdateProject,
+    errors,
+    setErrors 
   }) => {
 
   const projectRows = projects?.map((project) => 
@@ -20,7 +22,9 @@ const ProjectsTable = ({
       key={project.name} 
       project={project} 
       onDeleteProject={onDeleteProject} 
-      onUpdateProject={onUpdateProject} 
+      onUpdateProject={onUpdateProject}
+      errors={errors}
+      setErrors={setErrors} 
     />
   );
 

@@ -52,15 +52,15 @@ const NewProjectModal = ({
         })
         .then((r) => {
           if (r.ok) {
-            handleClose();
             r.json()
             .then((newProject) => onAddProject(newProject))
             .then(setFormData({
               name: "",
               description: ""
             }))
+            handleClose();
           } else {
-            r.json().then((e) => setErrors((e.error)))
+            r.json().then((errorData) => setErrors(errorData.error))
           }
         })
       };
@@ -84,7 +84,6 @@ const NewProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
@@ -96,7 +95,6 @@ const NewProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="description" 
                   name="description"

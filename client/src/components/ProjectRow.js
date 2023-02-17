@@ -10,7 +10,13 @@ import ProjectMenu from './ProjectMenu';
 import EditProjectModal from './EditProjectModal';
 import ProjectRoadmap from './ProjectRoadmap';
 
-const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
+const ProjectRow = ({ 
+    project, 
+    onDeleteProject, 
+    onUpdateProject,
+    errors,
+    setErrors 
+  }) => {
   const [anchorProjectMenu, setAnchorProjectMenu] = React.useState(null);
   const [open, setEditProjectOpen] = useState(false);
   const [roadmapOpen, setRoadmapOpen] = useState(false)
@@ -19,6 +25,7 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
   
   const handleOpenEditProjectModal = () => setEditProjectOpen(true);
   const handleCloseEditProjectModal = () => {
+    setErrors([])
     navigate("/projects")
     setEditProjectOpen(false)
   };
@@ -77,7 +84,9 @@ const ProjectRow = ({ project, onDeleteProject, onUpdateProject }) => {
         open={open} 
         handleClose={handleCloseEditProjectModal} 
         project={project} 
-        onUpdateProject={onUpdateProject} 
+        onUpdateProject={onUpdateProject}
+        errors={errors}
+        setErrors={setErrors}
       />
       <ProjectRoadmap 
         open={roadmapOpen} 
