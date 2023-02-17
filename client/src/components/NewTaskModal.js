@@ -14,7 +14,9 @@ const NewTaskModal = ({
     open, 
     projects, 
     handleClose, 
-    onAddTask 
+    onAddTask,
+    errors,
+    setErrors
   }) => {
 
     const style = {
@@ -45,7 +47,6 @@ const NewTaskModal = ({
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleClose();
         const newTask = {
           name: formData.name,
           description: formData.description,
@@ -61,8 +62,15 @@ const NewTaskModal = ({
           },
           body: JSON.stringify(newTask)
         })
-        .then((r) => r.json())
-        .then((newTask) => onAddTask(newTask))
+        .then((r) => {
+          if (r.ok) {
+            r.json()
+            .then((newTask) => onAddTask(newTask))
+            handleClose()
+          } else {
+            r.json().then((errorData) => setErrors(errorData.error))
+          }
+        })
       };
 
     return (
@@ -85,7 +93,6 @@ const NewTaskModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
                   id="name" 
                   name="name" 
                   variant="standard" 
@@ -97,7 +104,6 @@ const NewTaskModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
                   id="description" 
                   name="description" 
                   variant="standard" 
@@ -110,7 +116,7 @@ const NewTaskModal = ({
                 />
               </Grid>
               <Grid item>
-                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="priority">Priority</InputLabel>
                   <Select
                     labelId="priority"
@@ -127,7 +133,7 @@ const NewTaskModal = ({
                 </FormControl>
               </Grid>
               <Grid item>
-                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="project">Project</InputLabel>
                   <Select
                     labelId="project"
@@ -150,6 +156,21 @@ const NewTaskModal = ({
                   type="submit" >
                   Create
                 </Button>
+              </Grid>
+              <Grid item>
+                  {errors 
+                    ? 
+                    errors.map((error,index) => 
+                      <Typography 
+                        key={index} 
+                        sx={{ color: 'red' }}
+                      >
+                      {error}.
+                      </Typography>
+                    )
+                    : 
+                    null
+                  }
               </Grid>
             </Grid>
           </Box>

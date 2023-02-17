@@ -12,7 +12,9 @@ const TasksPage = ({
     projects, 
     onAddTask, 
     onDeleteTask, 
-    onUpdateTask 
+    onUpdateTask,
+    errors,
+    setErrors 
   }) => {
   const [open, setOpen] = useState(false);
  
@@ -21,6 +23,7 @@ const TasksPage = ({
   let navigate = useNavigate();
  
   const handleClose = () => {
+    setErrors([])
     navigate("/tasks")
     setOpen(false)
   };
@@ -32,7 +35,8 @@ const TasksPage = ({
       </Container>
       <Container sx={{ mb: 2, textAlign: 'right' }}>
         <Button 
-          component={Link} to="new" 
+          component={Link} 
+          to="new" 
           onClick={handleOpen} 
           variant="contained"
           >
@@ -54,7 +58,10 @@ const TasksPage = ({
               open={open} 
               projects={projects} 
               handleClose={handleClose} 
-              onAddTask={onAddTask} />} 
+              onAddTask={onAddTask} 
+              errors={errors}
+              setErrors={setErrors}
+            />} 
           />
         </Routes>
       </Container>

@@ -69,6 +69,8 @@ const Content = ({
               onAddTask={onAddTask}
               onDeleteTask={onDeleteTask} 
               onUpdateTask={onUpdateTask} 
+              errors={errors}
+              setErrors={setErrors}
             />} 
           />
         </Routes>

@@ -58,7 +58,7 @@ const NewProjectModal = ({
               name: "",
               description: ""
             }))
-            handleClose();
+            handleClose()
           } else {
             r.json().then((errorData) => setErrors(errorData.error))
           }
