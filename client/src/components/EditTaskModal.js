@@ -95,7 +95,7 @@ const EditTaskModal = ({
               direction="column" 
               >
               <Grid item>
-                <Typography>Edit task</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>Edit task</Typography>
               </Grid>
               <Grid item>
                 <TextField 

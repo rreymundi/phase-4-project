@@ -89,7 +89,7 @@ const NewTaskModal = ({
               justify="center" 
               direction="column" >
               <Grid item>
-                <Typography>Create a task</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>Create a task</Typography>
               </Grid>
               <Grid item>
                 <TextField 

@@ -62,7 +62,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         justify="center" 
         direction="column" >
         <Grid item>
-          <Typography>Sign up</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>Sign up</Typography>
         </Grid>
         <Grid item>
           <TextField 

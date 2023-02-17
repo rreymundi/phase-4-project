@@ -77,7 +77,7 @@ const EditProjectModal = ({
               justify="center" 
               direction="column" >
               <Grid item>
-                <Typography>Edit project</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>Edit project</Typography>
               </Grid>
               <Grid item>
                 <TextField 

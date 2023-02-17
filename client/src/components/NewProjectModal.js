@@ -80,7 +80,7 @@ const NewProjectModal = ({
               justify="center" 
               direction="column" >
               <Grid item>
-                <Typography>Create a project</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>Create a project</Typography>
               </Grid>
               <Grid item>
                 <TextField 

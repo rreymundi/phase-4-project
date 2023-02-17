@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Content from "./components/Content";
+import Footer from "./components/Footer";
 
 export default function App() {
   const [user, setCurrentUser] = useState('');
@@ -131,6 +132,7 @@ export default function App() {
         errors={errors}
         setErrors={setErrors}
       />
+      <Footer />
     </Router>
   );
 

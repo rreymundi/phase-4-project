@@ -7,6 +7,7 @@ import ProjectsPage from './ProjectsPage';
 import TasksPage from './TasksPage';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
+import UnauthorizedPage from './UnauthorizedPage';
 
 const Content = ({ 
     user, 
@@ -22,6 +23,49 @@ const Content = ({
     errors,
     setErrors
   }) => {
+
+
+  if (!user)
+    return (
+      <Box 
+        component='main'
+        sx={{
+            height: '100vh',
+            overflow: 'auto',
+            display: 'flex',
+            flexFlow: 'row nowrap',
+            overflowX: 'scroll'
+        }}
+      >
+        <Container>
+          <Routes>
+            <Route path='/' element={<Home user={user} />} />
+            <Route path='/login' element={
+              <LoginPage 
+                onLogin={onLogin}
+                errors={errors}
+                setErrors={setErrors} 
+              />} 
+            />
+            <Route path='/signup' element={
+              <SignupPage 
+                onLogin={onLogin} 
+                errors={errors}
+                setErrors={setErrors} 
+              />} 
+            />
+            <Route path='/projects/*' element={
+              <UnauthorizedPage/>
+            } 
+            />
+            <Route path='/tasks/*' element={
+              <UnauthorizedPage
+              />} 
+            />
+          </Routes>
+        </Container>
+      </Box>
+    );
   
   return (
     <Box 
