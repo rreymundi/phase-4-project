@@ -65,7 +65,6 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            required={ true } 
             id="username" 
             name="username" 
             variant="standard" 
@@ -75,7 +74,6 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            required={ true } 
             id="password" 
             name="password" 
             variant="standard" 
@@ -94,7 +92,7 @@ const LoginPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           {errors 
-            ? 
+            ?
             <Typography sx={{ color: 'red' }} >
               {errors}.
             </Typography> 

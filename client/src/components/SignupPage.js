@@ -66,7 +66,6 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            // required={ true } 
             id="username" 
             name="username" 
             variant="standard" 
@@ -77,7 +76,6 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
           <TextField 
-            // required={ true } 
             id="password" 
             name="password" 
             variant="standard" 
@@ -89,7 +87,6 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         </Grid>
         <Grid item>
             <TextField 
-              // required={ true } 
               id="password_confirmation" 
               name="password_confirmation" 
               variant="standard" 
