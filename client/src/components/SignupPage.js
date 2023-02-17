@@ -105,21 +105,20 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
             Create account
             </Button>
         </Grid>
-        <Grid item>
-            {errors 
-              ? 
-              errors.map((error,index) => 
-                <Typography 
-                  key={index} 
-                  sx={{ color: 'red' }}
-                >
-                {error}.
-                </Typography>
-              )
-              : 
-              null
-            }
-        </Grid>
+        {errors.length > 0 
+          ? 
+          errors.map((error,index) => 
+            <Grid item key={index}>
+              <Typography 
+                sx={{ color: 'red' }}
+              >
+              {error}.
+              </Typography>
+            </Grid>
+          )
+          : 
+          null
+        }
       </Grid>
     </Box>
   )

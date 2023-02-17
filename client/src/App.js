@@ -92,6 +92,7 @@ export default function App() {
     setCurrentUser({ ...user, tasks: updatedTasks })
     setProjects(updatedProjects)
   };
+  console.log(errors)
 
   // if (!user) 
   // return (
@@ -113,6 +114,8 @@ export default function App() {
       <NavBar 
         user={user} 
         onLogout={handleLogout} 
+        errors={errors}
+        setErrors={setErrors}
       />
       <Content 
         user={user}

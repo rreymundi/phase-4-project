@@ -11,7 +11,12 @@ import TemporaryDrawer from './TemporaryDrawer';
 import UserMenu from './UserMenu';
 import { Container } from '@mui/system';
 
-const NavBar = ({ user, onLogout }) => {
+const NavBar = ({ 
+  user, 
+  onLogout,
+  errors,
+  setErrors 
+  }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,7 +42,7 @@ const NavBar = ({ user, onLogout }) => {
               sx={{ mr: 2 }}
               onClick={() => setDrawerOpen(true)} 
               >
-                <MenuIcon />
+              <MenuIcon />
             </IconButton>
             :
             null
@@ -67,7 +72,9 @@ const NavBar = ({ user, onLogout }) => {
               <Button 
                 color="inherit" 
                 component={ Link } 
-                to="/login">
+                to="/login"
+                onClick={() => setErrors([])}
+                >
                 Log in
               </Button>
             }
