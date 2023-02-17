@@ -55,7 +55,7 @@ const EditProjectModal = ({
           if (r.ok) {
             r.json()
             .then((updatedProject) => onUpdateProject(updatedProject))
-            handleClose();
+            handleClose()
           } else {
             r.json().then((errorData) => setErrors(errorData.error))
           }

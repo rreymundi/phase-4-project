@@ -9,7 +9,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }) => {
+const EditTaskModal = ({ 
+    user, 
+    open, 
+    handleClose, 
+    task, 
+    projects, 
+    onUpdateTask,
+    errors,
+    setErrors
+    }) => {
 
     const style = {
         position: 'absolute',
@@ -40,7 +49,6 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleClose();
         const newTaskData = {
           name: formData.name,
           description: formData.description,
@@ -56,8 +64,15 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
           },
           body: JSON.stringify(newTaskData)
         })
-        .then((r) => r.json())
-        .then((updatedTask) => onUpdateTask(updatedTask))
+        .then((r) => {
+          if (r.ok) {
+            r.json()
+            .then((updatedTask) => onUpdateTask(updatedTask))
+            handleClose()
+          } else {
+            r.json().then((errorData) => setErrors(errorData.error))
+          }
+        })
       };
 
       const renderedProjects = projects?.map((project) => 
@@ -84,7 +99,6 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
@@ -95,7 +109,6 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
               </Grid>
               <Grid item>
                 <TextField 
-                  required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="description" 
                   name="description" 
@@ -108,7 +121,7 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
                   onChange={handleChange}/>
               </Grid>
               <Grid item>
-                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="priority">Priority</InputLabel>
                   <Select
                     labelId="priority"
@@ -125,7 +138,7 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
                 </FormControl>
               </Grid>
               <Grid item>
-                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="project">Project</InputLabel>
                   <Select
                     labelId="project"
@@ -140,8 +153,7 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
                 </FormControl>
               </Grid>
               <Grid item>
-              <Grid item>
-                <FormControl required variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="status">Status</InputLabel>
                   <Select
                     labelId="status"
@@ -159,10 +171,25 @@ const EditTaskModal = ({ user, open, handleClose, task, projects, onUpdateTask }
                   </Select>
                 </FormControl>
               </Grid>
-              </Grid>
-              <Grid item></Grid>
+              <Grid item>
                 <Button variant="contained" color="primary" type="submit" >Update</Button>
               </Grid>
+              <Grid item>
+                  {errors 
+                    ? 
+                    errors.map((error,index) => 
+                      <Typography 
+                        key={index} 
+                        sx={{ color: 'red' }}
+                      >
+                      {error}.
+                      </Typography>
+                    )
+                    : 
+                    null
+                  }
+              </Grid>
+            </Grid>
           </Box>
         </Modal>
       )

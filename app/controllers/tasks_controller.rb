@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
     def update
         task = Task.find(params[:id])
-        task.update(task_params)
+        task.update!(task_params)
+        task.valid?
         render json: task, status: :ok
     end
 

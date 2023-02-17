@@ -8,7 +8,9 @@ const NestedGrid = ({
     tasks, 
     projects, 
     onDeleteTask, 
-    onUpdateTask 
+    onUpdateTask,
+    errors,
+    setErrors 
   }) => {
 
   const renderedTasks = tasks?.map((task) => 
@@ -18,7 +20,9 @@ const NestedGrid = ({
         task={task} 
         onDeleteTask={onDeleteTask} 
         projects={projects} 
-        onUpdateTask={onUpdateTask} 
+        onUpdateTask={onUpdateTask}
+        errors={errors}
+        setErrors={setErrors} 
       />
     </Grid>
   );

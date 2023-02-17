@@ -14,7 +14,9 @@ const TaskCard = ({
     task, 
     projects, 
     onDeleteTask, 
-    onUpdateTask 
+    onUpdateTask,
+    errors,
+    setErrors 
   }) => {
   const [anchorTaskMenu, setAnchorTaskMenu] = useState(null);
   const [editTaskOpen, setEditTaskOpen] = useState(false);
@@ -23,6 +25,7 @@ const TaskCard = ({
 
   const handleOpenEditTaskModal = () => setEditTaskOpen(true);
   const handleCloseEditTaskModal = () => {
+    setErrors([])
     navigate("/tasks")
     setEditTaskOpen(false)
   };
@@ -84,7 +87,9 @@ const TaskCard = ({
         handleClose={handleCloseEditTaskModal} 
         task={task} 
         projects={projects} 
-        onUpdateTask={onUpdateTask} 
+        onUpdateTask={onUpdateTask}
+        errors={errors}
+        setErrors={setErrors} 
       />
     </Card>
   );

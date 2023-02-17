@@ -50,6 +50,8 @@ const TasksPage = ({
           onDeleteTask={onDeleteTask} 
           projects={projects} 
           onUpdateTask={onUpdateTask} 
+          errors={errors}
+          setErrors={setErrors}
         />
         <Routes>
           <Route exact path='new' element={
