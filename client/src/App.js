@@ -93,23 +93,7 @@ export default function App() {
     setCurrentUser({ ...user, tasks: updatedTasks })
     setProjects(updatedProjects)
   };
-  console.log(errors)
-
-  // if (!user) 
-  // return (
-  //     <Router>
-  //       <NavBar 
-  //         user={user} 
-  //         onLogout={handleLogout} 
-  //       />
-  //       <Content 
-  //         onLogin={setCurrentUser} 
-  //         errors={errors}
-  //         setErrors={setErrors}
-  //       />
-  //     </Router>
-  //   );
-
+  
   return (
     <Router>
       <NavBar 

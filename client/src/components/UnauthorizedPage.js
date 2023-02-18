@@ -8,7 +8,7 @@ const UnauthorizedPage = () => {
   return (
       <Container sx={{ 
         position: 'relative', 
-        color: 'black', 
+        color: '#1976d2', 
         marginTop: '48px', 
         justifySelf: 'center' 
         }}
@@ -17,7 +17,7 @@ const UnauthorizedPage = () => {
           opacity: 1, 
           overflow: 'hidden', 
           width: '1000px', 
-          height: '600px',
+          height: '500px',
           position: 'absolute',
           transform: 'translate(8%, 15%)',
           }}
@@ -32,14 +32,14 @@ const UnauthorizedPage = () => {
           <Typography variant='h1' sx={{ 
             width: '100%', 
             height: '100%',
-            // textShadow: '2px 2px 6px lightgrey' 
+            textShadow: '2px 2px 6px lightgrey' 
             }}
             >
             Hold up! 
           </Typography>
           <Typography variant='h4' sx={{ 
               width: '100%', 
-              // textShadow: '2px 2px 6px lightgrey' 
+              textShadow: '2px 2px 6px lightgrey' 
               }} 
               >
               Please log in or sign up to access this page.

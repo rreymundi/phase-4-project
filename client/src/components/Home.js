@@ -8,7 +8,7 @@ const Home = ({ user }) => {
   return (
       <Container sx={{ 
         position: 'relative', 
-        color: 'white', 
+        color: '#1976d2', 
         marginTop: '48px', 
         justifySelf: 'center' 
         }}
