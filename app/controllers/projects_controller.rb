@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    skip_before_action :authorized, only: [:index]
+    # skip_before_action :authorized, only: [:index]
 
 
     def index

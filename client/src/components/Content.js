@@ -14,6 +14,7 @@ const Content = ({
     tasks, 
     onLogin, 
     projects, 
+    setProjects,
     onAddProject, 
     onDeleteProject, 
     onUpdateProject, 
@@ -45,6 +46,8 @@ const Content = ({
                 onLogin={onLogin}
                 errors={errors}
                 setErrors={setErrors} 
+                projects={projects}
+                setProjects={setProjects}
               />} 
             />
             <Route path='/signup' element={

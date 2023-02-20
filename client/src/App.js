@@ -22,6 +22,10 @@ export default function App() {
     });
   }, []);
 
+  const handleLogin = (loggedInUser) => {
+    setCurrentUser(loggedInUser)
+  };
+
   const handleLogout = () => {
     setCurrentUser('')
     setProjects([])
@@ -106,7 +110,8 @@ export default function App() {
         user={user}
         tasks={user.tasks}
         projects={projects} 
-        onLogin={setCurrentUser} 
+        setProjects={setProjects}
+        onLogin={handleLogin} 
         onAddProject={handleAddProject} 
         onDeleteProject={handleDeleteProject} 
         onUpdateProject={handleUpdateProject} 
