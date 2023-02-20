@@ -26,8 +26,7 @@ puts "🌱 Seeding data..."
         name: "Images not loading on some pages",
         description: "Some images are not loading on the latest version of Chrome",
         status: "new",
-        priority: "medium",
-        saved: false,
+        priority: "medium"
     )
 
     Task.create(
@@ -36,8 +35,7 @@ puts "🌱 Seeding data..."
         name: "Direct messages not working",
         description: "Some users report DMs are not working on iOS.",
         status: "new",
-        priority: "high",
-        saved: false,
+        priority: "high"
     )
 
     Task.create(
@@ -46,8 +44,7 @@ puts "🌱 Seeding data..."
         name: "Admin permissions request",
         description: "Can someone grant our new teammate admin permissions?",
         status: "new",
-        priority: "high",
-        saved: false,
+        priority: "high"
     )
 
     Task.create(
@@ -56,8 +53,7 @@ puts "🌱 Seeding data..."
         name: "Admin permissions request",
         description: "Can someone grant our new teammate admin permissions?",
         status: "new",
-        priority: "high",
-        saved: false,
+        priority: "high"
     )
 
 
