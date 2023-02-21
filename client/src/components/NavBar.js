@@ -60,23 +60,21 @@ const NavBar = ({
               </Button>
           </Container>
             {user 
-              ?
-              <UserMenu 
-                onLogout={onLogout} 
-                anchorElUser={anchorElUser} 
-                handleCloseUserMenu={handleCloseUserMenu} 
-                handleOpenUserMenu={handleOpenUserMenu} 
-                user={user} 
-              />
-              :
-              <Button 
-                color="inherit" 
-                component={ Link } 
-                to="/login"
-                onClick={() => setErrors([])}
-                >
-                Log in
-              </Button>
+              ? <UserMenu 
+                  onLogout={onLogout} 
+                  anchorElUser={anchorElUser} 
+                  handleCloseUserMenu={handleCloseUserMenu} 
+                  handleOpenUserMenu={handleOpenUserMenu} 
+                  user={user} 
+                />
+              : <Button 
+                  color="inherit" 
+                  component={ Link } 
+                  to="/login"
+                  onClick={() => setErrors([])}
+                  >
+                  Log in
+                </Button>
             }
         </Toolbar>
       </AppBar>

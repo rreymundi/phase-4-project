@@ -25,14 +25,13 @@ const Footer = () => {
             >
             </Box>
     
-            <Box
-              sx={{
-                flexGrow: 1,
-                justifyContent: "center",
-                display: "flex",
-                mb: 2,
-              }}
-            >
+            <Box sx={{
+                  flexGrow: 1,
+                  justifyContent: "center",
+                  display: "flex",
+                  mb: 2,
+                }}
+              >
               <Typography variant="caption" color="white">
                 Copyright ©2022. co.lab limited
               </Typography>

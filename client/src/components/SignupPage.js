@@ -36,10 +36,10 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         navigate("/")
         setErrors([])
       } else {
-        r.json().then((errorData) => setErrors(errorData.error))      }
+        r.json().then((errorData) => setErrors(errorData.error))      
+      }
     })
   };
-  console.log(errors)
 
   const style = {
     position: 'absolute',
@@ -106,18 +106,16 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
             </Button>
         </Grid>
         {errors.length > 0 
-          ? 
-          errors.map((error,index) => 
-            <Grid item key={index}>
-              <Typography 
-                sx={{ color: 'red' }}
-              >
-              {error}.
-              </Typography>
-            </Grid>
-          )
-          : 
-          null
+          ? errors.map((error,index) => 
+              <Grid item key={index}>
+                <Typography 
+                  sx={{ color: 'red' }}
+                >
+                {error}.
+                </Typography>
+              </Grid>
+            )
+          : null
         }
       </Grid>
     </Box>

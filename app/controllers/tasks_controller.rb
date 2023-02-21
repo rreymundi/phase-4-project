@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    before_action :authorized
 
     def update
         task = Task.find(params[:id])

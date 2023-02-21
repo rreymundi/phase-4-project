@@ -8,10 +8,8 @@ const TaskList = ({ status, tasks }) => {
 
     const renderedTasks = tasks.map((task) => 
         task.status === status.toLowerCase()
-        ? 
-        <TaskItem key={task.id} task={task} /> 
-        : 
-        null
+        ? <TaskItem key={task.id} task={task} /> 
+        : null
     );
 
     return (

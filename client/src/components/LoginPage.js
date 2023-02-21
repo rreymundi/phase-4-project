@@ -94,15 +94,13 @@ const LoginPage = ({ onLogin, errors, setErrors, projects, setProjects }) => {
             </Button>
         </Grid>
         {errors.length > 0 
-          ?
-          <Grid item>
-            <Typography sx={{ color: 'red' }} >
-              {errors}.
-            </Typography> 
-          </Grid>
-          : 
-          null
-          }
+          ? <Grid item>
+              <Typography sx={{ color: 'red' }} >
+                {errors}.
+              </Typography> 
+            </Grid>
+          : null
+        }
         <Grid item>
           <Typography>Don't have an account?&nbsp;
             <Link to="/signup" underline="none" onClick={() => setErrors([])}>Sign up!</Link>

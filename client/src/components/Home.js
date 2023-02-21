@@ -39,22 +39,20 @@ const Home = ({ user }) => {
             CO.LAB
           </Typography>
           {user
-            ?
-            <Typography variant='h4' sx={{ 
-              width: '100%', 
-              textShadow: '2px 2px 6px lightgrey' 
-              }} 
-              >
-              Welcome{user ? `, ${user.username}!` : `!`}
-            </Typography>
-            :
-            <Typography variant='h4' sx={{ 
-              width: '100%', 
-              textShadow: '2px 2px 6px lightgrey' 
-              }} 
-              >
-              team up // stay organized
-            </Typography>
+            ? <Typography variant='h4' sx={{ 
+                width: '100%', 
+                textShadow: '2px 2px 6px lightgrey' 
+                }} 
+                >
+                Welcome{user ? `, ${user.username}!` : `!`}
+              </Typography>
+            : <Typography variant='h4' sx={{ 
+                width: '100%', 
+                textShadow: '2px 2px 6px lightgrey' 
+                }} 
+                >
+                team up // stay organized
+              </Typography>
           }
         </Container>
       </Container>

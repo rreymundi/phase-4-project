@@ -116,17 +116,15 @@ const NewProjectModal = ({
               </Grid>
               <Grid item>
                   {errors 
-                    ? 
-                    errors.map((error,index) => 
-                      <Typography 
-                        key={index} 
-                        sx={{ color: 'red' }}
-                      >
-                      {error}.
-                      </Typography>
-                    )
-                    : 
-                    null
+                    ? errors.map((error,index) => 
+                        <Typography 
+                          key={index} 
+                          sx={{ color: 'red' }}
+                        >
+                        {error}.
+                        </Typography>
+                      )
+                    : null
                   }
               </Grid>
             </Grid>

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     # skip_before_action :authorized, only: [:index]
-
+    before_action :authorized
 
     def index
         projects = Project.all

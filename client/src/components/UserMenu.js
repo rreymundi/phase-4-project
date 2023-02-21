@@ -40,7 +40,7 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
+              >
               <MenuItem sx={{ 
                   cursor: 'default',
                   '&:hover': {

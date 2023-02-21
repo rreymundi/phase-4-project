@@ -15,10 +15,10 @@ export default function App() {
       if (r.ok) {
         r.json()
         .then((user) => setCurrentUser(user))
+        fetch('/projects')
+        .then((r) => r.json())
+        .then((r) => setProjects(r))
       }
-      fetch('/projects')
-      .then((r) => r.json())
-      .then((r) => setProjects(r))
     });
   }, []);
 
