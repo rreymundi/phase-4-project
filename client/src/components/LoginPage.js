@@ -36,7 +36,6 @@ const LoginPage = ({ onLogin, errors, setErrors, projects, setProjects }) => {
         .then((r) => r.json())
         .then((r) => setProjects(r))
         navigate("/")
-        setErrors([])
       } else {
           r.json().then((errorData) => setErrors(errorData.error))
         }

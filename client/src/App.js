@@ -5,7 +5,7 @@ import Content from "./components/Content";
 import Footer from "./components/Footer";
 
 export default function App() {
-  const [user, setCurrentUser] = useState('');
+  const [user, setCurrentUser] = useState(null);
   const [projects, setProjects] = useState([]);
   const [errors, setErrors] = useState([]);
 
@@ -18,21 +18,26 @@ export default function App() {
         fetch('/projects')
         .then((r) => r.json())
         .then((r) => setProjects(r))
+      } else {
+        r.json().then((errorData) => setErrors(errorData.error))
       }
     });
   }, []);
 
   const handleLogin = (loggedInUser) => {
     setCurrentUser(loggedInUser)
+    setErrors([])
   };
-
+  
   const handleLogout = () => {
-    setCurrentUser('')
+    setCurrentUser(null)
     setProjects([])
+    setErrors([])
   };
 
   const handleAddProject = (newProject) => {
     setProjects([...projects, newProject])
+    setErrors([])
   };
 
   const handleDeleteProject = (deletedProject) => {
@@ -45,6 +50,7 @@ export default function App() {
     project.id === updatedProject.id ? updatedProject : project
     )
     setProjects(updatedProjects)
+    setErrors([])
   };
 
   const handleAddTask = (newTask) => {
@@ -58,6 +64,7 @@ export default function App() {
       }
     })
     setProjects(updatedProjects)
+    setErrors([])
   };
 
   const handleDeleteTask = (deletedTask) => {
@@ -96,7 +103,26 @@ export default function App() {
     })
     setCurrentUser({ ...user, tasks: updatedTasks })
     setProjects(updatedProjects)
+    setErrors([])
   };
+
+  if (!user) 
+    return (
+      <Router>
+        <NavBar 
+          errors={errors}
+          setErrors={setErrors}
+        />
+        <Content 
+          projects={projects}
+          setProjects={setProjects}
+          onLogin={handleLogin} 
+          errors={errors}
+          setErrors={setErrors}
+        />
+        <Footer />
+      </Router>
+    );
   
   return (
     <Router>

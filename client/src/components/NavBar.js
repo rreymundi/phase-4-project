@@ -53,7 +53,7 @@ const NavBar = ({
             user={user} 
           />
           <Container component="div" sx={{ flexGrow: 1, textAlign: 'center'}} >
-          <Button color='inherit' component={ Link } to='/'>
+          <Button color='inherit' component={ Link } to='/' onClick={() => setErrors([])}>
               <Typography variant="h5">
                 CO.LAB
               </Typography>

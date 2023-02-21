@@ -37,7 +37,7 @@ const Content = ({
             flexFlow: 'row nowrap',
             overflowX: 'scroll'
         }}
-      >
+        >
         <Container>
           <Routes>
             <Route path='/' element={<Home user={user} />} />
@@ -58,12 +58,10 @@ const Content = ({
               />} 
             />
             <Route path='/projects/*' element={
-              <UnauthorizedPage/>
-            } 
+              <UnauthorizedPage errors={errors} setErrors={setErrors}/>} 
             />
             <Route path='/tasks/*' element={
-              <UnauthorizedPage
-              />} 
+              <UnauthorizedPage errors={errors} setErrors={setErrors}/>} 
             />
           </Routes>
         </Container>

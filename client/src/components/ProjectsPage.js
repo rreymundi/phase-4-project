@@ -20,7 +20,6 @@ const ProjectsPage = ({
   let navigate = useNavigate();
 
   const handleClose = () => {
-    setErrors([])
     navigate("/projects")
     createProjectOpen(false)
   };

@@ -23,7 +23,6 @@ const TasksPage = ({
   let navigate = useNavigate();
  
   const handleClose = () => {
-    setErrors([])
     navigate("/tasks")
     setOpen(false)
   };
