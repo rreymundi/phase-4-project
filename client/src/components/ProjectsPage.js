@@ -22,6 +22,7 @@ const ProjectsPage = ({
   const handleClose = () => {
     navigate("/projects")
     createProjectOpen(false)
+    setErrors([])
   };
 
   return (

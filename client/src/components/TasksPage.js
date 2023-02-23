@@ -25,6 +25,7 @@ const TasksPage = ({
   const handleClose = () => {
     navigate("/tasks")
     setOpen(false)
+    setErrors([])
   };
 
   return (

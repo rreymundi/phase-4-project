@@ -24,49 +24,6 @@ const Content = ({
     errors,
     setErrors
   }) => {
-
-
-  if (!user)
-    return (
-      <Box 
-        component='main'
-        sx={{
-            height: '100vh',
-            overflow: 'auto',
-            display: 'flex',
-            flexFlow: 'row nowrap',
-            overflowX: 'scroll'
-        }}
-        >
-        <Container>
-          <Routes>
-            <Route path='/' element={<Home user={user} />} />
-            <Route path='/login' element={
-              <LoginPage 
-                onLogin={onLogin}
-                errors={errors}
-                setErrors={setErrors} 
-                projects={projects}
-                setProjects={setProjects}
-              />} 
-            />
-            <Route path='/signup' element={
-              <SignupPage 
-                onLogin={onLogin} 
-                errors={errors}
-                setErrors={setErrors} 
-              />} 
-            />
-            <Route path='/projects/*' element={
-              <UnauthorizedPage errors={errors} setErrors={setErrors}/>} 
-            />
-            <Route path='/tasks/*' element={
-              <UnauthorizedPage errors={errors} setErrors={setErrors}/>} 
-            />
-          </Routes>
-        </Container>
-      </Box>
-    );
   
   return (
     <Box 
@@ -82,20 +39,36 @@ const Content = ({
       <Container>
         <Routes>
           <Route path='/' element={<Home user={user} />} />
-          <Route path='/login' element={<Home user={user} />} />
-          <Route path='/signup' element={<Home user={user} />} />
-          <Route path='/projects/*' element={
-            <ProjectsPage 
+          <Route path='/login' element={
+            <LoginPage 
+            onLogin={onLogin}
+            errors={errors}
+            setErrors={setErrors} 
+            projects={projects}
+            setProjects={setProjects}
+            />} 
+          />
+          <Route path='/signup' element={
+            <SignupPage 
+            onLogin={onLogin} 
+            errors={errors}
+            setErrors={setErrors} 
+            />} 
+          />
+          <Route path='/projects/*' element={user
+            ? <ProjectsPage 
               projects={projects} 
               onAddProject={onAddProject} 
               onDeleteProject={onDeleteProject} 
               onUpdateProject={onUpdateProject}
               errors={errors}
               setErrors={setErrors}  
-            />} 
+              />
+            : <UnauthorizedPage errors={errors} setErrors={setErrors}/>
+            } 
           />
-          <Route path='/tasks/*' element={
-            <TasksPage 
+          <Route path='/tasks/*' element={user
+            ? <TasksPage 
               user={user} 
               projects={projects} 
               tasks={tasks} 
@@ -104,7 +77,9 @@ const Content = ({
               onUpdateTask={onUpdateTask} 
               errors={errors}
               setErrors={setErrors}
-            />} 
+            />
+            : <UnauthorizedPage errors={errors} setErrors={setErrors}/>
+            } 
           />
         </Routes>
       </Container>
