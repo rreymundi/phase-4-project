@@ -57,6 +57,7 @@ const Content = ({
           />
           <Route path='/projects/*' element={user
             ? <ProjectsPage 
+              user={user} 
               projects={projects} 
               onAddProject={onAddProject} 
               onDeleteProject={onDeleteProject} 

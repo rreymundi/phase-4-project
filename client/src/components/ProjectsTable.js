@@ -10,6 +10,7 @@ import { Typography } from '@mui/material';
 import ProjectRow from './ProjectRow';
 
 const ProjectsTable = ({ 
+    user,
     projects, 
     onDeleteProject, 
     onUpdateProject,
@@ -20,6 +21,7 @@ const ProjectsTable = ({
   const projectRows = projects?.map((project) => 
     <ProjectRow 
       key={project.name} 
+      user={user}
       project={project} 
       onDeleteProject={onDeleteProject} 
       onUpdateProject={onUpdateProject}
@@ -33,8 +35,10 @@ const ProjectsTable = ({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell></TableCell>
-            <TableCell>
+            <TableCell align="left">
+              <Typography sx={{ fontWeight: 'bold' }}>Owner</Typography>
+            </TableCell>
+            <TableCell align="left">
               <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>
             </TableCell>
             <TableCell align="right">

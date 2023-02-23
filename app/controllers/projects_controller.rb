@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    # skip_before_action :authorized, only: [:index]
-    before_action :authorized
+    before_action :authorize
 
     def index
         projects = Project.all
@@ -30,12 +28,7 @@ class ProjectsController < ApplicationController
     private
 
     def project_params 
-        params.permit(:name, :description)
+        params.permit(:name, :description, :user_id)
     end
-
-    def render_unprocessable_entity(invalid)
-        render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    end
-
 
 end

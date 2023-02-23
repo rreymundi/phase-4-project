@@ -57,7 +57,7 @@ const EditProjectModal = ({
             .then((updatedProject) => onUpdateProject(updatedProject))
             handleClose()
           } else {
-            r.json().then((errorData) => setErrors(errorData.error))
+            r.json().then((errorData) => setErrors(errorData.errors))
           }
         })
       };
@@ -81,7 +81,6 @@ const EditProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
@@ -92,7 +91,6 @@ const EditProjectModal = ({
               </Grid>
               <Grid item>
                 <TextField 
-                  // required={ true } 
                   sx={{ maxWidth: 166 }} 
                   id="description" 
                   name="description" 
@@ -112,19 +110,18 @@ const EditProjectModal = ({
                   Update
                 </Button>
               </Grid>
-              <Grid item>
-                  {errors 
-                    ? errors.map((error,index) => 
-                        <Typography 
-                          key={index} 
-                          sx={{ color: 'red' }}
-                        >
-                        {error}.
-                        </Typography>
-                      )
-                    : null
+              {errors.length > 0  
+                ? errors.map((error,index) => 
+                    <Grid item key={index} >
+                      <Typography 
+                        sx={{ color: 'red' }}
+                      >
+                      {error}.
+                      </Typography>
+                    </Grid>
+                  )
+                : null
                   }
-              </Grid>
             </Grid>
           </Box>
         </Modal>

@@ -36,7 +36,7 @@ const SignupPage = ({ onLogin, errors, setErrors }) => {
         navigate("/")
         setErrors([])
       } else {
-        r.json().then((errorData) => setErrors(errorData.error))      
+        r.json().then((errorData) => setErrors(errorData.errors))      
       }
     })
   };

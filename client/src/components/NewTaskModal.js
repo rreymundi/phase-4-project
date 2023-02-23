@@ -68,7 +68,7 @@ const NewTaskModal = ({
             .then((newTask) => onAddTask(newTask))
             handleClose()
           } else {
-            r.json().then((errorData) => setErrors(errorData.error))
+            r.json().then((errorData) => setErrors(errorData.errors))
           }
         })
       };
@@ -158,7 +158,7 @@ const NewTaskModal = ({
                 </Button>
               </Grid>
               <Grid item>
-                  {errors 
+                  {errors.length > 0  
                     ? errors.map((error,index) => 
                         <Typography 
                           key={index} 

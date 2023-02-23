@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
@@ -11,6 +10,7 @@ import EditProjectModal from './EditProjectModal';
 import ProjectRoadmap from './ProjectRoadmap';
 
 const ProjectRow = ({ 
+    user,
     project, 
     onDeleteProject, 
     onUpdateProject,
@@ -43,7 +43,6 @@ const ProjectRow = ({
     setRoadmapOpen(false)
   };
 
-
   return (
     <TableRow
       sx={{ 
@@ -51,9 +50,7 @@ const ProjectRow = ({
       }}
       >
       <TableCell component="th" scope="row">
-        <Button>
-          <StarBorderIcon fontSize='small'/>
-        </Button>
+        <Typography>{project.user.username}</Typography>
       </TableCell>
       <TableCell component="th" scope="row">
         <Button 
@@ -66,23 +63,27 @@ const ProjectRow = ({
       <TableCell align="right">
         <Typography>{project.description}</Typography>
       </TableCell>
-      <TableCell align="right">
-        <Button 
-          component={ Link } 
-          to={`/projects/${project.id}/edit`} 
-          onClick={handleOpenProjectMenu} >
-          <MoreHorizIcon />
-        </Button>
-          <ProjectMenu 
-            anchorProjectMenu={anchorProjectMenu} 
-            handleCloseProjectMenu={handleCloseProjectMenu} 
-            handleOpenProjectMenu={handleOpenProjectMenu} 
-            project={project} 
-            onDeleteProject={onDeleteProject} 
-            handleOpenEditProjectModal={handleOpenEditProjectModal} 
-          />
-      </TableCell>
+      {user.id === project.user.id
+        ?  <TableCell align="right">
+            <Button 
+              component={ Link } 
+              to={`/projects/${project.id}/edit`} 
+              onClick={handleOpenProjectMenu} >
+              <MoreHorizIcon />
+            </Button>
+            <ProjectMenu 
+              anchorProjectMenu={anchorProjectMenu} 
+              handleCloseProjectMenu={handleCloseProjectMenu} 
+              handleOpenProjectMenu={handleOpenProjectMenu} 
+              project={project} 
+              onDeleteProject={onDeleteProject} 
+              handleOpenEditProjectModal={handleOpenEditProjectModal} 
+            />
+          </TableCell>
+        : <TableCell></TableCell>
+      }
       <EditProjectModal 
+        user={user}
         open={open} 
         handleClose={handleCloseEditProjectModal} 
         project={project} 

@@ -19,7 +19,7 @@ export default function App() {
         .then((r) => r.json())
         .then((r) => setProjects(r))
       } else {
-        r.json().then((errorData) => setErrors(errorData.error))
+        r.json().then((errorData) => setErrors(errorData.errors))
       }
     });
   }, []);
@@ -42,7 +42,9 @@ export default function App() {
 
   const handleDeleteProject = (deletedProject) => {
     const updatedProjects = projects.filter((project) => project.id !== deletedProject.id)
+    const updatedTasks = user.tasks.filter((task) => task.project.id !== deletedProject.id)
     setProjects(updatedProjects)
+    setCurrentUser({ ...user, tasks: updatedTasks })
   };
 
   const handleUpdateProject = (updatedProject) => {

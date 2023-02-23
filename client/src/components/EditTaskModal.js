@@ -70,7 +70,7 @@ const EditTaskModal = ({
             .then((updatedTask) => onUpdateTask(updatedTask))
             handleClose()
           } else {
-            r.json().then((errorData) => setErrors(errorData.error))
+            r.json().then((errorData) => setErrors(errorData.errors))
           }
         })
       };
@@ -174,20 +174,19 @@ const EditTaskModal = ({
               <Grid item>
                 <Button variant="contained" color="primary" type="submit" >Update</Button>
               </Grid>
-              <Grid item>
-                  {errors 
-                    ? errors.map((error,index) => 
+                {errors.length > 0  
+                  ? errors.map((error,index) => 
+                      <Grid item key={index} >
                         <Typography 
-                          key={index} 
                           sx={{ color: 'red' }}
                         >
                         {error}.
                         </Typography>
-                      )
-                    : null
-                  }
+                      </Grid>
+                    )
+                  : null
+                }
               </Grid>
-            </Grid>
           </Box>
         </Modal>
       )

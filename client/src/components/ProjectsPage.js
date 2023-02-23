@@ -5,7 +5,8 @@ import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 import NewProjectModal from './NewProjectModal';
 
-const ProjectsPage = ({ 
+const ProjectsPage = ({
+    user, 
     projects, 
     onAddProject, 
     onDeleteProject, 
@@ -42,6 +43,7 @@ const ProjectsPage = ({
         </Container>
         <Container>
           <ProjectsTable 
+            user={user}
             projects={projects} 
             onDeleteProject={onDeleteProject} 
             onUpdateProject={onUpdateProject} 
@@ -50,7 +52,8 @@ const ProjectsPage = ({
           />
           <Routes>
             <Route exact path='new' element={
-                <NewProjectModal 
+                <NewProjectModal
+                  user={user}  
                   open={open} 
                   handleClose={handleClose} 
                   onAddProject={onAddProject}

@@ -5,7 +5,8 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const NewProjectModal = ({ 
+const NewProjectModal = ({
+    user, 
     open, 
     handleClose, 
     onAddProject,
@@ -41,7 +42,8 @@ const NewProjectModal = ({
         e.preventDefault();
         const newProject = {
           name: formData.name,
-          description: formData.description
+          description: formData.description,
+          user_id: user.id,
           };
         fetch("/projects", {
           method: "POST",
@@ -60,7 +62,7 @@ const NewProjectModal = ({
             }))
             handleClose()
           } else {
-            r.json().then((errorData) => setErrors(errorData.error))
+            r.json().then((errorData) => setErrors(errorData.errors))
           }
         })
       };
@@ -115,8 +117,8 @@ const NewProjectModal = ({
                 </Button>
               </Grid>
               <Grid item>
-                  {errors 
-                    ? errors.map((error,index) => 
+                  {errors.length > 0  
+                    ? errors.map((error, index) => 
                         <Typography 
                           key={index} 
                           sx={{ color: 'red' }}
