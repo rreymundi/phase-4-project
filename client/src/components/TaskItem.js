@@ -9,6 +9,7 @@ const TaskItem = ({ task }) => {
       key={task.id} 
       sx={{ 
         mb: .5,
+        height: '8vw',
         '&:hover': {
           // transform: 'translateX(-2px) translateY(-2px)',
           backgroundColor: 'lightblue',

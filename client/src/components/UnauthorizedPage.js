@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
 import { Typography } from '@mui/material';
-import unauthorized from '../assets/unauthorized.jpg';
 
 const UnauthorizedPage = ({ errors, setErrors }) => {
 
@@ -14,17 +13,6 @@ const UnauthorizedPage = ({ errors, setErrors }) => {
         justifySelf: 'center' 
         }}
         >
-        <Container sx={{ 
-          opacity: 1, 
-          overflow: 'hidden', 
-          width: '1000px', 
-          height: '500px',
-          position: 'absolute',
-          transform: 'translate(8%, 15%)',
-          }}
-          >
-          <img sx={{ objectFit: 'cover'}} src={unauthorized} alt="collab home" />
-        </Container>
         <Container sx={{ 
           position: 'absolute', 
           textAlign: 'left' 

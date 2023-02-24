@@ -102,7 +102,10 @@ const EditTaskModal = ({
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
-                  variant="standard" 
+                  variant="standard"
+                  multiline 
+                  maxRows={2} 
+                  inputProps={{ maxLength: 30 }} 
                   placeholder="Name" 
                   value={formData.name} 
                   onChange={handleChange}/>
@@ -115,8 +118,8 @@ const EditTaskModal = ({
                   variant="standard" 
                   placeholder="Description" 
                   multiline 
-                  maxRows={3} 
-                  inputProps={{ maxLength: 50 }} 
+                  maxRows={4} 
+                  inputProps={{ maxLength: 60 }} 
                   value={formData.description} 
                   onChange={handleChange}/>
               </Grid>

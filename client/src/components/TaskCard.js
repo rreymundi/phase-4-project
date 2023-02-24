@@ -41,7 +41,7 @@ const TaskCard = ({
     <Card 
       sx={{ 
         minWidth: 275, 
-        height: "100%", 
+        height: '12vw', 
         display: "block", 
         position: "relative",
         '&:hover': {

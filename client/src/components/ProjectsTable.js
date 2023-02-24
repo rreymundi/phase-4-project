@@ -18,7 +18,19 @@ const ProjectsTable = ({
     setErrors 
   }) => {
 
-  const projectRows = projects?.map((project) => 
+  const sortedProjects = [...projects].sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+});
+
+  const projectRows = sortedProjects?.map((project) => 
     <ProjectRow 
       key={project.name} 
       user={user}
