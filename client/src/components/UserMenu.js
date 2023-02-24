@@ -48,7 +48,7 @@ const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserM
                   }, 
                 }}
                 >
-                <Typography>{user.username}</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>{user.username}</Typography>
               </MenuItem>
               <Divider />
               <MenuItem onClick={handleCloseUserMenu}>
