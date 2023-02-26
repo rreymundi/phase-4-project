@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
 import { Typography } from '@mui/material';
 
-const UnauthorizedPage = ({ errors, setErrors }) => {
+const UnauthorizedPage = () => {
+  const {errors, setErrors} = useContext(ErrorContext);
 
   return (
       <Container sx={{ 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/user';
+import { ErrorContext } from '../context/error';
 import { Link, useNavigate } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -10,13 +12,12 @@ import EditProjectModal from './EditProjectModal';
 import ProjectRoadmap from './ProjectRoadmap';
 
 const ProjectRow = ({ 
-    user,
     project, 
     onDeleteProject, 
     onUpdateProject,
-    errors,
-    setErrors 
   }) => {
+  const {user} = useContext(UserContext);
+  const {setErrors} = useContext(ErrorContext);
   const [anchorProjectMenu, setAnchorProjectMenu] = React.useState(null);
   const [open, setEditProjectOpen] = useState(false);
   const [roadmapOpen, setRoadmapOpen] = useState(false)
@@ -83,13 +84,10 @@ const ProjectRow = ({
         : <TableCell></TableCell>
       }
       <EditProjectModal 
-        user={user}
         open={open} 
         handleClose={handleCloseEditProjectModal} 
         project={project} 
         onUpdateProject={onUpdateProject}
-        errors={errors}
-        setErrors={setErrors}
       />
       <ProjectRoadmap 
         open={roadmapOpen} 

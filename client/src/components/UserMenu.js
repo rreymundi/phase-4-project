@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 import { useNavigate } from "react-router-dom";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,8 +9,14 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 
-const UserMenu = ({ onLogout, anchorElUser, handleCloseUserMenu, handleOpenUserMenu, user }) => {
-    
+const UserMenu = ({ 
+    onLogout, 
+    anchorElUser, 
+    handleCloseUserMenu, 
+    handleOpenUserMenu 
+  }) => {
+  const {user} = useContext(UserContext);
+
     const handleLogout = () => {
         navigate("/");
         fetch("/logout", {

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const SignupPage = ({ onLogin, errors, setErrors }) => {
+const SignupPage = ({ onLogin }) => {
+  const {errors, setErrors} = useContext(ErrorContext);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",

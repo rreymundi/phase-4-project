@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import { Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import NestedGrid from './NestedGrid';
@@ -7,26 +8,24 @@ import { Button } from '@mui/material';
 import NewTaskModal from './NewTaskModal';
 
 const TasksPage = ({ 
-    user, 
     tasks, 
     projects, 
     onAddTask, 
     onDeleteTask, 
     onUpdateTask,
-    errors,
-    setErrors 
   }) => {
-  const [open, setOpen] = useState(false);
- 
-  const handleOpen = () => setOpen(true);
+    const {setErrors} = useContext(ErrorContext);
+    const [open, setOpen] = useState(false);
   
-  let navigate = useNavigate();
- 
-  const handleClose = () => {
-    navigate("/tasks")
-    setOpen(false)
-    setErrors([])
-  };
+    const handleOpen = () => setOpen(true);
+    
+    let navigate = useNavigate();
+  
+    const handleClose = () => {
+      navigate("/tasks")
+      setOpen(false)
+      setErrors([])
+    };
 
   return (
     <Container>
@@ -45,24 +44,18 @@ const TasksPage = ({
       </Container>
       <Container>
         <NestedGrid 
-          user={user} 
           tasks={tasks} 
           onDeleteTask={onDeleteTask} 
           projects={projects} 
           onUpdateTask={onUpdateTask} 
-          errors={errors}
-          setErrors={setErrors}
         />
         <Routes>
           <Route exact path='new' element={
             <NewTaskModal 
-              user={user} 
               open={open} 
               projects={projects} 
               handleClose={handleClose} 
               onAddTask={onAddTask} 
-              errors={errors}
-              setErrors={setErrors}
             />} 
           />
         </Routes>

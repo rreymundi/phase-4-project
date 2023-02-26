@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/user';
+import { ErrorContext } from '../context/error';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,11 +14,12 @@ import UserMenu from './UserMenu';
 import { Container } from '@mui/system';
 
 const NavBar = ({ 
-  user, 
   onLogout,
-  errors,
-  setErrors 
   }) => {
+    
+  const {user} = useContext(UserContext);
+  const setErrors = useContext(ErrorContext);
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -65,7 +68,6 @@ const NavBar = ({
                   anchorElUser={anchorElUser} 
                   handleCloseUserMenu={handleCloseUserMenu} 
                   handleOpenUserMenu={handleOpenUserMenu} 
-                  user={user} 
                 />
               : <Button 
                   color="inherit" 

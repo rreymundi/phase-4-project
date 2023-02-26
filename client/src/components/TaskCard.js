@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import { Link, useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,32 +11,30 @@ import TaskMenu from './TaskMenu';
 import EditTaskModal from './EditTaskModal'
 
 const TaskCard = ({ 
-    user, 
     task, 
     projects, 
     onDeleteTask, 
     onUpdateTask,
-    errors,
-    setErrors 
   }) => {
-  const [anchorTaskMenu, setAnchorTaskMenu] = useState(null);
-  const [editTaskOpen, setEditTaskOpen] = useState(false);
+    const {setErrors} = useContext(ErrorContext);
+    const [anchorTaskMenu, setAnchorTaskMenu] = useState(null);
+    const [editTaskOpen, setEditTaskOpen] = useState(false);
 
-  let navigate = useNavigate();
+    let navigate = useNavigate();
 
-  const handleOpenEditTaskModal = () => setEditTaskOpen(true);
-  const handleCloseEditTaskModal = () => {
-    setErrors([])
-    navigate("/tasks")
-    setEditTaskOpen(false)
-  };
+    const handleOpenEditTaskModal = () => setEditTaskOpen(true);
+    const handleCloseEditTaskModal = () => {
+      setErrors([])
+      navigate("/tasks")
+      setEditTaskOpen(false)
+    };
 
-  const handleOpenTaskMenu = (event) => {
-    setAnchorTaskMenu(event.currentTarget);
-  };
-  const handleCloseTaskMenu = () => {
-    setAnchorTaskMenu(null);
-  };
+    const handleOpenTaskMenu = (event) => {
+      setAnchorTaskMenu(event.currentTarget);
+    };
+    const handleCloseTaskMenu = () => {
+      setAnchorTaskMenu(null);
+    };
 
   return (
     <Card 
@@ -82,14 +81,11 @@ const TaskCard = ({
         </Typography>
       </CardContent>
       <EditTaskModal 
-        user={user} 
         open={editTaskOpen} 
         handleClose={handleCloseEditTaskModal} 
         task={task} 
         projects={projects} 
         onUpdateTask={onUpdateTask}
-        errors={errors}
-        setErrors={setErrors} 
       />
     </Card>
   );

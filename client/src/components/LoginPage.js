@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { Box } from '@mui/material';
@@ -6,7 +7,9 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const LoginPage = ({ onLogin, errors, setErrors, projects, setProjects }) => {
+const LoginPage = ({ onLogin, projects, setProjects }) => {
+  const {errors, setErrors} = useContext(ErrorContext);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -61,7 +64,8 @@ const LoginPage = ({ onLogin, errors, setErrors, projects, setProjects }) => {
         spacing={2} 
         alignItems="center" 
         justify="center" 
-        direction="column" >
+        direction="column" 
+        >
         <Grid item>
           <Typography sx={{ fontWeight: 'bold' }}>Log in</Typography>
         </Grid>
@@ -92,7 +96,7 @@ const LoginPage = ({ onLogin, errors, setErrors, projects, setProjects }) => {
               Log in
             </Button>
         </Grid>
-        {errors.length > 0 
+        {errors 
           ? <Grid item>
               <Typography sx={{ color: 'red' }} >
                 {errors}.

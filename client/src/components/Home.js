@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 import { Container } from '@mui/system';
 import { Typography } from '@mui/material';
 import hero from '../assets/hero.jpg'
 
-const Home = ({ user }) => {
+const Home = () => {
+  const {user} = useContext(UserContext);
 
   return (
       <Container sx={{ 

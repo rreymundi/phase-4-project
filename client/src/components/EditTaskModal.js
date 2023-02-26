@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/user';
+import { ErrorContext } from '../context/error';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
@@ -10,15 +12,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
 const EditTaskModal = ({ 
-    user, 
     open, 
     handleClose, 
     task, 
     projects, 
     onUpdateTask,
-    errors,
-    setErrors
     }) => {
+      const {user} = useContext(UserContext);
+      const {errors, setErrors} = useContext(ErrorContext);
 
     const style = {
         position: 'absolute',

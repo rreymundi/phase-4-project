@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ErrorContext } from '../context/error';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
@@ -10,57 +11,56 @@ const EditProjectModal = ({
     handleClose, 
     project, 
     onUpdateProject,
-    errors,
-    setErrors 
     }) => {
+      const {errors, setErrors} = useContext(ErrorContext);
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        boxShadow: 24,
-        p: 4,
-        display: 'flex'
-      };
+      const style = {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'background.paper',
+          boxShadow: 24,
+          p: 4,
+          display: 'flex'
+        };
 
-      const [formData, setFormData] = useState({
-        name: project.name,
-        description: project.description,
-      });
+        const [formData, setFormData] = useState({
+          name: project.name,
+          description: project.description,
+        });
 
-      const handleChange = (e) => {
-        setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
-        })
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const newProjectData = {
-          name: formData.name,
-          description: formData.description
-          };
-        fetch(`/projects/${project.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-type": "application/json"
-          },
-          body: JSON.stringify(newProjectData)
-        })
-        .then((r) => {
-          if (r.ok) {
-            r.json()
-            .then((updatedProject) => onUpdateProject(updatedProject))
-            handleClose()
-          } else {
-            r.json().then((errorData) => setErrors(errorData.errors))
-          }
-        })
-      };
+        const handleChange = (e) => {
+          setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+          })
+        };
+      
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          const newProjectData = {
+            name: formData.name,
+            description: formData.description
+            };
+          fetch(`/projects/${project.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(newProjectData)
+          })
+          .then((r) => {
+            if (r.ok) {
+              r.json()
+              .then((updatedProject) => onUpdateProject(updatedProject))
+              handleClose()
+            } else {
+              r.json().then((errorData) => setErrors(errorData.errors))
+            }
+          })
+        };
 
     return (
         <Modal

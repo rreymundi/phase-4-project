@@ -4,13 +4,10 @@ import Grid from '@mui/material/Grid';
 import TaskCard from './TaskCard';
 
 const NestedGrid = ({ 
-    user, 
     tasks, 
     projects, 
     onDeleteTask, 
     onUpdateTask,
-    errors,
-    setErrors 
   }) => {
 
 
@@ -29,13 +26,10 @@ const NestedGrid = ({
   const renderedTasks = sortedTasks?.map((task) => 
     <Grid item xs={4} key={task.id} >
       <TaskCard 
-        user={user} 
         task={task} 
         onDeleteTask={onDeleteTask} 
         projects={projects} 
         onUpdateTask={onUpdateTask}
-        errors={errors}
-        setErrors={setErrors} 
       />
     </Grid>
   );

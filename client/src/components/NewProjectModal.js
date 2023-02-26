@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/user';
+import { ErrorContext } from '../context/error';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
@@ -6,13 +8,12 @@ import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
 const NewProjectModal = ({
-    user, 
     open, 
     handleClose, 
     onAddProject,
-    errors,
-    setErrors
   }) => {
+    const {user} = useContext(UserContext);
+    const {errors, setErrors} = useContext(ErrorContext);
 
     const style = {
         position: 'absolute',

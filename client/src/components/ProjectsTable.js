@@ -10,12 +10,9 @@ import { Typography } from '@mui/material';
 import ProjectRow from './ProjectRow';
 
 const ProjectsTable = ({ 
-    user,
     projects, 
     onDeleteProject, 
     onUpdateProject,
-    errors,
-    setErrors 
   }) => {
 
   const sortedProjects = [...projects].sort((a, b) => {
@@ -28,17 +25,14 @@ const ProjectsTable = ({
       return 1;
     }
     return 0;
-});
+  });
 
   const projectRows = sortedProjects?.map((project) => 
     <ProjectRow 
       key={project.name} 
-      user={user}
       project={project} 
       onDeleteProject={onDeleteProject} 
       onUpdateProject={onUpdateProject}
-      errors={errors}
-      setErrors={setErrors} 
     />
   );
 
@@ -65,6 +59,6 @@ const ProjectsTable = ({
       </Table>
     </TableContainer>
   );
-}
+};
 
 export default ProjectsTable;
