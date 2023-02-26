@@ -19,7 +19,7 @@ const Home = () => {
           opacity: 1, 
           overflow: 'hidden', 
           width: '1000px', 
-          height: '600px' 
+          height: '600px'
           }}
           >
           <img sx={{ objectFit: 'cover' }} src={hero} alt="collab home" />

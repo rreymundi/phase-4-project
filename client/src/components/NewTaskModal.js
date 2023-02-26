@@ -159,7 +159,7 @@ const NewTaskModal = ({
                 </Button>
               </Grid>
               <Grid item>
-                  {errors.length > 0  
+                  {errors  
                     ? errors.map((error,index) => 
                         <Typography 
                           key={index} 

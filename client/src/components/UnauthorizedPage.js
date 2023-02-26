@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
-import { ErrorContext } from '../context/error';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
 import { Typography } from '@mui/material';
 
 const UnauthorizedPage = () => {
-  const {errors, setErrors} = useContext(ErrorContext);
 
   return (
       <Container sx={{ 
@@ -26,16 +24,16 @@ const UnauthorizedPage = () => {
             textShadow: '2px 2px 6px lightgrey' 
             }}
             >
-            {errors}
+            Hold up!
           </Typography>
           <Typography variant='h5' sx={{ 
               width: '100%', 
               textShadow: '2px 2px 6px lightgrey' 
               }} 
               >
-              <Link to="/login" underline="none" onClick={() => setErrors([])}>Log in</Link>
+              <Link to="/login" underline="none">Log in</Link>
               &nbsp;or&nbsp;
-              <Link to="/signup" underline="none" onClick={() => setErrors([])}>sign up</Link>
+              <Link to="/signup" underline="none">sign up</Link>
               &nbsp;to access this page.
             </Typography>
         </Container>

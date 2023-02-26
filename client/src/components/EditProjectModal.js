@@ -84,7 +84,10 @@ const EditProjectModal = ({
                   sx={{ maxWidth: 166 }} 
                   id="name" 
                   name="name" 
-                  variant="standard" 
+                  variant="standard"
+                  multiline 
+                  maxRows={2} 
+                  inputProps={{ maxLength: 30 }} 
                   placeholder="Name" 
                   value={formData.name} 
                   onChange={handleChange}/>
@@ -110,7 +113,7 @@ const EditProjectModal = ({
                   Update
                 </Button>
               </Grid>
-              {errors.length > 0  
+              {errors 
                 ? errors.map((error,index) => 
                     <Grid item key={index} >
                       <Typography 

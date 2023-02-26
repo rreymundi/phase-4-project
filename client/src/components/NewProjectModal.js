@@ -91,6 +91,9 @@ const NewProjectModal = ({
                   id="name" 
                   name="name" 
                   variant="standard" 
+                  multiline 
+                  maxRows={2} 
+                  inputProps={{ maxLength: 30 }} 
                   placeholder="Name" 
                   value={formData.name} 
                   onChange={handleChange}
@@ -118,7 +121,7 @@ const NewProjectModal = ({
                 </Button>
               </Grid>
               <Grid item>
-                  {errors.length > 0  
+                  {errors  
                     ? errors.map((error, index) => 
                         <Typography 
                           key={index} 

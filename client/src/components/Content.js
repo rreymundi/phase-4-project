@@ -27,9 +27,7 @@ const Content = () => {
           fetch('/projects')
           .then((r) => r.json())
           .then((r) => setProjects(r))
-        } else {
-          r.json().then((errorData) => setErrors(errorData.errors))
-        }
+        } 
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -137,7 +135,8 @@ const Content = () => {
             overflow: 'auto',
             display: 'flex',
             flexFlow: 'row nowrap',
-            overflowX: 'scroll'
+            overflowX: 'scroll',
+            paddingBottom: '48px'
         }}
         >
         <Container>
@@ -157,6 +156,7 @@ const Content = () => {
             />
             <Route path='/projects/*' element={user
               ? <ProjectsPage 
+                projects={projects}
                 onAddProject={handleAddProject} 
                 onDeleteProject={handleDeleteProject} 
                 onUpdateProject={handleUpdateProject}

@@ -18,8 +18,8 @@ const EditTaskModal = ({
     projects, 
     onUpdateTask,
     }) => {
-      const {user} = useContext(UserContext);
-      const {errors, setErrors} = useContext(ErrorContext);
+    const {user} = useContext(UserContext);
+    const {errors, setErrors} = useContext(ErrorContext);
 
     const style = {
         position: 'absolute',
@@ -178,7 +178,7 @@ const EditTaskModal = ({
               <Grid item>
                 <Button variant="contained" color="primary" type="submit" >Update</Button>
               </Grid>
-                {errors.length > 0  
+                {errors
                   ? errors.map((error,index) => 
                       <Grid item key={index} >
                         <Typography 
