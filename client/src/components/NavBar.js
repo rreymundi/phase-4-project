@@ -18,7 +18,7 @@ const NavBar = ({
   }) => {
     
   const {user} = useContext(UserContext);
-  const setErrors = useContext(ErrorContext);
+  const {setErrors} = useContext(ErrorContext);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

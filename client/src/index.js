@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from "./context/user";
+import { ErrorProvider } from "./context/error";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </ErrorProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
