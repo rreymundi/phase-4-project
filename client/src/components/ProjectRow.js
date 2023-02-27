@@ -65,30 +65,32 @@ const ProjectRow = ({
         <Typography>{project.description}</Typography>
       </TableCell>
       {user.id === project.user.id
-        ?  <TableCell align="right">
-            <Button 
-              component={ Link } 
-              to={`/projects/${project.id}/edit`} 
-              onClick={handleOpenProjectMenu} >
-              <MoreHorizIcon />
-            </Button>
-            <ProjectMenu 
-              anchorProjectMenu={anchorProjectMenu} 
-              handleCloseProjectMenu={handleCloseProjectMenu} 
-              handleOpenProjectMenu={handleOpenProjectMenu} 
+        ?  <React.Fragment>
+            <TableCell align="right">
+              <Button 
+                component={ Link } 
+                to={`/projects/${project.id}/edit`} 
+                onClick={handleOpenProjectMenu} >
+                <MoreHorizIcon />
+              </Button>
+              <ProjectMenu 
+                anchorProjectMenu={anchorProjectMenu} 
+                handleCloseProjectMenu={handleCloseProjectMenu} 
+                handleOpenProjectMenu={handleOpenProjectMenu} 
+                project={project} 
+                onDeleteProject={onDeleteProject} 
+                handleOpenEditProjectModal={handleOpenEditProjectModal} 
+              />
+            </TableCell>
+            <EditProjectModal 
+              open={open} 
+              handleClose={handleCloseEditProjectModal} 
               project={project} 
-              onDeleteProject={onDeleteProject} 
-              handleOpenEditProjectModal={handleOpenEditProjectModal} 
+              onUpdateProject={onUpdateProject}
             />
-          </TableCell>
+          </React.Fragment>
         : <TableCell></TableCell>
       }
-      <EditProjectModal 
-        open={open} 
-        handleClose={handleCloseEditProjectModal} 
-        project={project} 
-        onUpdateProject={onUpdateProject}
-      />
       <ProjectRoadmap 
         open={roadmapOpen} 
         project={project} 
