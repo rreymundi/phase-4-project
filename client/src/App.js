@@ -31,9 +31,11 @@ export default function App() {
 
     const handleLogin = (loggedInUser) => {
         setCurrentUser(loggedInUser)
+        setProjects(loggedInUser.projects)
+        setTasks(loggedInUser.tasks)
         setErrors([])
       };
-      
+      console.log(user)
       const handleLogout = () => {
         setCurrentUser(null)
         setErrors([])
@@ -67,7 +69,6 @@ export default function App() {
       };
       
       const handleAddTask = (newTask) => {
-        // setCurrentUser({ ...user, tasks: [ ...user.tasks, newTask] })
         // const updatedProjects = projects.map((project) => {
         //   if (project.id === newTask.project_id) {
         //     project.tasks.push(newTask)
