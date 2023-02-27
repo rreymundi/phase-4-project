@@ -26,7 +26,7 @@ const ProjectsPage = ({
     };
 
     return (
-      <Container>
+      <Container sx={{ paddingBottom: '48px'}}>
           <Container sx={{ marginTop: '48px' }} >
             <h1>PROJECTS</h1>
           </Container>

@@ -12,7 +12,8 @@ const Home = () => {
         position: 'relative', 
         color: '#1976d2', 
         marginTop: '48px', 
-        justifySelf: 'center' 
+        justifySelf: 'center',
+        paddingBottom: '48px' 
         }}
         >
         <Container sx={{ 

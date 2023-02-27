@@ -32,8 +32,7 @@ const Content = ({
             overflow: 'auto',
             display: 'flex',
             flexFlow: 'row nowrap',
-            overflowX: 'scroll',
-            paddingBottom: '48px'
+            overflowX: 'scroll'
         }}
         >
         <Container>

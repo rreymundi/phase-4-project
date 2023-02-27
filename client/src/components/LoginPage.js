@@ -99,7 +99,7 @@ const LoginPage = ({ onLogin, projects, setProjects }) => {
         {errors 
           ? <Grid item>
               <Typography sx={{ color: 'red' }} >
-                {errors}.
+                {errors}
               </Typography> 
             </Grid>
           : null

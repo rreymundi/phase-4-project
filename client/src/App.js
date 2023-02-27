@@ -11,7 +11,7 @@ export default function App() {
   const {user, setCurrentUser} = useContext(UserContext);
   const {setErrors} = useContext(ErrorContext);
   const [projects, setProjects] = useState([]);
-
+  
     useEffect(() => {
       fetch('/auth')
       .then(r => {
@@ -25,7 +25,7 @@ export default function App() {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
       const handleLogin = (loggedInUser) => {
         setCurrentUser(loggedInUser)
         setErrors([])
@@ -122,17 +122,17 @@ export default function App() {
   return (
     <Router>
       <NavBar onLogout={handleLogout} />
-          <Content
-            projects={projects}
-            setProjects={setProjects}
-            onLogin={handleLogin} 
-            onAddProject={handleAddProject}
-            onDeleteProject={handleDeleteProject}
-            onUpdateProject={handleUpdateProject}
-            onAddTask={handleAddTask}
-            onDeleteTask={handleDeleteTask}
-            onUpdateTask={handleUpdateTask}
-          /> 
+      <Content
+        projects={projects}
+        setProjects={setProjects}
+        onLogin={handleLogin} 
+        onAddProject={handleAddProject}
+        onDeleteProject={handleDeleteProject}
+        onUpdateProject={handleUpdateProject}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        onUpdateTask={handleUpdateTask}
+      /> 
       <Footer />
     </Router>
   )
