@@ -53,8 +53,16 @@ export default function App() {
         const updatedProjects = projects.map((project) => 
         project.id === updatedProject.id ? updatedProject : project
         )
-        // working here!
+        const updatedTasks = user.tasks.map((task) => {
+          if (task.project.id === updatedProject.id) {
+            task.project = updatedProject
+            return task
+          } else {
+            return task
+          }
+        })
         setProjects(updatedProjects)
+        setTasks(updatedTasks)
         setErrors([])
       };
       
