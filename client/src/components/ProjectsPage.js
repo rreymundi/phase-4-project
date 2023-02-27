@@ -14,7 +14,6 @@ const ProjectsPage = ({
   }) => {
     const {setErrors} = useContext(ErrorContext);
     const [open, createProjectOpen] = useState(false);
-  
     const handleOpen = () => createProjectOpen(true);
   
     let navigate = useNavigate();

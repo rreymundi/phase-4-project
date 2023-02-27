@@ -12,7 +12,7 @@ import UnauthorizedPage from './UnauthorizedPage';
 
 const Content = ({
   projects,
-  setProjects,
+  tasks,
   onLogin,
   onAddProject,
   onDeleteProject,
@@ -23,7 +23,7 @@ const Content = ({
   }) => {
     
   const {user} = useContext(UserContext);
-  
+
   return (
       <Box 
         component='main'
@@ -41,8 +41,6 @@ const Content = ({
             <Route path='/login' element={
               <LoginPage 
                 onLogin={onLogin}
-                projects={projects}
-                setProjects={setProjects}
               />} 
             />
             <Route path='/signup' element={
@@ -62,8 +60,8 @@ const Content = ({
             />
             <Route path='/tasks/*' element={user
               ? <TasksPage 
-                projects={projects} 
-                tasks={user.tasks} 
+                tasks={tasks} 
+                projects={projects}
                 onAddTask={onAddTask}
                 onDeleteTask={onDeleteTask} 
                 onUpdateTask={onUpdateTask} 

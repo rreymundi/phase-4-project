@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../context/user';
 import { ErrorContext } from '../context/error';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -12,7 +11,6 @@ const NewProjectModal = ({
     handleClose, 
     onAddProject,
   }) => {
-    const {user} = useContext(UserContext);
     const {errors, setErrors} = useContext(ErrorContext);
 
     const style = {
@@ -44,7 +42,6 @@ const NewProjectModal = ({
         const newProject = {
           name: formData.name,
           description: formData.description,
-          user_id: user.id,
           };
         fetch("/projects", {
           method: "POST",

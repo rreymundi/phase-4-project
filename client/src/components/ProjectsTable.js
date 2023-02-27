@@ -29,7 +29,7 @@ const ProjectsTable = ({
 
   const projectRows = sortedProjects?.map((project) => 
     <ProjectRow 
-      key={project.name} 
+      key={project.id} 
       project={project} 
       onDeleteProject={onDeleteProject} 
       onUpdateProject={onUpdateProject}

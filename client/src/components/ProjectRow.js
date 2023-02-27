@@ -51,7 +51,7 @@ const ProjectRow = ({
       }}
       >
       <TableCell component="th" scope="row">
-        <Typography>{project.user.username}</Typography>
+        <Typography>{user.username}</Typography>
       </TableCell>
       <TableCell component="th" scope="row">
         <Button 
@@ -64,33 +64,29 @@ const ProjectRow = ({
       <TableCell align="right">
         <Typography>{project.description}</Typography>
       </TableCell>
-      {user.id === project.user.id
-        ?  <React.Fragment>
-            <TableCell align="right">
-              <Button 
-                component={ Link } 
-                to={`/projects/${project.id}/edit`} 
-                onClick={handleOpenProjectMenu} >
-                <MoreHorizIcon />
-              </Button>
-              <ProjectMenu 
-                anchorProjectMenu={anchorProjectMenu} 
-                handleCloseProjectMenu={handleCloseProjectMenu} 
-                handleOpenProjectMenu={handleOpenProjectMenu} 
-                project={project} 
-                onDeleteProject={onDeleteProject} 
-                handleOpenEditProjectModal={handleOpenEditProjectModal} 
-              />
-            </TableCell>
-            <EditProjectModal 
-              open={open} 
-              handleClose={handleCloseEditProjectModal} 
-              project={project} 
-              onUpdateProject={onUpdateProject}
-            />
-          </React.Fragment>
-        : <TableCell></TableCell>
-      }
+      <TableCell align="right">
+        <Button 
+          component={ Link } 
+          to={`/projects/${project.id}/edit`} 
+          onClick={handleOpenProjectMenu} >
+          <MoreHorizIcon />
+        </Button>
+        <ProjectMenu 
+          anchorProjectMenu={anchorProjectMenu} 
+          handleCloseProjectMenu={handleCloseProjectMenu} 
+          handleOpenProjectMenu={handleOpenProjectMenu} 
+          project={project} 
+          onDeleteProject={onDeleteProject} 
+          handleOpenEditProjectModal={handleOpenEditProjectModal} 
+        />
+      </TableCell>
+      <EditProjectModal 
+        open={open} 
+        handleClose={handleCloseEditProjectModal} 
+        project={project} 
+        onUpdateProject={onUpdateProject}
+      />
+      <TableCell></TableCell>
       <ProjectRoadmap 
         open={roadmapOpen} 
         project={project} 
