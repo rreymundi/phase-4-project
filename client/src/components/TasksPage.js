@@ -9,7 +9,7 @@ import NewTaskModal from './NewTaskModal';
 
 const TasksPage = ({ 
     tasks, 
-    projects, 
+    allProjects, 
     onAddTask, 
     onDeleteTask, 
     onUpdateTask,
@@ -46,14 +46,14 @@ const TasksPage = ({
         <NestedGrid 
           tasks={tasks} 
           onDeleteTask={onDeleteTask} 
-          projects={projects} 
+          projects={allProjects} 
           onUpdateTask={onUpdateTask} 
         />
         <Routes>
           <Route exact path='new' element={
             <NewTaskModal 
               open={open} 
-              projects={projects} 
+              projects={allProjects} 
               handleClose={handleClose} 
               onAddTask={onAddTask} 
             />} 

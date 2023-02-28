@@ -13,6 +13,7 @@ export default function App() {
 
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
 
     useEffect(() => {
       fetch('/auth')
@@ -21,11 +22,12 @@ export default function App() {
           r.json()
           .then((user) => {
             setCurrentUser(user)
+            setProjects(user.projects)
             setTasks(user.tasks)
           })
           fetch('/projects')
           .then((r) => r.json())
-          .then((r) => setProjects(r))
+          .then((r) => setAllProjects(r))
         } else {
           r.json().then((errorData) => setErrors(errorData.errors))
         }
@@ -35,6 +37,7 @@ export default function App() {
 
     const handleLogin = (loggedInUser) => {
         setCurrentUser(loggedInUser)
+        setProjects(loggedInUser.projects)
         setTasks(loggedInUser.tasks)
         setErrors([])
       };
@@ -137,6 +140,8 @@ export default function App() {
         setProjects={setProjects}
         tasks={tasks}
         setTasks={setTasks}
+        allProjects={allProjects}
+        setAllProjects={setAllProjects}
         onLogin={handleLogin} 
         onAddProject={handleAddProject}
         onDeleteProject={handleDeleteProject}

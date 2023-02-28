@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-const LoginPage = ({ onLogin, setProjects}) => {
+const LoginPage = ({ onLogin, setAllProjects}) => {
   const {errors, setErrors} = useContext(ErrorContext);
 
   const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ const LoginPage = ({ onLogin, setProjects}) => {
         r.json().then((user) => onLogin(user))
         fetch('/projects')
         .then((r) => r.json())
-        .then((r) => setProjects(r))
+        .then((r) => setAllProjects(r))
         navigate("/")
       } else {
           r.json().then((errorData) => setErrors(errorData.error))

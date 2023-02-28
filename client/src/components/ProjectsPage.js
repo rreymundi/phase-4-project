@@ -27,7 +27,7 @@ const ProjectsPage = ({
     return (
       <Container sx={{ paddingBottom: '48px'}}>
           <Container sx={{ marginTop: '48px' }} >
-            <h1>PROJECTS</h1>
+            <h1>MY PROJECTS</h1>
           </Container>
           <Container sx={{ mb: 2, textAlign: 'right' }}>
             <Button 

@@ -14,6 +14,8 @@ const Content = ({
   projects,
   setProjects,
   tasks,
+  allProjects,
+  setAllProjects,
   onLogin,
   onAddProject,
   onDeleteProject,
@@ -42,7 +44,7 @@ const Content = ({
             <Route path='/login' element={
               <LoginPage 
                 onLogin={onLogin}
-                setProjects={setProjects}
+                setAllProjects={setAllProjects}
               />} 
             />
             <Route path='/signup' element={
@@ -63,7 +65,7 @@ const Content = ({
             <Route path='/tasks/*' element={user
               ? <TasksPage 
                 tasks={tasks} 
-                projects={projects}
+                allProjects={allProjects}
                 onAddTask={onAddTask}
                 onDeleteTask={onDeleteTask} 
                 onUpdateTask={onUpdateTask} 

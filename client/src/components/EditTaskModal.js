@@ -15,7 +15,7 @@ const EditTaskModal = ({
     open, 
     handleClose, 
     task, 
-    // projects, 
+    projects, 
     onUpdateTask,
     }) => {
     const {user} = useContext(UserContext);
@@ -37,7 +37,7 @@ const EditTaskModal = ({
         name: task.name,
         description: task.description,
         priority: task.priority,
-        // project: task.project.id,
+        project: task.project.id,
         status: task.status
       });
 
@@ -54,7 +54,7 @@ const EditTaskModal = ({
           name: formData.name,
           description: formData.description,
           priority: formData.priority,
-          project_id: task.project.id,
+          project_id: formData.project,
           user_id: user.id,
           status: formData.status
           };
@@ -76,9 +76,9 @@ const EditTaskModal = ({
         })
       };
 
-      // const renderedProjects = projects?.map((project) => 
-      //   <MenuItem key={project.id} value={project.id}>{project.name}</MenuItem>
-      //   );
+      const renderedProjects = projects?.map((project) => 
+        <MenuItem key={project.id} value={project.id}>{project.name}</MenuItem>
+        );
 
     return (
         <Modal
@@ -141,7 +141,7 @@ const EditTaskModal = ({
                   </Select>
                 </FormControl>
               </Grid>
-              {/*<Grid item>
+              <Grid item>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="project">Project</InputLabel>
                   <Select
@@ -155,7 +155,7 @@ const EditTaskModal = ({
                     {renderedProjects}
                   </Select>
                 </FormControl>
-              </Grid>*/}
+              </Grid>
               <Grid item>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
                   <InputLabel id="status">Status</InputLabel>
