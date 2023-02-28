@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :authorize, only: [:create, :index]
   
   def index
-    projects = User.all
-    render json: projects, status: :ok
+    users = User.all
+    render json: users, status: :ok
   end
 
   # signing up

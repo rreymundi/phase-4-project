@@ -51,7 +51,6 @@ const ProjectRow = ({
       }}
       >
       <TableCell component="th" scope="row">
-        <Typography>{user.username}</Typography>
       </TableCell>
       <TableCell component="th" scope="row">
         <Button 
@@ -86,7 +85,6 @@ const ProjectRow = ({
         project={project} 
         onUpdateProject={onUpdateProject}
       />
-      <TableCell></TableCell>
       <ProjectRoadmap 
         open={roadmapOpen} 
         project={project} 

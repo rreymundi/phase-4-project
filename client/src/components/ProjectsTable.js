@@ -27,6 +27,7 @@ const ProjectsTable = ({
     return 0;
   });
 
+
   const projectRows = sortedProjects?.map((project) => 
     <ProjectRow 
       key={project.id} 
@@ -42,7 +43,6 @@ const ProjectsTable = ({
         <TableHead>
           <TableRow>
             <TableCell align="left">
-              <Typography sx={{ fontWeight: 'bold' }}>Owner</Typography>
             </TableCell>
             <TableCell align="left">
               <Typography sx={{ fontWeight: 'bold' }}>Name</Typography>

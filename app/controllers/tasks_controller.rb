@@ -1,5 +1,10 @@
 class TasksController < ApplicationController
-    before_action :authorize
+    skip_before_action :authorize
+
+    def index
+        tasks = Task.all
+        render json: tasks, status: :ok
+    end
 
     def update
         task = Task.find(params[:id])

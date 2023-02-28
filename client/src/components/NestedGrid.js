@@ -11,7 +11,7 @@ const NestedGrid = ({
   }) => {
 
 
-  const sortedTasks = [...tasks].sort((a, b) => {
+  const sortedTasks = tasks?.sort((a, b) => {
     const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
     if (nameA < nameB) {

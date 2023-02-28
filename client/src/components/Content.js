@@ -12,6 +12,7 @@ import UnauthorizedPage from './UnauthorizedPage';
 
 const Content = ({
   projects,
+  setProjects,
   tasks,
   onLogin,
   onAddProject,
@@ -41,6 +42,7 @@ const Content = ({
             <Route path='/login' element={
               <LoginPage 
                 onLogin={onLogin}
+                setProjects={setProjects}
               />} 
             />
             <Route path='/signup' element={
