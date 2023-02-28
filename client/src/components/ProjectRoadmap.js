@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 import TaskList from './TaskList';
 
 const ProjectRoadmap = ({ project, tasks, open, handleClose }) => {
-
+    console.log(project)
     const cardStatus = [
         "New", 
         "Investigating", 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Typography, CardContent } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
 
 const TaskItem = ({ task }) => {
 
@@ -20,7 +19,6 @@ const TaskItem = ({ task }) => {
       }}
       >
         <CardContent>
-        <Avatar sx={{ float: 'right', mb: .5, height: '18px', width: '18px'}} alt={task.user.username} src={task.user.image} />
         <Typography sx={{ mb: .5, fontSize: 11 }} color="text.secondary" >
         {task.priority} priority
         </Typography>

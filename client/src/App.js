@@ -35,7 +35,7 @@ export default function App() {
         setTasks(loggedInUser.tasks)
         setErrors([])
       };
-      console.log(user)
+
       const handleLogout = () => {
         setCurrentUser(null)
         setErrors([])
@@ -122,8 +122,8 @@ export default function App() {
         setTasks(updatedTasks)
         setErrors([])
       };  
-      console.log(projects)
-
+      console.log(user)
+      
   return (
     <Router>
       <NavBar onLogout={handleLogout} />

@@ -6,7 +6,7 @@ import {List} from '@mui/material';
 
 const TaskList = ({ status, tasks }) => {
 
-    const renderedTasks = tasks.map((task) => 
+    const renderedTasks = tasks?.map((task) => 
         task.status === status.toLowerCase()
         ? <TaskItem key={task.id} task={task} /> 
         : null
