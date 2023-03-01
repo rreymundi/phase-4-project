@@ -36,7 +36,7 @@ const TaskCard = ({
       setAnchorTaskMenu(null);
     };
 
-  return (
+    return (
     <Card 
       sx={{ 
         minWidth: 275, 

@@ -76,27 +76,35 @@ export default function App() {
         setTasks(updatedTasks)
         setErrors([])
       };
-      
+
       const handleAddTask = (newTask) => {
-        const updatedProjects = projects.map((project) => {
-          if (project.id === newTask.project_id) {
-            project.tasks.push(newTask)
-            return project
-          } else {
-            return project
-          }
-        })
-        setProjects(updatedProjects)
-        setTasks([...tasks, newTask])
-        setErrors([])
-      };
-    
+        if (projects.length < 1) {
+          const projectToUpdate = allProjects.find((project) => 
+          project.id === newTask.project.id
+          )
+          const updatedProject = {...projectToUpdate, tasks: [...projectToUpdate.tasks, newTask]}
+          const updatedProjects = [...projects, updatedProject]
+          setProjects(updatedProjects)
+        } else {
+          const projectToUpdate = projects.find((project) => 
+          project.id === newTask.project.id
+          );
+          const updatedProject = {...projectToUpdate, tasks: [...projectToUpdate.tasks, newTask]}
+          const updatedProjects = projects.map((project) => 
+          project.id === updatedProject.id ? updatedProject : project
+          )
+          setProjects(updatedProjects)
+        }
+          setTasks([...tasks, newTask])
+          setErrors([])
+        };
+            
       const handleDeleteTask = (deletedTask) => {
         const updatedTasks = tasks.filter((task) => 
           task.id !== deletedTask.id
-          )
+          );
         const updatedProjects = projects.map((project) => {
-          if (project.id === deletedTask.project_id) {
+          if (project.id === deletedTask.project.id) {
             const updatedProjectTasks = project.tasks.filter((task) =>
             task.id !== deletedTask.id
             )
@@ -105,7 +113,7 @@ export default function App() {
           } else {
             return project
           }
-        })
+        });
         setTasks(updatedTasks)
         setProjects(updatedProjects)
       };
@@ -115,7 +123,7 @@ export default function App() {
           task.id === updatedTask.id ? updatedTask : task
         );
         const updatedProjects = projects.map((project) => {
-          if (project.id === updatedTask.project_id) {
+          if (project.id === updatedTask.project.id) {
             const updatedProjectTasks = project.tasks.map((task) =>
             task.id === updatedTask.id ? updatedTask : task
             )
@@ -124,14 +132,12 @@ export default function App() {
           } else {
             return project
           }
-        })
+        });
         setTasks(updatedTasks)
         setProjects(updatedProjects)
         setErrors([])
       };  
       
-      console.log(user)
-
   return (
     <Router>
       <NavBar onLogout={handleLogout} />

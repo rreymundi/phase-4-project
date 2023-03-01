@@ -25,19 +25,19 @@ const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
         >
         <List>
           <ListItem disablePadding>
-            <ListItemButton component={ Link } to='/projects'>
-              <ListItemIcon>
-                <ListIcon />
-              </ListItemIcon>
-              <ListItemText>Projects</ListItemText>
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
             <ListItemButton component={ Link } to='/tasks'>
               <ListItemIcon>
                 <TaskAltIcon />
               </ListItemIcon>
-              <ListItemText>My tasks</ListItemText>
+              <ListItemText>My Tasks</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={ Link } to='/projects'>
+              <ListItemIcon>
+                <ListIcon />
+              </ListItemIcon>
+              <ListItemText>My Projects</ListItemText>
             </ListItemButton>
           </ListItem>
         </List>
