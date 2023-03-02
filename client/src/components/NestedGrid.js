@@ -1,29 +1,30 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TaskCard from './TaskCard';
 
 const NestedGrid = ({ 
-    tasks, 
     projects, 
     onDeleteTask, 
     onUpdateTask,
   }) => {
 
+  const {user} = useContext(UserContext);
 
-  const sortedTasks = tasks?.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
+  // const sortedTasks = user.tasks.sort((a, b) => {
+  //   const nameA = a.name.toUpperCase();
+  //   const nameB = b.name.toUpperCase();
+  //   if (nameA < nameB) {
+  //     return -1;
+  //   }
+  //   if (nameA > nameB) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
 
-  const renderedTasks = sortedTasks?.map((task) => 
+  const renderedTasks = user.tasks?.map((task) => 
     <Grid item xs={4} key={task.id} >
       <TaskCard 
         task={task} 

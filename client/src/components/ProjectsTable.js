@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,12 +11,13 @@ import { Typography } from '@mui/material';
 import ProjectRow from './ProjectRow';
 
 const ProjectsTable = ({ 
-    projects, 
     onDeleteProject, 
     onUpdateProject,
   }) => {
 
-  const sortedProjects = [...projects].sort((a, b) => {
+  const {user} = useContext(UserContext);
+
+  const sortedProjects = user.projects.sort((a, b) => {
     const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
     if (nameA < nameB) {

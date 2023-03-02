@@ -8,7 +8,6 @@ import { Button } from '@mui/material';
 import NewTaskModal from './NewTaskModal';
 
 const TasksPage = ({ 
-    tasks, 
     allProjects, 
     onAddTask, 
     onDeleteTask, 
@@ -44,7 +43,6 @@ const TasksPage = ({
       </Container>
       <Container>
         <NestedGrid 
-          tasks={tasks} 
           onDeleteTask={onDeleteTask} 
           projects={allProjects} 
           onUpdateTask={onUpdateTask} 

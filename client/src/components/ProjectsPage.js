@@ -41,7 +41,6 @@ const ProjectsPage = ({
           </Container>
           <Container>
             <ProjectsTable 
-              projects={projects} 
               onDeleteProject={onDeleteProject} 
               onUpdateProject={onUpdateProject}
             />

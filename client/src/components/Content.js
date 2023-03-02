@@ -11,9 +11,6 @@ import { Container } from '@mui/material';
 import UnauthorizedPage from './UnauthorizedPage';
 
 const Content = ({
-  projects,
-  setProjects,
-  tasks,
   allProjects,
   setAllProjects,
   onLogin,
@@ -54,7 +51,6 @@ const Content = ({
             />
             <Route path='/projects/*' element={user
               ? <ProjectsPage 
-                projects={projects}
                 onAddProject={onAddProject} 
                 onDeleteProject={onDeleteProject} 
                 onUpdateProject={onUpdateProject}
@@ -64,7 +60,6 @@ const Content = ({
             />
             <Route path='/tasks/*' element={user
               ? <TasksPage 
-                tasks={tasks} 
                 allProjects={allProjects}
                 onAddTask={onAddTask}
                 onDeleteTask={onDeleteTask} 
