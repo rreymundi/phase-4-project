@@ -17,27 +17,28 @@ const ProjectsTable = ({
 
   const {user} = useContext(UserContext);
 
-  const sortedProjects = user.projects.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
+  // const sortedProjects = user.projects.sort((a, b) => {
+  //   const nameA = a.name.toUpperCase();
+  //   const nameB = b.name.toUpperCase();
+  //   if (nameA < nameB) {
+  //     return -1;
+  //   }
+  //   if (nameA > nameB) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
 
 
-  const projectRows = sortedProjects?.map((project) => 
-    <ProjectRow 
-      key={project.id} 
-      project={project} 
-      onDeleteProject={onDeleteProject} 
-      onUpdateProject={onUpdateProject}
-    />
-  );
+  // const projectRows = user.projects?.map((project) => (
+  //     <ProjectRow 
+  //       key={project.id} 
+  //       project={project} 
+  //       onDeleteProject={onDeleteProject} 
+  //       onUpdateProject={onUpdateProject}
+  //     />
+  //   )
+  // );
 
   return (
     <TableContainer component={Paper}>
@@ -56,7 +57,16 @@ const ProjectsTable = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {projectRows}
+        {user.projects.map((project) => {
+              return (
+                <ProjectRow 
+                  key={project.id} 
+                  project={project} 
+                  onDeleteProject={onDeleteProject} 
+                  onUpdateProject={onUpdateProject}
+                />
+              )
+            })}
         </TableBody>
       </Table>
     </TableContainer>

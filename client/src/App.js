@@ -60,17 +60,30 @@ export default function App() {
       };
 
       const handleAddTask = (newTask) => {
-          const updatedTasks = user.tasks.push(newTask)
-          const updatedProjects = user.projects.map((project) => {
-            if (project.id === newTask.project.id) {
-              const updatedProject = project.tasks.push(newTask)
-              return updatedProject
+          const projectToUpdate = allProjects.find(
+            project => project.id === newTask.project.id
+            );
+          const updatedProject = {...projectToUpdate, tasks: [...projectToUpdate.tasks, newTask]}
+          const updatedAllProjects = allProjects.map((project) => 
+            project.id === newTask.project.id ? updatedProject : project
+          );
+            if (user.projects.length < 1) {
+              const updatedProjects = [...user.projects, updatedProject]
+              setCurrentUser({ ...user, projects: updatedProjects, tasks: [...user.tasks, newTask] });
             } else {
-              return project
-            }
-          })
-          setCurrentUser({ ...user, projects: updatedProjects, tasks: updatedTasks })        
-          setErrors([])
+              const projectExists = user.projects.includes(projectToUpdate)
+              if (!projectExists) {
+                const updatedProjects = [...user.projects, updatedProject]
+                setCurrentUser({ ...user, projects: updatedProjects, tasks: [...user.tasks, newTask] });
+              } else {
+                const updatedProjects = user.projects.map((project) => 
+                  project.id === newTask.project.id ? updatedProject : project
+                );
+              setCurrentUser({ ...user, projects: updatedProjects, tasks: [...user.tasks, newTask] });
+              }
+            };
+          setAllProjects(updatedAllProjects)
+          setErrors([]);
         };
             
       const handleDeleteTask = (deletedTask) => {

@@ -11,7 +11,6 @@ const NestedGrid = ({
   }) => {
 
   const {user} = useContext(UserContext);
-
   // const sortedTasks = user.tasks.sort((a, b) => {
   //   const nameA = a.name.toUpperCase();
   //   const nameB = b.name.toUpperCase();
@@ -24,22 +23,24 @@ const NestedGrid = ({
   //   return 0;
   // });
 
-  const renderedTasks = user.tasks?.map((task) => 
-    <Grid item xs={4} key={task.id} >
-      <TaskCard 
-        task={task} 
-        onDeleteTask={onDeleteTask} 
-        projects={projects} 
-        onUpdateTask={onUpdateTask}
-      />
-    </Grid>
-  );
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1} >
         <Grid container item spacing={3} >
-          {renderedTasks}
+          {user.tasks.map((task) => {
+                return (
+                  <Grid item xs={4} key={task.id} >
+                    <TaskCard 
+                      task={task} 
+                      onDeleteTask={onDeleteTask} 
+                      projects={projects} 
+                      onUpdateTask={onUpdateTask}
+                    />
+                  </Grid>
+                )
+              })}
         </Grid>
       </Grid>
     </Box>
