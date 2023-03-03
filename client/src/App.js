@@ -89,20 +89,32 @@ export default function App() {
       const handleDeleteTask = (deletedTask) => {
         const updatedTasks = user.tasks.filter((task) => 
           task.id !== deletedTask.id
-        )
-        const updatedProjects = user.projects.map((project) => {
-          if (project.id === deletedTask.project.id) {
-            const updatedProject = project.tasks.filter((task) =>
-              task.id !== deletedTask.id
-            )
-            return updatedProject
-          } else {
-            return project
-          }
-        })
-        setCurrentUser({ ...user, projects: updatedProjects, tasks: updatedTasks })
+        );
+        const projectToUpdate = allProjects.find(
+          project => project.id === deletedTask.project.id
+          );
+          const filteredTasks = projectToUpdate.tasks.filter((task) => 
+          task.id !== deletedTask.id
+          );
+          const updatedProject = {...projectToUpdate, tasks: filteredTasks}
+          // OK UP TO THIS POINT!
+        const updatedAllProjects = allProjects.map((project) => 
+            project.id === deletedTask.project.id ? updatedProject : project
+          );
+        // const updatedUserProjects = user.projects.map((project) => 
+        //   // project.id === deletedTask.project.id ? updatedProject : project
+        //   if (project.id === deletedTask.project.id && project.tasks.length === 1) {
+        //     // delete project from user.projects
+        //   } else {
+        //     project.id === deletedTask.project.id ? updatedProject : project
+        //   }
+        // );
+        const updatedUserProjects = user.projects.filter((project) => 
+          project.id !== deletedTask.project.id && project.tasks.length !== 1
+        );
+        setCurrentUser({ ...user, projects: updatedUserProjects, tasks: updatedTasks });
+        setAllProjects(updatedAllProjects);
       };
-    
       const handleUpdateTask = (updatedTask) => {
         const updatedTasks = user.tasks.map((task) => 
         task.id === updatedTask.id ? updatedTask : task
