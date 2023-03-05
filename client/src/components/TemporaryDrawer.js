@@ -9,6 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListIcon from '@mui/icons-material/List';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
 
@@ -25,19 +26,27 @@ const TemporaryDrawer = ({ drawerOpen, setDrawerOpen, user }) => {
         >
         <List>
           <ListItem disablePadding>
-            <ListItemButton component={ Link } to='/tasks'>
+            <ListItemButton component={ Link } to='/projects/all'>
               <ListItemIcon>
-                <TaskAltIcon />
+                <ListIcon />
               </ListItemIcon>
-              <ListItemText>My Tasks</ListItemText>
+              <ListItemText>All Projects</ListItemText>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton component={ Link } to='/projects'>
               <ListItemIcon>
-                <ListIcon />
+                <WorkOutlineIcon />
               </ListItemIcon>
               <ListItemText>My Projects</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={ Link } to='/tasks'>
+              <ListItemIcon>
+                <TaskAltIcon />
+              </ListItemIcon>
+              <ListItemText>My Tasks</ListItemText>
             </ListItemButton>
           </ListItem>
         </List>

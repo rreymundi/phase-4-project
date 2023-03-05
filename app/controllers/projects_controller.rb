@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    skip_before_action :authorize
+    before_action :authorize
 
     def index
         projects = Project.all
@@ -8,22 +8,20 @@ class ProjectsController < ApplicationController
 
     def create
         project = Project.create!(project_params)
-        project.valid?
         render json: project, status: :created
     end
 
-    def update 
-        project = Project.find(params[:id])
-        project.update!(project_params)
-        project.valid?
-        render json: project, status: :ok
-    end
+    # def update 
+    #     project = Project.find(params[:id])
+    #     project.update!(project_params)
+    #     render json: project, status: :ok
+    # end
 
-    def destroy
-        project = Project.find(params[:id])
-        project.destroy 
-        head :no_content
-    end
+    # def destroy
+    #     project = Project.find(params[:id])
+    #     project.destroy 
+    #     head :no_content
+    # end
 
     private
 

@@ -20,13 +20,16 @@ export default function App() {
           .then((user) => {
             setCurrentUser(user)
           })
+          fetch('/projects')
+          .then((r) => r.json())
+          .then((r) => setAllProjects(r))
         } else {
           r.json().then((errorData) => setErrors(errorData.errors))
         }
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    
     const handleLogin = (loggedInUser) => {
         setCurrentUser(loggedInUser)
         setErrors([])
@@ -38,8 +41,8 @@ export default function App() {
       };
     
       const handleAddProject = (newProject) => {
-        const updatedProjects = user.projects.push(newProject)
-        setCurrentUser({ ...user, projects: updatedProjects })
+        // const updatedProjects = user.projects.push(newProject)
+        setCurrentUser({ ...user, projects: [...user.projects, newProject] })
         setAllProjects([...allProjects, newProject])       
         setErrors([])
       };
@@ -92,36 +95,45 @@ export default function App() {
         );
         const projectToUpdate = allProjects.find(
           project => project.id === deletedTask.project.id
-          );
-          const filteredTasks = projectToUpdate.tasks.filter((task) => 
+        );
+        const filteredTasks = projectToUpdate.tasks.filter((task) => 
           task.id !== deletedTask.id
-          );
-          const updatedProject = {...projectToUpdate, tasks: filteredTasks}
+        );
+        const updatedProject = {...projectToUpdate, tasks: filteredTasks}
           // OK UP TO THIS POINT!
         const updatedAllProjects = allProjects.map((project) => 
             project.id === deletedTask.project.id ? updatedProject : project
-          );
-        // const updatedUserProjects = user.projects.map((project) => 
-        //   // project.id === deletedTask.project.id ? updatedProject : project
-        //   if (project.id === deletedTask.project.id && project.tasks.length === 1) {
-        //     // delete project from user.projects
-        //   } else {
-        //     project.id === deletedTask.project.id ? updatedProject : project
-        //   }
-        // );
+        );
         const updatedUserProjects = user.projects.filter((project) => 
           project.id !== deletedTask.project.id && project.tasks.length !== 1
         );
         setCurrentUser({ ...user, projects: updatedUserProjects, tasks: updatedTasks });
         setAllProjects(updatedAllProjects);
       };
+
       const handleUpdateTask = (updatedTask) => {
         const updatedTasks = user.tasks.map((task) => 
-        task.id === updatedTask.id ? updatedTask : task
-        )
-        setCurrentUser({ ...user, tasks: updatedTasks })
-        setErrors([])
-      };  
+          task.id === updatedTask.id ? updatedTask : task
+        );
+        const projectToUpdate = allProjects.find(
+          project => project.id === updatedTask.project.id
+        );
+        const updatedProjectTasks = projectToUpdate.tasks.map((task) =>
+        // Need to figure out: if the task exists then update it, 
+        // if not, then add it (this second condition only if i allow editing the task project). 
+          task.id === updatedTask.id ? updatedTask : task
+        );
+        const updatedProject = {...projectToUpdate, tasks: updatedProjectTasks}
+        const updatedAllProjects = allProjects.map((project) => 
+            project.id === updatedTask.project.id ? updatedProject : project
+        );
+        const updatedUserProjects = user.projects.map((project) =>
+          project.id === updatedTask.project.id ? updatedProject : project
+        );
+        setCurrentUser({ ...user, projects: updatedUserProjects, tasks: updatedTasks });
+        setAllProjects(updatedAllProjects);
+        setErrors([]);
+      };
       
   return (
     <Router>

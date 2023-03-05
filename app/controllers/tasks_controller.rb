@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    skip_before_action :authorize
+    before_action :authorize
 
     def index
         tasks = Task.all
@@ -9,13 +9,11 @@ class TasksController < ApplicationController
     def update
         task = Task.find(params[:id])
         task.update!(task_params)
-        task.valid?
         render json: task, status: :ok
     end
 
     def create
         task = Task.create!(task_params)
-        task.valid?
         render json: task, status: :created
     end
 

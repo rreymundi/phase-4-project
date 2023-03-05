@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 // import EditProjectModal from './EditProjectModal';
 import ProjectRoadmap from './ProjectRoadmap';
 
-const ProjectRow = ({ 
+const AllProjectsRow = ({ 
     project, 
     onDeleteProject, 
     onUpdateProject,
@@ -40,7 +40,7 @@ const ProjectRow = ({
 
   const handleOpenRoadmap = () => setRoadmapOpen(true);
   const handleCloseRoadmap = () => {
-    navigate("/projects")
+    navigate("/projects/all")
     setRoadmapOpen(false)
   };
 
@@ -55,7 +55,7 @@ const ProjectRow = ({
       <TableCell component="th" scope="row">
         <Button 
           component={ Link } 
-          to={`/projects/${project.id}`} 
+          to={`/projects/all/${project.id}`} 
           onClick={handleOpenRoadmap} >
           <Typography>{project.name}</Typography>
         </Button>
@@ -96,4 +96,4 @@ const ProjectRow = ({
   )
 }
 
-export default ProjectRow;
+export default AllProjectsRow;

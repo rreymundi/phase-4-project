@@ -4,6 +4,7 @@ import { UserContext } from '../context/user';
 import Home from './Home';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
+import AllProjectsPage from './AllProjectsPage';
 import ProjectsPage from './ProjectsPage';
 import TasksPage from './TasksPage';
 import Box from '@mui/material/Box';
@@ -21,7 +22,7 @@ const Content = ({
   onDeleteTask,
   onUpdateTask
   }) => {
-    
+  
   const {user} = useContext(UserContext);
 
   return (
@@ -49,22 +50,30 @@ const Content = ({
                 onLogin={onLogin} 
               />} 
             />
+            <Route path='/projects/all/*' element={user
+              ? <AllProjectsPage 
+                  allProjects={allProjects}
+                  onAddProject={onAddProject} 
+                />
+              : <UnauthorizedPage />
+              } 
+            />
             <Route path='/projects/*' element={user
               ? <ProjectsPage 
-                onAddProject={onAddProject} 
-                onDeleteProject={onDeleteProject} 
-                onUpdateProject={onUpdateProject}
+                  onAddProject={onAddProject} 
+                  onDeleteProject={onDeleteProject} 
+                  onUpdateProject={onUpdateProject}
                 />
               : <UnauthorizedPage />
               } 
             />
             <Route path='/tasks/*' element={user
               ? <TasksPage 
-                allProjects={allProjects}
-                onAddTask={onAddTask}
-                onDeleteTask={onDeleteTask} 
-                onUpdateTask={onUpdateTask} 
-              />
+                  allProjects={allProjects}
+                  onAddTask={onAddTask}
+                  onDeleteTask={onDeleteTask} 
+                  onUpdateTask={onUpdateTask} 
+                />
               : <UnauthorizedPage />
               } 
             />
