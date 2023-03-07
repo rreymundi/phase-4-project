@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Phase 4 project: CO.LAB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CO.LAB is a project management tool that allows you to team up and collaborate on projects. It uses a Rails API with a React frontend.
 
-## Available Scripts
+# Getting Started
+
+This project was cloned from [this](https://github.com/learn-co-curriculum/project-template-react-rails-api) template, which is scaffolded to allow building a React frontend and Rails backend together. It has been configured to enable deployment of the app to Render.
+
+Setting up your environment:
+
+Ruby version 2.7.4 is recommended. If you need to upgrade you can install it using rvm:
+
+$ rvm install 2.7.4 --default
+
+You should also install the latest versions of bundler and rails:
+
+$ gem install bundler
+$ gem install rails
+
+Verify you are running a recent version of Node with:
+
+node -v
+If your Node version is not 16.x.x, install it and set it as the current and default version with:
+
+nvm install 16
+nvm use 16
+nvm alias default 16
+
+Fork and clone this branch to set up your local copy.
+
+Preliminary installs:
+### `bundle install` 
+
+Installs the required gems
+
+### `rails db:migrate` 
+
+Gets your db all set up with the latest schema.
+
+### `rails db:seed` 
+
+Sets up some seed data to help you get started.
+### `npm install @mui/material @emotion/react @emotion/styled`
+
+This app makes us eof Material UI components.
+
+### `React`
+
+    "react": "17.0.2"
+
+### `React Router Dom`
+
+The app routes were set up using React Router Dom v6
+
+    "react-router-dom": "6.6.2"
 
 In the project directory, you can run:
 
-### `npm start`
+###`rails s` to run the backend on http://localhost:3000
+###`npm start --prefix client` to run the frontend on http://localhost:4000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+CO.LAB features a sign up page to create a new account and a login page to log in with existing credentials. Once logged, in you'll have access to a user menu which is comprised of three pages:
 
-### `npm test`
+- All Projects
+    - Shows all projects created by yourself and other users
+    - Each project can be expanded to show a roadmap with a high-level overview of tasks, organized by status.
+    - A "Create project" button allows creating and adding a project to the list. This project will be visible to all other users.
+- My Projects
+    - Shows all projects you are currently contributing to. That is to say, if you've added a new task to a project, then that project will be listed here.
+    - Each project can be expanded to show a roadmap with a high-level overview of tasks, organized by status.
+- My tasks
+    - Shows your open tasks as cards.
+    - Each card shows the task name, description, status, priority, and corresponding project.
+    - A "Create task" button allows creating and adding a new task.
+    - Each task card has a menu that allows deleting or editing a task.
+    - Only the task creator/owner can edit or delete their tasks.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All actions are set to persist via the back-end.
 
-### `npm run build`
+## Associations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The database consists of three models with many-to-many Active Record associations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users
+has_many :tasks
+has_many :projects, through: :tasks
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Tasks
+belongs_to :user
+belongs_to :project
 
-### `npm run eject`
+Projects
+has_many :tasks
+has_many :projects, through: :tasks
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The database tables were set up using Active Record migrations. Any changes to the database should be done via Active Record migrations. The schema.rb file will contain the latest state of the database.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## App Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Check out a demo of CO.LAB [here](https://youtu.be/yjEBQyysNow).
